@@ -1,0 +1,77 @@
+{
+  "project": "OPTICAL_SIZE_RETURN_STUDY",
+  "report_id": "OPT-SIZE-A2-PROGRESS-20260930-01/v23",
+  "files": [
+    {
+      "path": "REPORT.md",
+      "bytes": 8606,
+      "sha256": "FCCD18CCD96A70B7C1F5D08D957A780C4A21DA2DDFFB75AEF8F695E9CA111A5A"
+    },
+    {
+      "path": "INDEX.md",
+      "bytes": 1003,
+      "sha256": "35185F7288B979D3C3F84DA4F3712099D975EB128F17F7F2AFDC7ED329E0285A"
+    },
+    {
+      "path": "setting_change.csv",
+      "bytes": 110,
+      "sha256": "F886E903C9CD92E09DC5E4371C799C1D90C94BD272DFA9CD68B60F16721AFB61"
+    },
+    {
+      "path": "settings_numeric_preflight.json",
+      "bytes": 1692,
+      "sha256": "FE4CFFA978B58E6B18C1637A228367C3CC159508E6FC96AB7D28554726CF3255"
+    },
+    {
+      "path": "execution_receipts.json",
+      "bytes": 6123,
+      "sha256": "75EC600944CCED6FB28929B92D7CA4519B41D1533D8F70E624B051FD3238F28A"
+    },
+    {
+      "path": "code/run_f0_d3_once.ps1",
+      "bytes": 7464,
+      "sha256": "69E024DD91DA1C339686DE12CE3542AC14BB9E4DB5FAE8739565DAB4BCE7D331"
+    },
+    {
+      "path": "code/d3_runner_helpers.ps1",
+      "bytes": 2476,
+      "sha256": "2E2A19326D4EC033A74BAEE7AF939278CF2AEC9BC26CC2C0E23C627B297D8446"
+    },
+    {
+      "path": "code/d2_runner_helpers.ps1",
+      "bytes": 9220,
+      "sha256": "9244C427F4DE98B32BF5E3401A71A6B650C1D5FB1083A982C8213904B558CBAF"
+    },
+    {
+      "path": "code/d1_runner_helpers.ps1",
+      "bytes": 2077,
+      "sha256": "E2B1B9799598C31D1F0A03DD52F819419641D74BF660DB1F599536BA60CB6787"
+    },
+    {
+      "path": "code/test_d3_launch_guard.ps1",
+      "bytes": 1607,
+      "sha256": "E27FA8750C0494AA6C897E65F5DE0B7696B76E497FD359F62771E3D9BB57DDD2"
+    },
+    {
+      "path": "code/read_f0_d3_worker.ps1",
+      "bytes": 4742,
+      "sha256": "F4B4A0D259B3F11148118B3DDC93308892EC5EB2860FEE78617A5E509C91C1E4"
+    },
+    {
+      "path": "code/read_f0_d3_status.ps1",
+      "bytes": 3159,
+      "sha256": "BC501811277EC943A9CEB4198FABEE48E160E07E992EC3CED65EC155741CC5A2"
+    },
+    {
+      "path": "code/d3_reader_helpers.ps1",
+      "bytes": 365,
+      "sha256": "97AC45B2A94D5D03088078CC479E6901EC7FE54A4E1C85194DAE935FD2E8F614"
+    }
+  ],
+  "source_D2_presolve_sha256": "0C21BE1CA258FE6018EA5619E5F53E6CA1A441EECF2F495BA75B9A5404BBDD3C",
+  "D3_input_sha256": "61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0",
+  "native_binary_not_public_only_evidence": true,
+  "public_allowlist_reviewed": true,
+  "actual_start_record_not_scientific_acceptance": true,
+  "screen_matches": 0
+}
