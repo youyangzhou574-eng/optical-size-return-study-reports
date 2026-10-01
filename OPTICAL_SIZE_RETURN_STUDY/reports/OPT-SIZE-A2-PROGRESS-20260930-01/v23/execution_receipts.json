@@ -1,0 +1,162 @@
+{
+  "scope": "SANITIZED_PROJECT_EXECUTION_EVIDENCE_NO_CREDENTIALS_OR_MACHINE_IDENTITY",
+  "build": {
+    "operation": "D3_PREPARE_BUILD_REOPEN_01",
+    "status": "BUILD_REOPEN_COMPLETE_NO_SOLVE",
+    "started_server_utc": "2026-10-01T05:08:20.2458748Z",
+    "ended_server_utc": "2026-10-01T05:08:38.5381946Z",
+    "cad_exit": 0,
+    "runtime_exit": 0,
+    "task_result": 0,
+    "source_sha256": "0C21BE1CA258FE6018EA5619E5F53E6CA1A441EECF2F495BA75B9A5404BBDD3C",
+    "input_sha256": "61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0",
+    "input_bytes": 560994,
+    "input_readonly": true,
+    "stderr_bytes": 0,
+    "xml_present": false,
+    "new_solver_starts": 0,
+    "marker": "D3_INPUT_SAVED_REOPENED_NO_SOLVE"
+  },
+  "runtime": {
+    "status": "D3_RUNTIME_PREFLIGHT_PASSED_NO_SOLVE",
+    "started_server_utc": "2026-10-01T05:15:13.9012036Z",
+    "ended_server_utc": "2026-10-01T05:15:18.5573944Z",
+    "runtime_exit": 0,
+    "task_result": 0,
+    "task_policy": "Bypass",
+    "policy_scopes": [
+      {
+        "policy": "Undefined",
+        "scope": "MachinePolicy"
+      },
+      {
+        "policy": "Undefined",
+        "scope": "UserPolicy"
+      },
+      {
+        "policy": "Bypass",
+        "scope": "Process"
+      },
+      {
+        "policy": "Undefined",
+        "scope": "CurrentUser"
+      },
+      {
+        "policy": "Undefined",
+        "scope": "LocalMachine"
+      }
+    ],
+    "guard_tests_passed": 28,
+    "resource": {
+      "free_disk_gib": 2661.826370239258,
+      "free_memory_gib": 108.33889389038086,
+      "identity_uncertain": false,
+      "estimated_memory_gib": 32,
+      "estimate_inherited_from_D1": true,
+      "other_optical_or_mpi_count": 0
+    },
+    "license": {
+      "child_variable_present": true,
+      "child_matches_approved_source": true,
+      "license_query_exit": 0,
+      "licenses_issued": 100,
+      "licenses_in_use": 0,
+      "actual_solve_checkout_verified": false,
+      "license_route_disclosed": false
+    },
+    "input_sha256": "61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0",
+    "new_solver_starts": 0,
+    "real_start_markers": 0,
+    "production_gate_installed": false,
+    "human_test_flags_are_synthetic": true
+  },
+  "actual_start": {
+    "run_id": "F0_D3_AUTOSHUTOFF_1E8_20261001_01",
+    "category": "DIAGNOSTIC",
+    "state": "MPI_PROCESS_STARTED",
+    "detail": "One actual Process.Start; running MPI exit remains null.",
+    "server_utc": "2026-10-01T05:16:17.0825606Z",
+    "started_server_utc": "2026-10-01T05:16:17.0642506Z",
+    "process_start_call_reached": true,
+    "solve_request_issued": true,
+    "mpi_process_started": true,
+    "start_outcome": "STARTED",
+    "mpi_exit_code": null,
+    "runner_exit": null,
+    "ranks": 1,
+    "threads_per_rank": 1,
+    "automatic_retry": false,
+    "automatic_next_case": false,
+    "original_input_sha256": "61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0"
+  },
+  "independent_read": {
+    "query_ok": true,
+    "operation": "D3_PRIMITIVE_STATUS_READ",
+    "server_utc": "2026-10-01T05:25:26.2738830Z",
+    "log_bytes": 2490,
+    "task_state": "Running",
+    "task_result": 267009,
+    "exact_d3_engine_count": 1,
+    "other_fdtd_engine_count": 0,
+    "stderr_bytes": 0,
+    "error": null,
+    "active_code_modified": false,
+    "native_case_scope_record_invalid": true
+  },
+  "independent_engine": [
+    {
+      "exact_input_argument_matched": true,
+      "cpu_seconds": 547.234375,
+      "engine_memory_gib": 8.75100326538086,
+      "created_utc": "2026-10-01T05:16:17.3654870Z"
+    }
+  ],
+  "budget_event": {
+    "event": "F0_D3_DIAGNOSTIC_REQUEST_COUNTED",
+    "run_id": "F0_D3_AUTOSHUTOFF_1E8_20261001_01",
+    "utc": "2026-10-01T05:17:41.931881+00:00",
+    "started_server_utc": "2026-10-01T05:16:17.0642506Z",
+    "category": "DIAGNOSTIC",
+    "counts": {
+      "MAIN": 1,
+      "DIAGNOSTIC": 4,
+      "RECOVERY": 0,
+      "TOTAL": 5
+    },
+    "actual_start_call_reached": true,
+    "mpi_process_started": true,
+    "automatic_retry": false,
+    "automatic_next_case": false,
+    "authorization": "DIRECT_USER_DUDU_ONE_D3_CONDITIONAL_APPROVAL_PLUS_PRO_V22_RECORD05_ACTUAL_PREFLIGHT"
+  },
+  "native_scope_diagnostic": {
+    "operation": "D3_NATIVE_RESOURCE_SCOPE_DIAGNOSTIC_01",
+    "active_runner_not_modified": true,
+    "solver_request_already_issued_once": true,
+    "science_input_unchanged": true,
+    "observation": "Native resource record reported 476 members; this is not a valid D3 case count or branch-memory value.",
+    "confirmed_local_reproduction": "PowerShell function automatic variable $input shadows the script-level FSP string; Observe-D3Native passed an empty InputFsp to the existing classifier.",
+    "empty_pattern_effect": "Empty escaped FSP pattern can match whitespace in unrelated command lines. Subsequent known-member retention preserves the overbroad set.",
+    "invalid_fields": [
+      "native_resource.case_members",
+      "native_resource.branch_gib",
+      "native_resource.identity_uncertain_as_case_proof"
+    ],
+    "valid_fields_not_inferred_from_bad_scope": [
+      "actual_Process_Start_record",
+      "MPI_identity_and_creation_time",
+      "task_state",
+      "MPI_exit_null_while_running"
+    ],
+    "original_active_code_and_history_preserved": true,
+    "automatic_kill": false,
+    "automatic_retry": false,
+    "closeout_requirement": "After normal engine completion, obtain fresh independent strict no-writer and identity evidence. Do not reinterpret the overbroad native set as a true D3 writer set; preserve any original runner failure separately. No gate relaxation or blanket MPI exclusion."
+  },
+  "limitations": [
+    "Original native scope defect retained, active code unchanged.",
+    "Controller timeout was not MPI failure; one local worker later finished, no second request while pending.",
+    "Latest remote read host exit not independently verified.",
+    "No D3 result analysis or science qualification yet."
+  ]
+}
