@@ -1,0 +1,23 @@
+{
+  "changes": [
+    {
+      "public_file": "failed_CAD_receipt.json",
+      "original_bytes": 1482,
+      "original_sha256": "9F740F0E1B4948334C2D91D6E1276C3FCB65AB86C64119D88B7A1B355C180A95",
+      "omitted_field_names": [
+        "identity_sid"
+      ],
+      "original_local_receipt_unchanged": true
+    },
+    {
+      "public_file": "corrected_CAD_receipt.json",
+      "original_bytes": 1862,
+      "original_sha256": "C062E7451AC0DBDE8DC30BBE96C74D91CD26F09261BB4037C275C2D22BFFD2F1",
+      "omitted_field_names": [
+        "identity_sid"
+      ],
+      "original_local_receipt_unchanged": true
+    }
+  ],
+  "no_omitted_values_published": true
+}

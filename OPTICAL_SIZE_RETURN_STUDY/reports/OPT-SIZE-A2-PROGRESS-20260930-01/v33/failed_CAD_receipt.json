@@ -1,0 +1,47 @@
+{
+  "cad_pid": 46164,
+  "license_created_utc": "2026-10-01T17:38:42.6794866Z",
+  "free_gib_before_CAD": 104.44176483154297,
+  "operation": "P30_FINE_NATIVE_BUILD_SYSTEMCHECK_01",
+  "cad_exit": 0,
+  "conflicting_process_count": 0,
+  "license_pid": 45140,
+  "files": [
+    {
+      "sha256": "77C63E5273EFE15CFE429AB3EDC77C1B85A6EDE726D0AA5AC83AB3AD8FD476B2",
+      "name": "CAD_BUILD_stdout.log",
+      "bytes": 338
+    },
+    {
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "name": "CAD_BUILD_stderr.log",
+      "bytes": 0
+    }
+  ],
+  "server_ended_utc": "2026-10-01T17:38:51.7211946Z",
+  "stderr_bytes": 0,
+  "success_marker": false,
+  "memory_cap_gib": 64,
+  "xml_errors": 1,
+  "error": "NATIVE_LAYOUT_SCRIPT_OR_OUTPUT_FAILED_NO_SOLVE_NO_REPEAT",
+  "server_utc": "2026-10-01T17:38:41.3960515Z",
+  "new_solver_starts": 0,
+  "qualified_error_id": "NATIVE_LAYOUT_SCRIPT_OR_OUTPUT_FAILED_NO_SOLVE_NO_REPEAT",
+  "disk_free_gib_before_CAD": 2646.730499267578,
+  "started_server_utc": "2026-10-01T17:38:43.0662623Z",
+  "cad_wall_seconds": 8.607135699999999,
+  "license_pending": false,
+  "license_query_not_checkout_proof": true,
+  "remote_host_created_utc": "2026-10-01T17:38:40.6057707Z",
+  "xml_present": true,
+  "cad_created_utc": "2026-10-01T17:38:43.1069662Z",
+  "prior_host_state": "CONFIRMED_ABSENT",
+  "cad_peak_working_set_gib": 0,
+  "license_query_exit": 0,
+  "cad_started": true,
+  "query_ok": false,
+  "remote_host_pid": 21760,
+  "mother_sha256_after": "61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0",
+  "source_unchanged": true,
+  "cad_pending": false
+}

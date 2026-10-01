@@ -1,0 +1,90 @@
+{
+  "operation": "READ_ONLY_ACTUAL_CPU_RESOURCE_STOP_AUDIT_01",
+  "raw_report_sha256": "9411F62470C764996B05FE0884410642E35FF4843303DAA6750970DA71541CE1",
+  "raw_report_bytes": 4917,
+  "cap_GiB": 64,
+  "native_recommended_GiB": 472.2579704865432,
+  "phase_memory": [
+    {
+      "name": "Initialization_and_Mesh_Bytes",
+      "bytes": 167772160,
+      "GiB": 0.15625
+    },
+    {
+      "name": "Running_Simulation_Bytes",
+      "bytes": 507083134629,
+      "GiB": 472.2579704867676
+    },
+    {
+      "name": "Data_Collection_Bytes",
+      "bytes": 688739608960,
+      "GiB": 641.4387458562851
+    },
+    {
+      "name": "FSP_Saved_Monitor_Data_Bytes",
+      "bytes": 342236060480,
+      "GiB": 318.7321689724922
+    }
+  ],
+  "monitors": [
+    {
+      "name": "Frequency Domain Power Monitor, ::model::E_translation_witness_1: ",
+      "GiB": 0.0005726516246795654
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::E_translation_witness_2: ",
+      "GiB": 0.0005726516246795654
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::P_bottom_before_structure: ",
+      "GiB": 0.4968012869358063
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::P_top_after_structure: ",
+      "GiB": 0.4968012869358063
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::REP_TILE_E: ",
+      "GiB": 159.36551123857498
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::R_below_source: ",
+      "GiB": 0.4968012869358063
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::T_above_coating: ",
+      "GiB": 0.4968012869358063
+    },
+    {
+      "name": "Index Monitor, ::model::REP_TILE_INDEX: (can be swapped without slowdown) ",
+      "GiB": 159.36551123857498
+    }
+  ],
+  "conformal_alert": "You are using conformal mesh technology and the memory report is less reliable in this case. Please do some testing if the memory report indicates you are close to the memory limits of your computer.",
+  "native_geometry_serialized_null": true,
+  "native_total_nodes_display": "1147.83",
+  "native_schema_variant": "v241_Memory_Recommended_without_Bytes_suffix",
+  "memory_stop": true,
+  "memory_estimate_gate_pass": false,
+  "source_unchanged": true,
+  "actual_CAD_exit": 0,
+  "original_worker_query_ok": false,
+  "actual_layout_mode": 1,
+  "actual_dt_s": 2.5478700814633336e-17,
+  "actual_custom_f_Hz": [
+    374740572499999.94,
+    399723277333333.3,
+    428274939999999.94,
+    461219166153846.1,
+    499654096666666.6,
+    545077196363636.3,
+    599584915999999.9,
+    666205462222222.1,
+    749481144999999.9,
+    856549879999999.9
+  ],
+  "new_solver_starts": 0,
+  "new_CAD_starts_in_this_audit": 0,
+  "file_transfer_hash_verified": true,
+  "future_solver_cell_or_physics_change_human_approved": false
+}

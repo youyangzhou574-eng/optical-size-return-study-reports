@@ -1,0 +1,32 @@
+{
+  "readback" : 
+  {
+    "actual_index_frequency_gate_pass" : 0.0,
+    "auto_shutoff_min" : 1e-08,
+    "custom_frequency_samples" : 
+    {
+      "_complex" : false,
+      "_data" : 
+      [
+        374740572499999.94,
+        399723277333333.31,
+        428274939999999.94,
+        461219166153846.12,
+        499654096666666.62,
+        545077196363636.31,
+        599584915999999.88,
+        666205462222222.12,
+        749481144999999.88,
+        856549879999999.88
+      ],
+      "_size" : [ 10, 1 ],
+      "_type" : "matrix"
+    },
+    "custom_frequency_table_readback_only" : 1.0,
+    "dt" : 2.5478700814633336e-17,
+    "layout_mode" : 1.0,
+    "simulation_time" : 2.9000000000000002e-12,
+    "source_start" : 3.4999999999999998e-07,
+    "source_stop" : 7.9999999999999996e-07
+  }
+}

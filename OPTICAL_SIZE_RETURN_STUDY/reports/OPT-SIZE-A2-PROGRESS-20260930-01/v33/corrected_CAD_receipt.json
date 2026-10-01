@@ -1,0 +1,62 @@
+{
+  "cad_pid": 6668,
+  "license_created_utc": "2026-10-01T17:57:19.998375Z",
+  "free_gib_before_CAD": 103.99428176879883,
+  "operation": "P30_FINE_NATIVE_BUILD_LOCAL_LINE_FIX_02",
+  "cad_exit": 0,
+  "conflicting_process_count": 0,
+  "license_pid": 55504,
+  "files": [
+    {
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "name": "CAD_BUILD_stdout.log",
+      "bytes": 0
+    },
+    {
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "name": "CAD_BUILD_stderr.log",
+      "bytes": 0
+    },
+    {
+      "sha256": "9411F62470C764996B05FE0884410642E35FF4843303DAA6750970DA71541CE1",
+      "name": "cpu_memory_report.json",
+      "bytes": 4917
+    },
+    {
+      "sha256": "93BDF0BD82BBB90A9B6FBFB33D7432C6340632D209951B2A643D657FC0097568",
+      "name": "small_settings_readback.json",
+      "bytes": 822
+    },
+    {
+      "sha256": "F3EDCC502110BE9B0EADBF6BADAC76BA64DCD5E0B63AB9B59E6718CE2606F2D9",
+      "name": "P30_X_FINE_candidate_input.fsp",
+      "bytes": 611216
+    }
+  ],
+  "server_ended_utc": "2026-10-01T17:57:31.764546Z",
+  "stderr_bytes": 0,
+  "success_marker": false,
+  "memory_cap_gib": 64,
+  "xml_errors": null,
+  "error": "NATIVE_LAYOUT_SCRIPT_OR_OUTPUT_FAILED_NO_SOLVE_NO_REPEAT",
+  "server_utc": "2026-10-01T17:57:18.6528819Z",
+  "new_solver_starts": 0,
+  "qualified_error_id": "NATIVE_LAYOUT_SCRIPT_OR_OUTPUT_FAILED_NO_SOLVE_NO_REPEAT",
+  "disk_free_gib_before_CAD": 2644.033058166504,
+  "started_server_utc": "2026-10-01T17:57:20.3033303Z",
+  "cad_wall_seconds": 11.4110304,
+  "license_pending": false,
+  "license_query_not_checkout_proof": true,
+  "remote_host_created_utc": "2026-10-01T17:57:17.7183188Z",
+  "xml_present": false,
+  "cad_created_utc": "2026-10-01T17:57:20.306832Z",
+  "prior_host_state": "CONFIRMED_ABSENT",
+  "cad_peak_working_set_gib": 0,
+  "license_query_exit": 0,
+  "cad_started": true,
+  "query_ok": false,
+  "remote_host_pid": 29728,
+  "mother_sha256_after": "61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0",
+  "source_unchanged": true,
+  "cad_pending": false
+}

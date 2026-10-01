@@ -1,0 +1,130 @@
+{
+  "report" : 
+  {
+    "Approximate_Memory_Requirements" : 
+    {
+      "Alert" : "You are using conformal mesh technology and the memory report is less reliable in this case. Please do some testing if the memory report indicates you are close to the memory limits of your computer.",
+      "Data_Collection_Bytes" : 688739608960.0,
+      "FSP_Saved_Monitor_Data_Bytes" : 342236060480.0,
+      "Initialization_and_Mesh_Bytes" : 167772160.0,
+      "Running_Simulation_Bytes" : 507083134629.0
+    },
+    "Frequency_WaveLength_Settings" : 
+    {
+      "Bandwidth_Source" : "(detected from source settings)",
+      "Simulation_Bandwidth" : 
+      {
+        "Alert" : "",
+        "Maximum_Frequency_THz" : 856.54988000000003,
+        "Maximum_Wavelength_Micrometer" : 0.80000000000000004,
+        "Minimum_Frequency_THz" : 374.74057249999998,
+        "Minimum_Wavelength_Micrometer" : 0.34999999999999998,
+        "Simulation_Frequency_THz" : 615.64522624999995,
+        "Simulation_Wavelength_Micrometer" : 0.48695652173913051
+      }
+    },
+    "Geometry" : null,
+    "Materials" : 
+    {
+      "OPT_SIZE_Fe2O3_Query_nkavg_A2" : 
+      {
+        "Material_Name" : "OPT_SIZE_Fe2O3_Querry_nkavg_A2",
+        "RMS_Error" : 0.019350971038928428
+      },
+      "OPT_SIZE_ITO_Minenkov10_A2" : 
+      {
+        "Material_Name" : "OPT_SIZE_ITO_Minenkov110_A2",
+        "RMS_Error" : 0.00053699455073273085
+      },
+      "OPT_SIZE_PDMS_M0_A2" : 
+      {
+        "Material_Name" : "OPT_SIZE_PDMS_M0_A2",
+        "RMS_Error" : 7.122591993430048e-10
+      },
+      "OPT_SIZE_Water_Hale_A2" : 
+      {
+        "Material_Name" : "OPT_SIZE_Water_Hale_A2",
+        "RMS_Error" : 0.0010718132515692702
+      }
+    },
+    "Memory_Details" : 
+    {
+      "Electromagnetic_Fields_and_Refractive_Index" : 162549428645.0,
+      "Electromagnetic_Fields_and_Refractive_Index_Percent" : 32.100000000000001,
+      "Field_Type" : "Electromagnetic Fields and Refractive Index",
+      "Miscellaneous_Memory" : 83886080.0,
+      "Miscellaneous_Memory_Percent" : 0.0,
+      "Monitors" : 
+      {
+        "Frequency_Domain_Power_Monitor_model_E_translation_witnes_1" : 
+        {
+          "FSP_File" : 614960.0,
+          "Memory" : 614880.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::E_translation_witness_1: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_E_translation_witnes_2" : 
+        {
+          "FSP_File" : 614960.0,
+          "Memory" : 614880.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::E_translation_witness_2: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_P_botom_before_structure" : 
+        {
+          "FSP_File" : 240.0,
+          "Memory" : 533436320.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::P_bottom_before_structure: ",
+          "Percent" : 0.10000000000000001
+        },
+        "Frequency_Domain_Power_Monitor_model_P_top_after_structure" : 
+        {
+          "FSP_File" : 240.0,
+          "Memory" : 533436320.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::P_top_after_structure: ",
+          "Percent" : 0.10000000000000001
+        },
+        "Frequency_Domain_Power_Monitor_model_REP_TILE_E" : 
+        {
+          "FSP_File" : 171117414800.0,
+          "Memory" : 171117414720.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::REP_TILE_E: ",
+          "Percent" : 33.700000000000003
+        },
+        "Frequency_Domain_Power_Monitor_model_R_below_source" : 
+        {
+          "FSP_File" : 240.0,
+          "Memory" : 533436320.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::R_below_source: ",
+          "Percent" : 0.10000000000000001
+        },
+        "Frequency_Domain_Power_Monitor_model_T_above_coating" : 
+        {
+          "FSP_File" : 240.0,
+          "Memory" : 533436320.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::T_above_coating: ",
+          "Percent" : 0.10000000000000001
+        },
+        "Index_Monitor_model_REP_TILE_INDEX_can_be_swaped_without_slowdown" : 
+        {
+          "FSP_File" : 171117414800.0,
+          "Memory" : 171117414720.0,
+          "Monitor_Name" : "Index Monitor, ::model::REP_TILE_INDEX: (can be swapped without slowdown) ",
+          "Percent" : 33.700000000000003
+        }
+      },
+      "Sources" : 
+      {
+        "Planewave_Source_model_source_from_botom_water_side" : 
+        {
+          "Bytes" : 80015424.0,
+          "Percent" : 0.0,
+          "Source_Name" : "Planewave Source, ::model::source_from_bottom_water_side: "
+        }
+      }
+    },
+    "Memory_Recommended" : 507083134628.75903,
+    "Mesh_Override" : "",
+    "Total_FDTD_Yee_Nodes" : "1147.83"
+  }
+}

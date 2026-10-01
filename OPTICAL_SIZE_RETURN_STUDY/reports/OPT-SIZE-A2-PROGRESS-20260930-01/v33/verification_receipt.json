@@ -1,0 +1,25 @@
+{
+  "RED": {
+    "command": "python -m unittest test_native_candidate.TestNativeCandidate.test_single_500nm_sample_has_one_native_slot_and_preserves_physics",
+    "actual_exit": 1,
+    "failure": "Expected f10=matrix(1,1), actual generator still produced matrix(10,1)"
+  },
+  "GREEN": {
+    "command": "python -m unittest discover -v",
+    "actual_exit": 0,
+    "tests_passed": 10,
+    "tests_failed": 0
+  },
+  "local_generation": {"actual_exit": 0, "new_CAD": 0, "new_solve": 0},
+  "known_distinct_synthetic_inputs_before": 39,
+  "one_new_input": "Existing P30_FINE geometry/physics with only one 500nm recorded frequency",
+  "known_distinct_synthetic_inputs_after": 40,
+  "original_limit": 40,
+  "original_corrected_10pt_lsf_sha256_unchanged": "66A96AD726D1E50CD66CAADD4A661039EEB757AB6C34525C898ECE1DBB0F9323",
+  "native_input_fsp_sha256_unchanged": "F3EDCC502110BE9B0EADBF6BADAC76BA64DCD5E0B63AB9B59E6718CE2606F2D9",
+  "local_generator_before_sha256": "C572CC45306FA9BFFD7E362B96540542467BD421A20816796409220B16A7B8E2",
+  "local_generator_after_sha256": "66669E09DF0A9CF1CCF4123699E4E2D3DCC9E6E09B27703DF159CC14D0A15278",
+  "native_material_tile_gate": "NOT_YET_TESTED",
+  "memory_gate": "STOP",
+  "solver_ready": false
+}

@@ -1,0 +1,11 @@
+{
+  "request": "现在是不是有点夸张了，哈哈哈咱先算一个波长的吧",
+  "single_recorded_wavelength_requested_by_user": true,
+  "candidate_wavelength_nm": 500,
+  "500nm_choice": "Executor selection following the verified legacy component setup; user did not specify the wavelength",
+  "supersedes_prior_wait_for_old_dialogue_context": true,
+  "original_four_conditional_MAIN_cases_preserved": true,
+  "not_extra_diagnostic_or_fifth_case": true,
+  "not_permission_to_bypass_memory_or_identity_or_scientific_STOP": true,
+  "source_band_change_or_smaller_cell_or_mesh_change_or_closure_waiver_approved": false
+}

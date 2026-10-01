@@ -1,0 +1,59 @@
+{
+  "method": "Unchanged-grid scalar proxy: keep non-monitor runtime bytes; divide DFT monitor bytes by 10",
+  "source_native_report_sha256": "9411F62470C764996B05FE0884410642E35FF4843303DAA6750970DA71541CE1",
+  "wavelength_nm": 500,
+  "frequency_hz": 599584916000000.0,
+  "native_one_point_systemcheck_performed": false,
+  "electromagnetic_fields_and_index_unchanged_GiB": 151.3859523879364,
+  "non_monitor_runtime_unchanged_GiB": 151.53859755862504,
+  "one_point_monitors_proxy_GiB": 32.071937292814255,
+  "one_point_runtime_proxy_GiB": 183.6105348514393,
+  "one_point_saved_monitor_proxy_GiB": 31.873216897249222,
+  "collection_estimate": "UNKNOWN: not assumed proportional to monitor count",
+  "monitors": [
+    {
+      "name": "Frequency Domain Power Monitor, ::model::E_translation_witness_1: ",
+      "ten_point_bytes": 614880.0,
+      "one_point_proxy_bytes": 61488.0
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::E_translation_witness_2: ",
+      "ten_point_bytes": 614880.0,
+      "one_point_proxy_bytes": 61488.0
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::P_bottom_before_structure: ",
+      "ten_point_bytes": 533436320.0,
+      "one_point_proxy_bytes": 53343632.0
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::P_top_after_structure: ",
+      "ten_point_bytes": 533436320.0,
+      "one_point_proxy_bytes": 53343632.0
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::REP_TILE_E: ",
+      "ten_point_bytes": 171117414720.0,
+      "one_point_proxy_bytes": 17111741472.0
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::R_below_source: ",
+      "ten_point_bytes": 533436320.0,
+      "one_point_proxy_bytes": 53343632.0
+    },
+    {
+      "name": "Frequency Domain Power Monitor, ::model::T_above_coating: ",
+      "ten_point_bytes": 533436320.0,
+      "one_point_proxy_bytes": 53343632.0
+    },
+    {
+      "name": "Index Monitor, ::model::REP_TILE_INDEX: (can be swapped without slowdown) ",
+      "ten_point_bytes": 171117414720.0,
+      "one_point_proxy_bytes": 17111741472.0
+    }
+  ],
+  "memory_cap_GiB": 64,
+  "unchanged_solver_grid_alone_exceeds_cap": true,
+  "memory_gate_pass": false,
+  "solver_ready": false
+}

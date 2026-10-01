@@ -1,0 +1,39 @@
+{
+  "operation": "PILLAR_500NM_LOCAL_REVISION_01",
+  "state": "LOCAL_SINGLE_POINT_CANDIDATES_PREPARED_P30_FINE_GRID_RESOURCE_STOP_NO_SOLVE",
+  "user_request": "Now first calculate one wavelength",
+  "wavelength_nm": 500,
+  "source_band_nm": [
+    350,
+    800
+  ],
+  "protected_sources_sha256": {
+    "evidence\\a2_preflight_20260930\\geometry\\periodic_geometry_audit.json": "1DF7C2FBD5522E0C244C1834457485587703DD9221561DFE07FABDCD7E2B3FFF",
+    "evidence\\pillar_x_pilot_authorized_prepare_20261001_02\\prepared01\\summary.json": "AA18E56DCEE4E2043B9E68C8A9E9C74E4E2B3BF73BAE504695944D2BECAFA104",
+    "evidence\\pillar_x_pilot_local_preflight_20261001_01\\forecast02\\summary.json": "36CADBF8AC2725B0C260DC8A023496E589205CD21533815D42BD7CB7B9EB1C2C",
+    "config\\RESOLVED_RUN_PLAN.json": "8A07DA334F61C9DD979521BFE33FD36057473F819F41FE0D28A0F59EB7EC1BB5"
+  },
+  "protected_sources_unchanged": true,
+  "native_report_sha256": "9411F62470C764996B05FE0884410642E35FF4843303DAA6750970DA71541CE1",
+  "candidate_script_sha256": "0AAAAB1900C16271FCA50DD21F03DC517FC29D483F1DC03C521EC552B1B94DED",
+  "candidate_script_native_execution": "NOT_EXECUTED",
+  "new_remote_sessions": 0,
+  "new_CAD_starts": 0,
+  "new_solver_starts": 0,
+  "cumulative_actual_CAD_starts_in_scope": 2,
+  "cumulative_actual_CAD_wall_seconds_in_scope": 20.0181661,
+  "cumulative_known_distinct_synthetic_inputs": 40,
+  "original_synthetic_input_limit": 40,
+  "new_distinct_test_input": "one 500nm sample in existing P30_FINE plan; same input reused for RED/GREEN",
+  "original_science_budget": {
+    "MAIN": 1,
+    "DIAGNOSTIC": 4,
+    "RECOVERY": 0,
+    "TOTAL": 5
+  },
+  "no_smaller_solver_cell_or_mesh_or_scope_change_applied": true,
+  "all_four_native_preflights_before_solver_start_rule_unchanged": true,
+  "resource_gate_pass": false,
+  "native_tile_pass": false,
+  "solver_ready": false
+}
