@@ -1,0 +1,197 @@
+"""Isolated v36 memory probe; implementation follows the focused RED tests."""
+import importlib.util
+import hashlib
+import json
+import math
+from pathlib import Path
+import sys
+from shapely import Polygon, affinity, box
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
+OLD = ROOT / 'evidence/pillar_500nm_bbox_native_preflight_20261002_01'
+spec = importlib.util.spec_from_file_location('preserved_bbox', OLD / 'bbox_preflight.py')
+bbox = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(bbox)
+
+
+def generate():
+    plan, geometry = bbox.load_candidate()
+    record = json.loads((ROOT / 'evidence/a2_preflight_20260930/geometry/periodic_geometry_audit.json').read_text(encoding='utf-8-sig'))['cases']['P3_H09']
+    px, py = record['period_x_um'], record['period_y_um']
+    cell = box(-px/2,-py/2,px/2,py/2)
+    parents = {}
+    for vertices in record['full_parent_core_vertices_um']:
+        parent = Polygon(vertices)
+        cx,cy = parent.centroid.coords[0]
+        dx = -math.floor((round(cx,9)+px/2)/px)*px
+        dy = -math.floor((round(cy,9)+py/2)/py)*py
+        canonical = affinity.translate(parent,dx,dy)
+        key = tuple(sorted((round(x,9),round(y,9)) for x,y in list(canonical.exterior.coords)[:-1]))
+        parents[key] = canonical
+    segments = []
+    for owner,parent in enumerate(parents.values()):
+        lo_x,lo_y,hi_x,hi_y = parent.buffer(.125,join_style='mitre').bounds
+        prism = box(lo_x-.08,lo_y-.08,hi_x+.08,hi_y+.08)
+        for ix in (-1,0,1):
+            for iy in (-1,0,1):
+                part = affinity.translate(prism,ix*px,iy*py).intersection(cell)
+                if part.is_empty or part.area < 1e-12:
+                    continue
+                segments.append(dict(owner_id=owner,segment_id=len(segments),periodic_shift_um=[ix*px,iy*py],xy_um=list(part.bounds)))
+    overlaps=[]
+    for i,s in enumerate(segments):
+        for other in segments[i+1:]:
+            area=box(*s['xy_um']).intersection(box(*other['xy_um'])).area
+            if area>1e-10:
+                overlaps.append(dict(segment_1=s['segment_id'],segment_2=other['segment_id'],area_um2=area))
+    regions=[dict(name='E_BOTTOM_INTERFACE',xy_um=list(cell.bounds),z_um=[-10.1,-9.9]),
+             dict(name='E_FLAT_INTERFACE',xy_um=list(cell.bounds),z_um=[-.1,.175])]
+    for s in segments:
+        regions.append(dict(name=f'E_PILLAR_SEG_{s["segment_id"]:03d}',xy_um=s['xy_um'],z_um=[.075,9.175],owner_id=s['owner_id']))
+    faces=[]
+    for s in segments:
+        x0,y0,x1,y1=s['xy_um']; z0,z1=.125,9.125
+        for normal,lower,upper in (('X',x0,x1),('Y',y0,y1),('Z',z0,z1)):
+            for side,position in (('LO',lower),('HI',upper)):
+                boundary=px/2 if normal=='X' else py/2 if normal=='Y' else None
+                if boundary is not None and math.isclose(abs(position),boundary,abs_tol=1e-9):
+                    continue
+                bounds=[x0,x1,y0,y1,z0,z1]
+                index={'X':0,'Y':2,'Z':4}[normal]
+                bounds[index:index+2]=[position,position]
+                faces.append(dict(name=f'FACE_S{s["segment_id"]:03d}_{normal}_{side}',normal=normal,bounds_um=bounds))
+    for i,z in enumerate((-10.05,-9.95,-.05,.125,9.125)):
+        faces.append(dict(name=f'SLAB_POWER_{i:02d}',normal='Z',bounds_um=[-px/2,px/2,-py/2,py/2,z,z]))
+    monitors=[]
+    for r in regions:
+        x0,y0,x1,y1=r['xy_um'];z0,z1=r['z_um']
+        monitors.extend(['addprofile;',f'set("name","{r["name"]}");','set("monitor type","3D");',
+                         f'set("x min",{x0*1e-6:.17g});set("x max",{x1*1e-6:.17g});',
+                         f'set("y min",{y0*1e-6:.17g});set("y max",{y1*1e-6:.17g});',
+                         f'set("z min",{z0*1e-6:.17g});set("z max",{z1*1e-6:.17g});',
+                         'set("override global monitor settings",0);set("spatial interpolation","none");',
+                         'set("down sample x",1);set("down sample y",1);set("down sample z",1);'])
+        for component in ('Ex','Ey','Ez','Hx','Hy','Hz','Px','Py','Pz'):
+            monitors.append(f'set("output {component}",{int(component in ("Ex","Ey","Ez"))});')
+        monitors.append('set("output power",0);')
+    for f in faces:
+        b=f['bounds_um']
+        monitors.extend(['addpower;',f'set("name","{f["name"]}");',f'set("monitor type","2D {f["normal"]}-normal");',
+                         'set("override global monitor settings",0);','set("spatial interpolation","specified position");'])
+        for axis,index in (('x',0),('y',2),('z',4)):
+            if axis.upper()==f['normal']:
+                monitors.append(f'set("{axis}",{b[index]*1e-6:.17g});')
+            else:
+                monitors.append(f'set("{axis} min",{b[index]*1e-6:.17g});set("{axis} max",{b[index+1]*1e-6:.17g});')
+                monitors.append(f'set("down sample {axis}",1);')
+        for component in ('Ex','Ey','Ez','Hx','Hy','Hz','Px','Py','Pz'):
+            monitors.append(f'set("output {component}",1);')
+        monitors.append('set("output power",1);')
+    script=bbox.build_script(plan,geometry)
+    script=script.replace('set("dx",15e-9);set("dy",15e-9);set("dz",11.25e-9);',
+                          'set("dx",25e-9);set("dy",25e-9);set("dz",15e-9);')
+    script=bbox.replace_once(script,'set("set maximum mesh step",1);set("dz",11.25e-9);',
+                             'set("set maximum mesh step",1);set("dz",12.5e-9);\nsetnamed("FDTD","mesh allowed size increase factor",1.2);')
+    start=script.index('addprofile;\nset("name","REP_TILE_E");')
+    end=script.index('f_read=getglobalmonitor("custom frequency samples");',start)
+    script=script[:start]+'\n'.join(monitors)+'\n'+script[end:]
+    script=bbox.replace_once(script,'completion.frequency_samples=length(f_read);',
+                             f'completion.frequency_samples=length(f_read);\ncompletion.local_E_regions={len(regions)};\ncompletion.extra_power_faces={len(faces)};')
+    plan.update(operation='P30_FINE_V36_MEMORY_ONLY_01',mesh_nm=[25,25,15],flat_z_nm=12.5,growth=1.2,
+                logical_owner_count=len(parents),segments=segments,E_regions=regions,power_faces=faces,
+                prism_overlap_pairs=overlaps,prism_overlap_area_um2=sum(x['area_um2'] for x in overlaps),
+                control_volume_ownership_PASS=False,solver_ready=False,
+                science_preflight_PASS=False,field_or_index_arrays_exported=False,
+                resource_only_no_validated_component_partition=True,
+                power_faces_components='Conservative 2D E/H/P and integrated power; never 3D H/P',
+                runtime_index_monitor_count=0)
+    return script,plan
+
+
+def prepare():
+    out=HERE/'prepared01'
+    if out.exists():
+        raise FileExistsError('Preparation exists; inspect without repeating')
+    script,plan=generate()
+    mother=ROOT/'evidence/a2_preflight_20260930/F0_D3_autoshutoff_20261001/build01/F0_D3_AUTOSHUTOFF_1E8_input.fsp'
+    if bbox.native.sha256_file(mother)!='61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0' or mother.stat().st_size!=560994:
+        raise ValueError('Protected mother identity changed')
+    out.mkdir()
+    name='P30_X_FINE_layout_systemcheck_candidate.lsf'
+    with (out/name).open('x',encoding='ascii',newline='\n') as f:
+        f.write(script)
+    bbox.native.exclusive_json(out/'candidate_plan.json',plan)
+    worker=(OLD/'remote_build_worker.ps1').read_text()
+    start=worker.index('$expectedScriptHash=');end=worker.index('if($scriptHash',start)
+    worker=worker[:start]+"$expectedScriptHash='"+bbox.native.sha256_file(out/name)+"'\n"+worker[end:]
+    worker=worker.replace('PILLAR_500NM_BBOX_NATIVE_PREFLIGHT_01','PILLAR_V36_MEMORY_ONLY_01')
+    worker=worker.replace('P30_FINE_500NM_BBOX_NATIVE_EVALUATION_01','P30_FINE_V36_MEMORY_ONLY_01')
+    with (HERE/'remote_build_worker.ps1').open('x',encoding='ascii',newline='\n') as f:
+        f.write(worker)
+    controller=(OLD/'remote_preflight_once.ps1').read_text()
+    controller=controller.replace('P30_X_FINE_500NM_BBOX_NATIVE_NON_SOLVING_EVALUATION','P30_X_FINE_V36_MEMORY_ONLY_NON_SOLVING_EVALUATION')
+    controller=controller.replace("$previousRoot='E:\\open\\optical_size_return_20260928\\evidence\\user_memory_read_20261002_01\\read01'",
+                                  "$previousRoot='E:\\open\\optical_size_return_20260928\\evidence\\pillar_500nm_bbox_native_preflight_20261002_01\\build01'")
+    controller=controller.replace('P30_FINE_500NM_BBOX_NATIVE_EVALUATION_01','P30_FINE_V36_MEMORY_ONLY_01')
+    with (HERE/'remote_preflight_once.ps1').open('x',encoding='ascii',newline='\n') as f:
+        f.write(controller)
+    bbox.native.exclusive_json(out/'preparation_receipt.json',dict(
+        operation=plan['operation'],LSF_sha256=bbox.native.sha256_file(out/name),worker_sha256=bbox.native.sha256_file(HERE/'remote_build_worker.ps1'),
+        mother_bytes=560994,mother_sha256=bbox.native.sha256_file(mother),new_CAD=0,new_solve=0,
+        cumulative_CAD_count_before=3,CAD_total_limit=10,conservative_local_input_upper_bound=71,local_limit=80,
+        E_regions=len(plan['E_regions']),power_faces=len(plan['power_faces']),
+        scientific_ownership_and_closure_PASS=False,prism_overlap_area_um2=plan['prism_overlap_area_um2'],
+        label='USER_REQUESTED_MEMORY_ONLY_NOT_PRODUCTION_PREFLIGHT'))
+    print(json.dumps(dict(prepared=True,E_regions=len(plan['E_regions']),extra_power_faces=len(plan['power_faces']),
+                         overlap_pairs=len(plan['prism_overlap_pairs']),overlap_area_um2=plan['prism_overlap_area_um2'],CAD=0,solve=0)))
+
+
+def analyze():
+    out=HERE/'build01'
+    if (out/'evaluation_summary.json').exists():
+        raise FileExistsError('Analysis exists; do not repeat')
+    receipt=json.loads((out/'receipt.json').read_text())
+    if not receipt['query_ok'] or receipt['cad_pending'] or receipt['cad_exit']!=0:
+        raise ValueError('Native audit failed; no inferred memory number or repeat')
+    doc=json.loads((out/'cpu_memory_report.json').read_text())
+    memory=bbox.memory_admission(doc,receipt['free_gib_before_CAD'],receipt['disk_free_gib_before_CAD'])
+    axes=bbox.axis_summary(json.loads((out/'native_mesh_axes.json').read_text()))
+    native_axes=json.loads((out/'native_mesh_axes.json').read_text())['axes']
+    values={a:bbox.numeric_vector(v) for a,v in native_axes.items()}
+    plan=json.loads((HERE/'prepared01/candidate_plan.json').read_text())
+    allocations=[]
+    for r in plan['E_regions']:
+        x0,y0,x1,y1=r['xy_um'];z0,z1=r['z_um']
+        dimensions=[]
+        for axis,lo,hi in (('x',x0,x1),('y',y0,y1),('z',z0,z1)):
+            count=sum(lo*1e-6<=v<=hi*1e-6 for v in values[axis])+2
+            dimensions.append(count)
+        points=math.prod(dimensions)
+        allocations.append(dict(region=r['name'],native_axis_point_bounds=dimensions,
+                                raw_three_complex_index_components_GiB=points*3*16/bbox.GIB,
+                                threefold_working_buffer_GiB=points*3*16*3/bbox.GIB,
+                                index_not_actually_exported=True))
+    mesh=json.loads((out/'native_mesh_readback.json').read_text())['mesh_audit']
+    settings=json.loads((out/'small_settings_readback.json').read_text())['readback']
+    matching=(mesh['mesh_size_increase']==1.2 and math.isclose(mesh['mesh_bbox_dx'],25e-9) and
+              math.isclose(mesh['mesh_bbox_dy'],25e-9) and math.isclose(mesh['mesh_bbox_dz'],15e-9) and
+              mesh['mesh_accuracy']==2 and mesh['mesh_refinement']=='conformal variant 0' and
+              settings['auto_shutoff_min']==1e-8 and bbox.numeric_vector(settings['custom_frequency_samples'])==[599584916000000.0])
+    if not matching:
+        raise ValueError('Native v36 settings mismatch')
+    result=dict(operation='P30_FINE_V36_MEMORY_ONLY_01',state='NATIVE_MEMORY_ESTIMATE_COMPLETE_NOT_SOLVER_READY',
+                native_memory=memory,native_axes=axes,local_index_allocation_bounds=allocations,
+                actual_CAD_exit=receipt['cad_exit'],actual_CAD_wall_seconds=receipt['cad_wall_seconds'],
+                cumulative_CAD_count=4,cumulative_CAD_wall_seconds=33.0681489+receipt['cad_wall_seconds'],
+                conservative_local_input_upper_bound=71,source_unchanged=receipt['source_unchanged'],
+                native_settings_match=True,new_solve=0,solver_ready=False,control_volume_ownership_PASS=False,
+                prism_overlap_pairs=plan['prism_overlap_pairs'],prism_overlap_area_um2=plan['prism_overlap_area_um2'],
+                proposed_90_percent_admission_only_not_applied=memory['cap_gib']*.9,
+                no_warning_waiver_applied=True,peak_actual_CAD_working_set_unknown=True)
+    bbox.native.exclusive_json(out/'evaluation_summary.json',result)
+    print(json.dumps(result))
+
+
+if __name__=='__main__':
+    {'prepare':prepare,'analyze':analyze}[sys.argv[1]]()

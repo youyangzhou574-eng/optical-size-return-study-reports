@@ -1,0 +1,21 @@
+{
+  "server_snapshot_utc": "2026-10-01T21:26:50.4059436Z",
+  "client_session_closed_utc": "2026-10-01T21:23:04.4341719Z",
+  "total_gib": 127.24334716796875,
+  "free_gib": 106.36219024658203,
+  "used_gib": 20.88115692138672,
+  "observed_remoting_max_private_gib": 0.06576156616210938,
+  "observed_remoting_max_working_set_gib": 0.089752197265625,
+  "observed_shell_or_remoting_process_count": 3,
+  "all_three_rows_present": true,
+  "not_a_growth_rate_or_future_memory_guarantee": true,
+  "local_worker_actual_exit": 0,
+  "local_wait_ms": 2128,
+  "local_session_closed": true,
+  "new_remote_exit_independently_verified": false,
+  "no_retired_monitor_called": true,
+  "new_CAD": 0,
+  "new_solve": 0,
+  "science_and_resource_STOP_retained": true,
+  "conditional_start_100G_phrase_awaiting_clarification": true
+}
