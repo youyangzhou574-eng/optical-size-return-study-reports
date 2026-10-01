@@ -1,0 +1,42 @@
+{
+  "project": "OPTICAL_SIZE_RETURN_STUDY",
+  "report_id": "OPT-SIZE-A2-PROGRESS-20260930-01",
+  "version": 22,
+  "operation": "D3_PROPOSAL_HANDOFF_20261001_01",
+  "type": "NEW_DOCUMENTS_ONLY_NO_TECHNICAL_EXECUTION",
+  "source_pro_agent": "3865acd0-799a-4523-8e2d-67e4d1f27952",
+  "source_read_utc": "2026-10-01T04:39:28.659Z",
+  "files": [
+    {
+      "name": "REPORT.md",
+      "bytes": 6374,
+      "sha256": "A8448742D3E3C35D791117CD0321BD717E977977183D48F7ED2FDBE01667BA33",
+      "source_relative_path": "review_exchange/OPT-SIZE-A2-PROGRESS-20260930-01/v22/REPORT.md",
+      "repository_path": "OPTICAL_SIZE_RETURN_STUDY/reports/OPT-SIZE-A2-PROGRESS-20260930-01/v22/REPORT.md",
+      "transformation": "None: authored document bytes uploaded as UTF-8"
+    },
+    {
+      "name": "INDEX.md",
+      "bytes": 1085,
+      "sha256": "2CD24B88B0BA8DEA229ED9647E2DAC95D3D01C68B2B153679D78416D61D2298D",
+      "source_relative_path": "review_exchange/OPT-SIZE-A2-PROGRESS-20260930-01/v22/INDEX.md",
+      "repository_path": "OPTICAL_SIZE_RETURN_STUDY/reports/OPT-SIZE-A2-PROGRESS-20260930-01/v22/INDEX.md",
+      "transformation": "None: authored document bytes uploaded as UTF-8"
+    },
+    {
+      "name": "unique_D3_configuration.csv",
+      "bytes": 1106,
+      "sha256": "53C4C91CF06A321CCBB65C93ABA6F144D7E917AE9CF90C96CB6F175E66E45795",
+      "source_relative_path": "review_exchange/OPT-SIZE-A2-PROGRESS-20260930-01/v22/unique_D3_configuration.csv",
+      "repository_path": "OPTICAL_SIZE_RETURN_STUDY/reports/OPT-SIZE-A2-PROGRESS-20260930-01/v22/unique_D3_configuration.csv",
+      "transformation": "None: authored document bytes uploaded as UTF-8"
+    }
+  ],
+  "credentials_pattern_matches": 0,
+  "manual_scope_review": "Only three new authored proposal/index/configuration files; no raw logs/scripts/screenshots/credentials or unrelated project files",
+  "current_budget_total": 4,
+  "human_D3_start_approved": false,
+  "solver_request_sent": false,
+  "new_solver_starts": 0,
+  "technical_preparation_started": false
+}
