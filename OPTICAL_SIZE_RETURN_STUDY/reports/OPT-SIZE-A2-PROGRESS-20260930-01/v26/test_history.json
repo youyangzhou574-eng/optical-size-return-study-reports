@@ -1,0 +1,22 @@
+{
+  "RED_missing_module": {"exit": 1, "error": "ModuleNotFoundError: No module named resource_forecast", "purpose": "EXPECTED_MISSING_IMPLEMENTATION"},
+  "first_GREEN_attempt": {
+    "exit": 1,
+    "tests": 13,
+    "failed": 1,
+    "test": "test_cfl_matches_known_flat_dt",
+    "nominal_formula_dt_s": 3.398022760620957e-17,
+    "actual_historical_dt_s": 3.3973566775471255e-17,
+    "difference_s": 6.660830738316311e-21,
+    "cause": "TEST_INCORRECTLY_ASSUMED_NOMINAL_STEP_EQUALS_NATIVE_MESHER_MINIMUM",
+    "repair": "TEST_NOMINAL_FORMULA_AND_EXPLICITLY_REQUIRE_IT_NOT_EQUAL_NATIVE_DT_NO_INPUT_OR_FORMULA_FITTING"
+  },
+  "water_step_candidate_refinement": "BASE25nm_FINE18.75nm_TO_AVOID_COARSE_WATER_PUSHING_FIXED_FLUX_PLANES_INTO_8_LAYER_PML_NATIVE_PML_COORDINATES_STILL_UNVERIFIED",
+  "final_GREEN": {"exit": 0, "tests": 15, "failures": 0},
+  "latest_forecast": {"directory": "forecast02", "exit": 0, "cases": 4, "memory_model_failures": 4},
+  "forecast01_preserved": true,
+  "latest_control_planes_um": [-10.35, 9.475],
+  "CAD": 0,
+  "server_sessions": 0,
+  "solver_starts": 0
+}
