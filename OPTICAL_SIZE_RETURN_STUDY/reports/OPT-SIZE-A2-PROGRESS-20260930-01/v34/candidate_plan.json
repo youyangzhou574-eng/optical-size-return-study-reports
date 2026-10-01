@@ -1,0 +1,102 @@
+{
+  "case": "P30_X_FINE",
+  "solver_period_um": [
+    18.0,
+    10.392304845413264
+  ],
+  "tile_span_um": [
+    6.0,
+    10.392304845413264
+  ],
+  "tile_center_um": [
+    0.0,
+    0.0
+  ],
+  "repetitions": 3,
+  "mesh_override_nm": [
+    15.0,
+    15.0,
+    11.25
+  ],
+  "mesh_override_z_um": [
+    -0.05,
+    9.2
+  ],
+  "mesh_outside_override": "INHERIT_ORIGINAL_AUTOMATIC_MESH",
+  "solver_z_um": [
+    -11.5,
+    10.325
+  ],
+  "control_z_um": [
+    -10.35,
+    9.475
+  ],
+  "source_z_um": -10.85,
+  "source_band_nm": [
+    350,
+    800
+  ],
+  "maximum_time_fs": 2900,
+  "auto_shutoff_min": 1e-08,
+  "wavelengths_nm": [
+    500
+  ],
+  "custom_frequencies_hz_ascending": [
+    599584916000000.0
+  ],
+  "volume_fields": [
+    "Ex",
+    "Ey",
+    "Ez"
+  ],
+  "volume_H_or_P": false,
+  "spatial_interpolation": "none",
+  "downsample_xyz": [
+    1,
+    1,
+    1
+  ],
+  "volume_monitors": [
+    "REP_TILE_E",
+    "REP_TILE_INDEX"
+  ],
+  "flux_monitors": {
+    "R_below_source": -11.15,
+    "T_above_coating": 9.825,
+    "P_bottom_before_structure": -10.35,
+    "P_top_after_structure": 9.475
+  },
+  "flux_scope": "ORIGINAL_FULL_CELL",
+  "material_scope": [
+    "Fe2O3",
+    "ITO",
+    "PDMS",
+    "water"
+  ],
+  "nominal_geometry_only": true,
+  "native_tile_pass": false,
+  "tile_multiplication_enabled": false,
+  "solver_ready": false,
+  "required_native_gates": [
+    "CPU_ALL_PHASE_RESOURCE_ADMISSION",
+    "ACTUAL_FREQUENCIES_AND_NATIVE_YEE_COORDINATES",
+    "GRID_MATERIAL_SOURCE_TRANSLATION_NO_INTERPOLATION",
+    "NATIVE_EFFECTIVE_EPSILON_COMPONENT_PARTITION_NO_UNASSIGNED",
+    "DUAL_CELL_CLIPPING_AND_PERIODIC_ENDPOINT_DEDUPLICATION",
+    "STRICT_IDENTITY_NO_WRITER_AND_RUNTIME_RESOURCE_GATES"
+  ],
+  "required_scientific_gates": [
+    "SINGLE_POINT_DIRECT_NET",
+    "SINGLE_POINT_FOUR_MATERIAL_CLOSURE",
+    "PAIRED_500NM_FE_2_PERCENT_OR_NEAR_ZERO_ABSOLUTE_GATE"
+  ],
+  "mesh_mode": "PER_OUTER_COATING_BBOX_XY_BUFFER_80NM",
+  "flat_override_z_um": [
+    -0.05,
+    0.2
+  ],
+  "flat_override_axes": [
+    "z"
+  ],
+  "no_J10_or_spectral_integral": true
+}

@@ -1,0 +1,14 @@
+{
+  "readback" : 
+  {
+    "actual_index_frequency_gate_pass" : 0.0,
+    "auto_shutoff_min" : 1e-08,
+    "custom_frequency_samples" : 599584916000000.0,
+    "custom_frequency_table_readback_only" : 1.0,
+    "dt" : 2.5442894076012417e-17,
+    "layout_mode" : 1.0,
+    "simulation_time" : 2.9000000000000002e-12,
+    "source_start" : 3.4999999999999998e-07,
+    "source_stop" : 7.9999999999999996e-07
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "user_text": "那你提交评估一下看看",
+  "scope": "P30_X_FINE_500NM_BBOX_NATIVE_NON_SOLVING_EVALUATION",
+  "solve_start_authorized_by_this_request": false,
+  "pro_final_agent_id": "57f11203-faef-4765-a5ef-caabcacd7562",
+  "CAD_preflight_maximum_processes": 2,
+  "automatic_retry": false,
+  "technical_or_resource_failure": "STOP_NO_RETRY_NO_NEW_CELL",
+  "memory_cap_GiB": 64,
+  "memory_free_fraction": 0.7,
+  "science_budget_unchanged": {"MAIN": 1, "DIAGNOSTIC": 4, "RECOVERY": 0, "TOTAL": 5},
+  "prior_CAD_processes": 2,
+  "prior_CAD_wall_seconds": 20.0181661,
+  "prior_local_inputs": 40,
+  "inclusive_CAD_processes": 10,
+  "inclusive_CAD_wall_seconds": 7200,
+  "inclusive_local_inputs": 80,
+  "inclusive_local_hours": 8
+}

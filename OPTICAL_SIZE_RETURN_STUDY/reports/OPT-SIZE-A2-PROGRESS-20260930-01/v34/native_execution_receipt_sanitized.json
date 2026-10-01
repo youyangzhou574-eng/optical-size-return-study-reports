@@ -1,0 +1,78 @@
+{
+  "cad_pid": 51212,
+  "license_created_utc": "2026-10-01T19:37:47.4430903Z",
+  "free_gib_before_CAD": 105.23796081542969,
+  "operation": "P30_FINE_500NM_BBOX_NATIVE_EVALUATION_01",
+  "cad_exit": 0,
+  "conflicting_process_count": 0,
+  "license_pid": 25168,
+  "files": [
+    {
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "name": "CAD_BUILD_stdout.log",
+      "bytes": 0
+    },
+    {
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "name": "CAD_BUILD_stderr.log",
+      "bytes": 0
+    },
+    {
+      "sha256": "582996B914F419FD6B2F85F076D93B6101FBA28B3B6BD6AE74B4FAADF6E0F9B7",
+      "name": "cpu_memory_report.json",
+      "bytes": 4804
+    },
+    {
+      "sha256": "9223275C031418531875AF26EEEB4A765A24F13F93AFA079718EF24814A48126",
+      "name": "small_settings_readback.json",
+      "bytes": 418
+    },
+    {
+      "sha256": "B867A5EA9125540CD2407F22DB3E1B092B90C750DF8D49DCB4CE20FD589C159D",
+      "name": "native_mesh_axes.json",
+      "bytes": 108560
+    },
+    {
+      "sha256": "BAC3798FED570F7BC7855AEBCCEECCAAC50EABAFE79FCE04D575428142C375F5",
+      "name": "native_mesh_readback.json",
+      "bytes": 2452
+    },
+    {
+      "sha256": "F3BE3447662CC44B6307211E6122C82EC2B917CF7E4C7DA9F2F64F8F16FB8E33",
+      "name": "layout_complete.json",
+      "bytes": 124
+    },
+    {
+      "sha256": "183869E49E790690815D8215D43A06CB4C9F6C8D3EF9C0158F2575EC23AE67E3",
+      "name": "P30_X_FINE_candidate_input.fsp",
+      "bytes": 619120
+    }
+  ],
+  "stdout_marker_present": false,
+  "server_ended_utc": "2026-10-01T19:38:00.9735468Z",
+  "stderr_bytes": 0,
+  "success_marker": true,
+  "memory_cap_gib": 64,
+  "xml_errors": null,
+  "error": null,
+  "server_utc": "2026-10-01T19:37:46.0827217Z",
+  "new_solver_starts": 0,
+  "disk_free_gib_before_CAD": 2609.1280059814453,
+  "started_server_utc": "2026-10-01T19:37:47.8441173Z",
+  "cad_wall_seconds": 13.049982799999999,
+  "license_pending": false,
+  "license_query_not_checkout_proof": true,
+  "remote_host_created_utc": "2026-10-01T19:37:45.1514870Z",
+  "xml_present": false,
+  "cad_created_utc": "2026-10-01T19:37:47.8510439Z",
+  "prior_host_state": "CONFIRMED_ABSENT",
+  "cad_peak_working_set_gib": null,
+  "license_query_exit": 0,
+  "cad_started": true,
+  "query_ok": true,
+  "cad_peak_not_available_after_exit": true,
+  "remote_host_pid": 46404,
+  "mother_sha256_after": "61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0",
+  "source_unchanged": true,
+  "cad_pending": false
+}

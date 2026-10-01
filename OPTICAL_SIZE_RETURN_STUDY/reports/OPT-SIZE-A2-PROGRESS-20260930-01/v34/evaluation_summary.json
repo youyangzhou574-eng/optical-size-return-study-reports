@@ -1,0 +1,87 @@
+{
+  "operation": "P30_FINE_500NM_BBOX_NATIVE_EVALUATION_01",
+  "state": "NATIVE_EVALUATION_STOP_NO_RETRY_NO_SOLVE",
+  "memory": {
+    "memory_estimate_gate_pass": false,
+    "reasons": [
+      "NATIVE_MEMORY_WARNING",
+      "CPU_PHASE_EXCEEDS_CAP"
+    ],
+    "cap_gib": 64.0,
+    "cpu_phase_bytes": {
+      "Initialization_and_Mesh_Bytes": 167772160.0,
+      "Running_Simulation_Bytes": 199412718972.0,
+      "Data_Collection_Bytes": 68527722496.0,
+      "FSP_Saved_Monitor_Data_Bytes": 34049565056.0
+    },
+    "cpu_phase_gib": {
+      "Initialization_and_Mesh_Bytes": 0.15625,
+      "Running_Simulation_Bytes": 185.71756684407592,
+      "Data_Collection_Bytes": 63.821414947509766,
+      "FSP_Saved_Monitor_Data_Bytes": 31.71112859249115
+    },
+    "recommended_gib": 185.7175668440857,
+    "peak_cpu_estimate_gib": 185.7175668440857,
+    "internal_fields_index_gib": 153.65389206632972,
+    "monitor_gib": {
+      "Frequency_Domain_Power_Monitor_model_E_translation_witnes_1": 5.672872066497803e-05,
+      "Frequency_Domain_Power_Monitor_model_E_translation_witnes_2": 5.672872066497803e-05,
+      "Frequency_Domain_Power_Monitor_model_P_botom_before_structure": 0.04989488422870636,
+      "Frequency_Domain_Power_Monitor_model_P_top_after_structure": 0.04989488422870636,
+      "Frequency_Domain_Power_Monitor_model_REP_TILE_E": 15.855507239699364,
+      "Frequency_Domain_Power_Monitor_model_R_below_source": 0.04989488422870636,
+      "Frequency_Domain_Power_Monitor_model_T_above_coating": 0.04989488422870636,
+      "Index_Monitor_model_REP_TILE_INDEX_can_be_swaped_without_slowdown": 15.855507239699364
+    },
+    "minimum_fsp_only_disk_gib": 113.4222571849823,
+    "yee_nodes_millions": 1142.71,
+    "native_warnings": {
+      "MEMORY": "You are using conformal mesh technology and the memory report is less reliable in this case. Please do some testing if the memory report indicates you are close to the memory limits of your computer.",
+      "GEOMETRY": null,
+      "MESH_OVERRIDE": "",
+      "BANDWIDTH": ""
+    },
+    "memory_report_is_estimate_not_measured_peak": true,
+    "full_export_analysis_allocation_gate_pass": false,
+    "solver_ready": false
+  },
+  "native_axes": {
+    "x": {
+      "points": 1201,
+      "cells": 1200,
+      "minimum_um": -9.0,
+      "maximum_um": 9.0,
+      "min_step_nm": 14.999999999975293,
+      "max_step_nm": 15.000000000000703,
+      "coordinate_source": "NATIVE_LAYOUT_GETRESULT"
+    },
+    "y": {
+      "points": 697,
+      "cells": 696,
+      "minimum_um": -5.19615242270665,
+      "maximum_um": 5.19615242270665,
+      "min_step_nm": 14.9314724790419,
+      "max_step_nm": 14.931472479047406,
+      "coordinate_source": "NATIVE_LAYOUT_GETRESULT"
+    },
+    "z": {
+      "points": 1347,
+      "cells": 1346,
+      "minimum_um": -11.500000000000002,
+      "maximum_um": 10.325000000000001,
+      "min_step_nm": 11.239368165190559,
+      "max_step_nm": 25.862068965517693,
+      "coordinate_source": "NATIVE_LAYOUT_GETRESULT"
+    }
+  },
+  "native_settings_match": true,
+  "inherited_mesh_size_increase": 1.0,
+  "actual_CAD_exit": 0,
+  "actual_CAD_wall_seconds": 13.049982799999999,
+  "cumulative_CAD_count": 3,
+  "cumulative_CAD_wall_seconds": 33.0681489,
+  "source_unchanged": true,
+  "new_solver_starts": 0,
+  "next_original_cell_CAD_permitted": false,
+  "smaller_cell_human_authorization": false
+}

@@ -1,0 +1,83 @@
+{
+  "actual_user_id": "780f615a-bc98-4c3f-9bed-6b0b4da17d65",
+  "actual_agent_id": "57f11203-faef-4765-a5ef-caabcacd7562",
+  "complete_reply_characters": 1738,
+  "delivered_and_normalized_user_text_verified": true,
+  "reply_complete": true,
+  "checks_after_send": 1,
+  "automatic_retry": false,
+  "started_at_unix": 1790881942.795,
+  "completed_at_unix": 1790881955.155566,
+  "source_band_nm": [
+    350,
+    800
+  ],
+  "recorded_wavelength_nm": [
+    500
+  ],
+  "no_J10_or_spectral_integral": true,
+  "mesh_BASE_nm": [
+    20,
+    20,
+    15
+  ],
+  "mesh_FINE_nm": [
+    15,
+    15,
+    11.25
+  ],
+  "core30_shell15_suggestion_retracted": true,
+  "material_scope": [
+    "Fe2O3",
+    "ITO",
+    "PDMS",
+    "water"
+  ],
+  "mesh_accuracy": 2,
+  "conformal": "INHERIT_UNCHANGED_CONFORMAL_VARIANT_0_VERIFIED_FROM_CLOSED_LOCAL_SETTINGS",
+  "pillar_bbox_padding_XY_nm": 80,
+  "pillar_bbox_z_nm": [
+    -50,
+    9200
+  ],
+  "flat_mesh_z_nm": [
+    -50,
+    200
+  ],
+  "flat_mesh_override_only": "z",
+  "bulk": "INHERITED_AUTOMATIC_NONUNIFORM_NO_EXPLICIT_COARSE_OVERRIDE",
+  "single_point_error_rules": {
+    "relative_tolerance": 0.02,
+    "fine_absorption_relative_branch_minimum": 0.001,
+    "near_zero_absolute_tolerance": 0.00002,
+    "negative_or_nonfinite": "FAIL",
+    "size_difference_rule": "abs(A_P15_FINE-A_P30_FINE)>u15+u30"
+  },
+  "budget": {
+    "inclusive_local_hours": 8,
+    "inclusive_synthetic_inputs": 80,
+    "inclusive_CAD_processes": 10,
+    "inclusive_CAD_hours": 2,
+    "already_used_inputs": 40,
+    "already_used_CAD": 2,
+    "already_used_CAD_wall_seconds": 20.0181661,
+    "next_P30_preflight_reserved_CAD": 2,
+    "no_retry_balance": true
+  },
+  "science_budget_unchanged": {
+    "MAIN": 1,
+    "DIAGNOSTIC": 4,
+    "RECOVERY": 0,
+    "TOTAL": 5
+  },
+  "RAM_cap_GiB": 64,
+  "RAM_free_fraction": 0.7,
+  "resource_all_phases_not_yet_passed": true,
+  "first_future_step": "P30_FINE single-point native preflight ONLY AFTER_EXPLICIT_USER_EXECUTION_RESUME",
+  "original_supercell_failure_next_step": "STOP original-cell retries; ask human to approve equivalent small rectangular computational cell",
+  "current_execution_paused": true,
+  "new_remote_CAD_solver_actions": 0,
+  "Pro_fixed_GitHub_files_read_not_explicitly_proven": true,
+  "owned_inflight_submissions": 0,
+  "unconsumed_complete_decisions": 0
+}

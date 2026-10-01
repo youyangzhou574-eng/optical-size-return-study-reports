@@ -1,0 +1,22 @@
+{
+  "RED": {"test_command": "python -m unittest -v test_bbox_preflight", "exit": 1, "error": "ModuleNotFoundError: No module named bbox_preflight"},
+  "local_pre_CAD_guard_failure": {"exit": 1, "error": "Outer coated periodic pieces do not match preserved geometry", "resolved_using_existing_manifest": "piece_counts [14,18,14]: outer Fe has 14, not ITO's 18", "remote_actions": 0},
+  "GREEN": {"tests": 10, "exit": 0},
+  "production_powershell_parse": {"files": 2, "errors": 0},
+  "production_bounded_response_and_no_kill_static_check": {"passed": true},
+  "prior_distinct_local_inputs": 40,
+  "new_local_checks_counted_conservatively": 13,
+  "cumulative_local_inputs_upper_bound": 62,
+  "additional_actual_native_schema_inputs": 4,
+  "reserved_public_whitelist_and_final_integrity_inputs": 2,
+  "post_CAD_parser_error": {"error": "TypeError: must be real number, not str", "cause": "v241 native real vectors use _type/_complex/_size/_data, not plain lists; one frequency is scalar", "new_native_actions": 0},
+  "post_CAD_RED": {"tests": 13, "errors": 3, "exit": 1},
+  "post_CAD_GREEN": {"tests": 13, "errors": 0, "exit": 0},
+  "post_CAD_distinct_encoding_inputs": 3,
+  "analysis_exit": 0,
+  "local_command_path_error_before_any_worker_start": "PSHOME pointed to bundled pwsh without powershell.exe; used existing Windows PowerShell executable, zero remote actions before correction",
+  "repeated_RED_GREEN_runs_do_not_reset_or_multiply_distinct_input_count": true,
+  "local_preparation_exit": 0,
+  "science_budget_SHA256_before": "8A07DA334F61C9DD979521BFE33FD36057473F819F41FE0D28A0F59EB7EC1BB5",
+  "science_starts": {"MAIN": 1, "DIAGNOSTIC": 4, "RECOVERY": 0, "TOTAL": 5}
+}
