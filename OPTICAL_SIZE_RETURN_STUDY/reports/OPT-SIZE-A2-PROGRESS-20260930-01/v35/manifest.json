@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "name": "REPORT.md",
+      "bytes": 8755,
+      "sha256": "007FFA65EAC8A95EB861ED85978F0C8989A16ED358A98752E6323FA409284CDF",
+      "git_blob_sha1": "3de7c704a921825e3b7f6f05883d6cb6ebc10a4e"
+    },
+    {
+      "name": "INDEX.md",
+      "bytes": 669,
+      "sha256": "F0E149562DB6E2DC7630905E5AA8C77B49BBF6F130B88011D6C809508B326BE3",
+      "git_blob_sha1": "5dbc5d14c372835c420a6ff8a75bda796498e1fb"
+    },
+    {
+      "name": "human_request.json",
+      "bytes": 1043,
+      "sha256": "0D834C695AADCAC256D6A2F1EAFAE7BCF2B8A25BCED1020C9F3D78AA8BC5C776",
+      "git_blob_sha1": "9f1bde4f148d0d214f4e8db95ccaa5d7f537ea2d"
+    }
+  ],
+  "screen_hits": 0,
+  "native_executed": false
+}
