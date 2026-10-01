@@ -1,0 +1,430 @@
+{
+  "operation": "D3_FRESH_RAW_OFFLINE_COMPARISON01",
+  "new_solver_starts": 0,
+  "remote_sessions": 0,
+  "actual_mapping": "PASS_NO_INTERPOLATION",
+  "actual_dt_seconds": 3.3973566775471255e-17,
+  "sample_xyz_lengths": {
+    "x": 451,
+    "y": 261,
+    "z": 545
+  },
+  "results": {
+    "D3": {
+      "maxima": {
+        "witness1_Ex": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness1_Ey": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness1_Ez": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ex": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ey": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ez": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        }
+      },
+      "uniformity_pass": true,
+      "R_vs_TMM": {
+        "weighted_absolute_difference": 0.01663165649526471,
+        "max_absolute_difference": 0.06893973035436188,
+        "max_wavelength_nm": 450.0
+      },
+      "T_vs_TMM": {
+        "weighted_absolute_difference": 0.011084749900039619,
+        "max_absolute_difference": 0.025323458413064714,
+        "max_wavelength_nm": 350.0
+      },
+      "corrected_direct_vs_net": {
+        "weighted_absolute_difference": 0.0006601666068369895,
+        "max_absolute_difference": 0.002484872984292008,
+        "max_wavelength_nm": 359.99999999999994
+      },
+      "RT_TMM_pass": false,
+      "corrected_direct_net_pass": true
+    },
+    "D2": {
+      "maxima": {
+        "witness1_Ex": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness1_Ey": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness1_Ez": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ex": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ey": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ez": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744e-05,
+          "absolute_complex_difference": 0.0
+        }
+      },
+      "uniformity_pass": true,
+      "R_vs_TMM": {
+        "weighted_absolute_difference": 0.017801553381861117,
+        "max_absolute_difference": 0.07482454347573314,
+        "max_wavelength_nm": 450.0
+      },
+      "T_vs_TMM": {
+        "weighted_absolute_difference": 0.01120488878777557,
+        "max_absolute_difference": 0.02883346288798211,
+        "max_wavelength_nm": 350.0
+      },
+      "corrected_direct_vs_net": {
+        "weighted_absolute_difference": 0.0022904161290306538,
+        "max_absolute_difference": 0.005879774134613935,
+        "max_wavelength_nm": 375.0
+      },
+      "RT_TMM_pass": false,
+      "corrected_direct_net_pass": false
+    },
+    "D1": {
+      "maxima": {
+        "witness1_Ex": {
+          "max_relative_difference": 0.16515705960331495,
+          "wavelength_nm": 525.0,
+          "z_m": -1.55e-07,
+          "absolute_complex_difference": 0.22250324046869283
+        },
+        "witness1_Ey": {
+          "max_relative_difference": 5.987582001163048e-06,
+          "wavelength_nm": 790.0000000000001,
+          "z_m": -1.9999999999999136e-07,
+          "absolute_complex_difference": 8.179592204156221e-06
+        },
+        "witness1_Ez": {
+          "max_relative_difference": 7.392698134851063e-06,
+          "wavelength_nm": 790.0000000000001,
+          "z_m": -4.999999999999996e-08,
+          "absolute_complex_difference": 1.0099111130296378e-05
+        },
+        "witness2_Ex": {
+          "max_relative_difference": 0.1651602517983252,
+          "wavelength_nm": 525.0,
+          "z_m": -1.55e-07,
+          "absolute_complex_difference": 0.2225075410643543
+        },
+        "witness2_Ey": {
+          "max_relative_difference": 6.146705995446345e-06,
+          "wavelength_nm": 730.0,
+          "z_m": -1.3999999999999998e-07,
+          "absolute_complex_difference": 8.368923049318085e-06
+        },
+        "witness2_Ez": {
+          "max_relative_difference": 6.515788621712673e-06,
+          "wavelength_nm": 350.0,
+          "z_m": -4.129584352078235e-06,
+          "absolute_complex_difference": 8.418540774976309e-06
+        }
+      },
+      "uniformity_pass": false,
+      "R_vs_TMM": {
+        "weighted_absolute_difference": 0.01675971784623217,
+        "max_absolute_difference": 0.07412334003827856,
+        "max_wavelength_nm": 450.0
+      },
+      "T_vs_TMM": {
+        "weighted_absolute_difference": 0.010414276906185406,
+        "max_absolute_difference": 0.028844799915836328,
+        "max_wavelength_nm": 350.0
+      },
+      "corrected_direct_vs_net": {
+        "weighted_absolute_difference": 0.00228846726439509,
+        "max_absolute_difference": 0.0055849927976519,
+        "max_wavelength_nm": 375.0
+      },
+      "RT_TMM_pass": false,
+      "corrected_direct_net_pass": false
+    },
+    "F0_4rank": {
+      "maxima": {
+        "witness1_Ex": {
+          "max_relative_difference": 0.16515655857824155,
+          "wavelength_nm": 525.0,
+          "z_m": -1.55e-07,
+          "absolute_complex_difference": 0.2225025953599863
+        },
+        "witness1_Ey": {
+          "max_relative_difference": 4.9487404931783165e-06,
+          "wavelength_nm": 350.0,
+          "z_m": -7.316381418092908e-06,
+          "absolute_complex_difference": 6.393902260927539e-06
+        },
+        "witness1_Ez": {
+          "max_relative_difference": 5.3363054919853845e-06,
+          "wavelength_nm": 800.0,
+          "z_m": -8.993643031784841e-06,
+          "absolute_complex_difference": 7.5587236631438695e-06
+        },
+        "witness2_Ex": {
+          "max_relative_difference": 0.1651567435858099,
+          "wavelength_nm": 525.0,
+          "z_m": -1.55e-07,
+          "absolute_complex_difference": 0.22250284460630426
+        },
+        "witness2_Ey": {
+          "max_relative_difference": 5.757211060115829e-06,
+          "wavelength_nm": 350.0,
+          "z_m": -7.74767726161369e-06,
+          "absolute_complex_difference": 7.438467396836528e-06
+        },
+        "witness2_Ez": {
+          "max_relative_difference": 5.952909202937736e-06,
+          "wavelength_nm": 359.99999999999994,
+          "z_m": -1.7000000000000001e-07,
+          "absolute_complex_difference": 8.109837572044568e-06
+        }
+      },
+      "uniformity_pass": false,
+      "R_vs_TMM": {
+        "weighted_absolute_difference": 0.01675971912409773,
+        "max_absolute_difference": 0.07412334273595977,
+        "max_wavelength_nm": 450.0
+      },
+      "T_vs_TMM": {
+        "weighted_absolute_difference": 0.010414277910465047,
+        "max_absolute_difference": 0.02884479810544527,
+        "max_wavelength_nm": 350.0
+      },
+      "corrected_direct_vs_net": {
+        "weighted_absolute_difference": 0.0022884684347207465,
+        "max_absolute_difference": 0.00558499214232433,
+        "max_wavelength_nm": 375.0
+      },
+      "RT_TMM_pass": false,
+      "corrected_direct_net_pass": false
+    }
+  },
+  "key_fields": {
+    "D3": [
+      {
+        "monitor": "E_control_raw_Yee",
+        "wavelength_nm": 525.0,
+        "z_m": -1.5499999999999995e-07,
+        "x_m": -2.31676745963852e-20,
+        "y_m": 6.782881022934827e-21,
+        "Ex_real": -0.16833494127076593,
+        "Ex_imag": 1.2537125677285597
+      },
+      {
+        "monitor": "E_uniformity_witness_1",
+        "wavelength_nm": 525.0,
+        "z_m": -1.5499999999999995e-07,
+        "x_m": 2.4999999999999727e-06,
+        "y_m": 9.992600812897438e-07,
+        "Ex_real": -0.16833494127076593,
+        "Ex_imag": 1.2537125677285597
+      },
+      {
+        "monitor": "E_uniformity_witness_2",
+        "wavelength_nm": 525.0,
+        "z_m": -1.5499999999999995e-07,
+        "x_m": -2.5000000000000193e-06,
+        "y_m": -9.9926008128973e-07,
+        "Ex_real": -0.16833494127076593,
+        "Ex_imag": 1.2537125677285597
+      }
+    ],
+    "D2": [
+      {
+        "monitor": "E_control_raw_Yee",
+        "wavelength_nm": 525.0,
+        "z_m": -1.5499999999999995e-07,
+        "x_m": -2.31676745963852e-20,
+        "y_m": 6.782881022934827e-21,
+        "Ex_real": -0.16966355313677955,
+        "Ex_imag": 1.2532229062299705
+      },
+      {
+        "monitor": "E_uniformity_witness_1",
+        "wavelength_nm": 525.0,
+        "z_m": -1.5499999999999995e-07,
+        "x_m": 2.4999999999999727e-06,
+        "y_m": 9.992600812897438e-07,
+        "Ex_real": -0.16966355313677955,
+        "Ex_imag": 1.2532229062299705
+      },
+      {
+        "monitor": "E_uniformity_witness_2",
+        "wavelength_nm": 525.0,
+        "z_m": -1.5499999999999995e-07,
+        "x_m": -2.5000000000000193e-06,
+        "y_m": -9.9926008128973e-07,
+        "Ex_real": -0.16966355313677955,
+        "Ex_imag": 1.2532229062299705
+      }
+    ],
+    "D1": [
+      {
+        "monitor": "E_control_raw_Yee",
+        "wavelength_nm": 525.0,
+        "z_m": -1.55e-07,
+        "x_m": -2.31676745963852e-20,
+        "y_m": 6.782881022934827e-21,
+        "Ex_real": -0.08040068184480142,
+        "Ex_imag": 1.1875702023734438
+      },
+      {
+        "monitor": "E_uniformity_witness_1",
+        "wavelength_nm": 525.0,
+        "z_m": -1.55e-07,
+        "x_m": 2.4999999999999727e-06,
+        "y_m": 9.992600812897438e-07,
+        "Ex_real": -0.2586591017301083,
+        "Ex_imag": 1.3207303606756273
+      },
+      {
+        "monitor": "E_uniformity_witness_2",
+        "wavelength_nm": 525.0,
+        "z_m": -1.55e-07,
+        "x_m": -2.5000000000000193e-06,
+        "y_m": -9.9926008128973e-07,
+        "Ex_real": -0.2586636038424479,
+        "Ex_imag": 1.3207315198472744
+      }
+    ],
+    "F0_4rank": [
+      {
+        "monitor": "E_control_raw_Yee",
+        "wavelength_nm": 525.0,
+        "z_m": -1.55e-07,
+        "x_m": -2.31676745963852e-20,
+        "y_m": 6.782881022934827e-21,
+        "Ex_real": -0.08039738608141739,
+        "Ex_imag": 1.187574391783354
+      },
+      {
+        "monitor": "E_uniformity_witness_1",
+        "wavelength_nm": 525.0,
+        "z_m": -1.55e-07,
+        "x_m": 2.4999999999999727e-06,
+        "y_m": 9.992600812897438e-07,
+        "Ex_real": -0.2586578297819811,
+        "Ex_imag": 1.3207307628423761
+      },
+      {
+        "monitor": "E_uniformity_witness_2",
+        "wavelength_nm": 525.0,
+        "z_m": -1.55e-07,
+        "x_m": -2.5000000000000193e-06,
+        "y_m": -9.9926008128973e-07,
+        "Ex_real": -0.25866130477618116,
+        "Ex_imag": 1.320726527137932
+      }
+    ]
+  },
+  "paired_numerical_convergence": "NOT_YET_TESTED",
+  "dynamic_root_cause": "NARROWED_BUT_NOT_UNIQUE",
+  "scientific_qualification": "NOT_QUALIFIED_PENDING_ALL_GATES_AND_REVIEW",
+  "source_hashes": {
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D3_autoshutoff_20261001\\closeout_review06_01\\export_raw01\\F0_D3_raw_Yee_and_flux.mat": "F4662507422221C8AADBF8DA2DDA211D0DD7C85DC2B806E243DEF65D01648E14",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D3_autoshutoff_20261001\\closeout_review06_01\\export_raw01\\F0_D3_raw_coordinates.mat": "11CD9ED718C6FC2538B3900B35F2C0F1F373651408972853D725A982233CDA71",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D3_autoshutoff_20261001\\closeout_review06_01\\export_raw01\\F0_D3_saved_run_information.mat": "4CE0868788966FFB11666F2938B11F4BC336798E11F0C7C0DD36D3DB7CC03721",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D2_boundary_pad_decision20\\closeout_20261001_01\\export_resume02\\F0_D2_raw_Yee_and_flux.mat": "C57F1BB884B3A164E4A0338C21F42D479D73F2787DF832919ACC4C22DA56468E",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D2_boundary_pad_decision20\\closeout_20261001_01\\export_resume02\\F0_D2_raw_coordinates.mat": "4B19B9FFD4E3BBF5EDEF69F2A5CDCBEEAC0324BB72FAEFADC5D7C554D06FFEAC",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D2_boundary_pad_decision20\\closeout_20261001_01\\export_resume02\\F0_D2_saved_run_information.mat": "9F44EDA95F8734E005DF70D36D0C7EAEEE0DCAA6D59BCC2CE032FCB9759FB059",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D1_single_rank\\closeout_prepared\\F0_D1_raw_Yee_and_flux.mat": "9C9D0166C69F6CCED738E3C510A5343750ED53D74C88A0040F9A253EEB1184B5",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D1_single_rank\\closeout_prepared\\F0_D1_raw_coordinates.mat": "BEBF12B3FC34CE03316011A8CE6BA22051DC995D5FAE39029FE4FBB49CDCAF6C",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D1_single_rank\\closeout_prepared\\F0_D1_saved_run_information.mat": "2AA48FF62171F2BC17081DFE5477EBE0EE10EB9A859E8F47C309C2D9920289ED",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_X_v2\\F0_X_raw_Yee_and_flux.mat": "1277F49A4A9B532A39D65D3B3FF6FF11B2280E0E241479ADAB99CA892A745C9D",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_X_v2\\F0_X_raw_coordinates.mat": "EF77D2F652C64ECC44EEF0D5EA5C2C5CFD6695264B4F80A27EBAF5C0FD82C7CA",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_X_v2\\localization_decision15_01\\F0_actual_grid_dt_numerical_permittivity.mat": "5AEF7C345C276EC91D62745F6018472130E1C63A257D611C25EF54B9A86885C8"
+  },
+  "independent_four_material_integral": {
+    "actual_planes_m": {
+      "source_z": -1.085e-05,
+      "zR": -1.1137931034482752e-05,
+      "zT": 8.378205128205125e-07,
+      "zbottom": -1.0341527809806174e-05,
+      "ztop": 4.788461538461539e-07
+    },
+    "uniformity_max_relative_field_difference": 0.0,
+    "uniformity_max_relative_field_difference_per_witness": {
+      "1": 0.0,
+      "2": 0.0
+    },
+    "weighted_abs_component_closure": 0.00049825829269981,
+    "max_component_closure": 0.0025289785497225603,
+    "max_component_closure_wavelength_nm": 350.0,
+    "direct_vs_net_weighted_abs_difference": 0.0006601666068369895,
+    "direct_vs_net_max_difference": 0.002484872984292008,
+    "direct_vs_net_max_difference_wavelength_nm": 359.99999999999994,
+    "flat_TMM_weighted_abs_errors": {
+      "R": 0.01663165649526471,
+      "T": 0.011084749900039619,
+      "A_PDMS": 1.6336887227078351e-09,
+      "A_ITO": 0.0005344937290119546,
+      "A_Fe2O3": 0.006205787190381043,
+      "A_water": 5.3616694412382586e-11
+    },
+    "flat_TMM_max_errors": {
+      "R": 0.06893973035436188,
+      "T": 0.025323458413064714,
+      "A_PDMS": 9.635756017819624e-09,
+      "A_ITO": 0.0028322009450201663,
+      "A_Fe2O3": 0.04775396874086668,
+      "A_water": 1.8828415008980925e-10
+    },
+    "flat_TMM_max_error_wavelength_nm": {
+      "R": 450.0,
+      "T": 350.0,
+      "A_PDMS": 424.99999999999994,
+      "A_ITO": 355.0,
+      "A_Fe2O3": 424.99999999999994,
+      "A_water": 415.00000000000006
+    },
+    "COMPONENT_PASS": true,
+    "FLAT_CALIBRATION_PASS": false,
+    "FLUX_REFERENCE_PASS": true,
+    "paired_numerical_convergence": "NOT_YET_TESTED",
+    "qualification": "RAW_RESULT_REQUIRES_REVIEW"
+  }
+}

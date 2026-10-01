@@ -1,0 +1,1620 @@
+
+===== d3_closeout_guard.ps1 SHA256 8BB6C34A7BC6E37CC9111570245116A448FBAC74629D39385C0577883098180E =====
+function Get-D3CloseoutScope($All,$Trusted,[string]$RunRoot,[string]$InputFsp,$OrphanPids) {
+    if([string]::IsNullOrWhiteSpace($RunRoot) -or [string]::IsNullOrWhiteSpace($InputFsp)){throw 'D3_CLOSEOUT_EMPTY_SCOPE_REJECTED'}
+    if(-not $InputFsp.StartsWith($RunRoot+'\',[StringComparison]::OrdinalIgnoreCase)){throw 'D3_CLOSEOUT_INPUT_OUTSIDE_RUN_REJECTED'}
+    $selected=@{};$blocked=@{}
+    $runPattern=[regex]::Escape($RunRoot)+'(?=[\\\s"]|$)'
+    $inputPattern=[regex]::Escape($InputFsp)+'(?=["\s]|$)'
+    foreach($p in $All) {
+        $cmd=([string]$p.CommandLine).Replace('/','\')
+        $match=([bool]$cmd -and ($cmd -match $runPattern -or $cmd -match $inputPattern))
+        $safe=[pscustomobject]@{ProcessId=[int]$p.ProcessId;ParentProcessId=[int]$p.ParentProcessId;Name=[string]$p.Name;CreationDate=[string]$p.CreationDate;CommandAvailable=[bool]$cmd;ExactRunOrInputMatch=$match}
+        if($match){$selected[$safe.ProcessId]=$safe}
+        foreach($known in $Trusted) {
+            if($safe.ProcessId -ne $known.ProcessId){continue}
+            $identity=Get-D3RemoteHostState $true $safe.CreationDate ([string]$known.CreationDate)
+            if($identity -eq 'SAME_IDENTITY' -and $safe.Name -eq $known.Name){$selected[$safe.ProcessId]=$safe}
+            elseif($identity -ne 'PID_REUSED_CONFIRMED'){$blocked[$safe.ProcessId]=$safe}
+        }
+        if($safe.ProcessId -in $OrphanPids){$blocked[$safe.ProcessId]=$safe}
+    }
+    do {
+        $changed=$false
+        foreach($p in $All) {
+            $parent=$selected[[int]$p.ParentProcessId]
+            if(-not $parent -or $selected.ContainsKey([int]$p.ProcessId)){continue}
+            $safe=[pscustomobject]@{ProcessId=[int]$p.ProcessId;ParentProcessId=[int]$p.ParentProcessId;Name=[string]$p.Name;CreationDate=[string]$p.CreationDate;CommandAvailable=([bool]$p.CommandLine);ExactRunOrInputMatch=$false}
+            try {
+                if([string]::IsNullOrWhiteSpace($safe.CreationDate) -or [string]::IsNullOrWhiteSpace($parent.CreationDate)){throw 'D3_DESCENDANT_BIRTH_UNKNOWN'}
+                $childTime=[DateTimeOffset]::Parse($safe.CreationDate,[Globalization.CultureInfo]::InvariantCulture)
+                $parentTime=[DateTimeOffset]::Parse($parent.CreationDate,[Globalization.CultureInfo]::InvariantCulture)
+                if($childTime -lt $parentTime){throw 'D3_DESCENDANT_PARENT_IDENTITY_CONFLICT'}
+                $selected[$safe.ProcessId]=$safe;$changed=$true
+            } catch {$blocked[$safe.ProcessId]=$safe}
+        }
+    } while($changed)
+    foreach($p in $All) {
+        if($p.Name -in @('fdtd-engine-msmpi.exe','fdtd-solutions.exe','mpiexec.exe','smpd.exe') -and -not $selected.ContainsKey([int]$p.ProcessId)) {
+            $blocked[[int]$p.ProcessId]=[pscustomobject]@{ProcessId=[int]$p.ProcessId;ParentProcessId=[int]$p.ParentProcessId;Name=[string]$p.Name;CreationDate=[string]$p.CreationDate;CommandAvailable=([bool]$p.CommandLine);ExactRunOrInputMatch=$false}
+        }
+    }
+    [pscustomobject]@{Passed=($selected.Count -eq 0 -and $blocked.Count -eq 0);Members=@($selected.Values);Blocked=@($blocked.Values);TrustedStartIdentityCount=@($Trusted).Count;ImportedNativeCache=$false;ExternalPidExclusions=@();RunRoot=$RunRoot;InputFsp=$InputFsp}
+}
+
+===== test_d3_closeout_guard.ps1 SHA256 FA4AA72DAFC0E18CA6CA55C958881FBCCCF03B945448A8DD040BB71DBA00CC20 =====
+$ErrorActionPreference='Stop'
+$tokens=$null;$errors=$null
+$workerAst=[System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot 'read_f0_d3_worker.ps1'),[ref]$tokens,[ref]$errors)
+$identity=$workerAst.Find({param($n)$n -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq 'Get-D3RemoteHostState'},$true)
+. ([scriptblock]::Create($identity.Extent.Text))
+. (Join-Path $PSScriptRoot 'd3_closeout_guard.ps1')
+$run='D:\case\D3\run01';$fsp=$run+'\D3_input.fsp'
+$known=@([pscustomobject]@{ProcessId=10;Name='mpiexec.exe';CreationDate='2026-10-01T05:16:17.0642506Z'})
+function ProcessRow($id,$parent,$name,$birth,$command) {
+    [pscustomobject]@{ProcessId=$id;ParentProcessId=$parent;Name=$name;CreationDate=$birth;CommandLine=$command}
+}
+$tests=@(
+    @{name='empty current process set';all=@();want=$true},
+    @{name='exact input writer';all=@((ProcessRow 30 0 'python.exe' '2026-10-01T06:00:00.0000000Z' ('python '+$fsp)));want=$false},
+    @{name='exact run directory writer';all=@((ProcessRow 30 0 'powershell.exe' '2026-10-01T06:00:00.0000000Z' ('worker '+$run+'\file.txt')));want=$false},
+    @{name='trusted MPI still live';all=@((ProcessRow 10 0 'mpiexec.exe' $known[0].CreationDate 'mpiexec'));want=$false},
+    @{name='unassigned MPI';all=@((ProcessRow 99 0 'mpiexec.exe' '2026-10-01T06:00:00.0000000Z' 'mpiexec'));want=$false},
+    @{name='unreadable CAD';all=@((ProcessRow 98 0 'fdtd-solutions.exe' '2026-10-01T06:00:00.0000000Z' $null));want=$false},
+    @{name='unassigned smpd';all=@((ProcessRow 97 0 'smpd.exe' '2026-10-01T06:00:00.0000000Z' 'smpd'));want=$false},
+    @{name='PID reuse unrelated newer';all=@((ProcessRow 10 0 'notepad.exe' '2026-10-01T06:00:00.0000000Z' 'notepad'));want=$true},
+    @{name='same birth unavailable command';all=@((ProcessRow 10 0 'mpiexec.exe' $known[0].CreationDate $null));want=$false},
+    @{name='unrelated ordinary process';all=@((ProcessRow 77 0 'notepad.exe' '2026-10-01T06:00:00.0000000Z' 'notepad'));want=$true}
+)
+foreach($t in $tests){$r=Get-D3CloseoutScope $t.all $known $run $fsp @();if($r.Passed-ne $t.want){throw ('FAIL '+$t.name)}}
+$rows=@((ProcessRow 30 0 'powershell.exe' '2026-10-01T06:00:00.0000000Z' ('worker '+$fsp)),(ProcessRow 31 30 'cmd.exe' '2026-10-01T06:01:00.0000000Z' 'cmd'),(ProcessRow 32 31 'conhost.exe' '2026-10-01T06:02:00.0000000Z' 'conhost'))
+$r=Get-D3CloseoutScope $rows @() $run $fsp @()
+if($r.Members.Count-ne 3){throw 'Recursive descendants omitted'}
+$r=Get-D3CloseoutScope @((ProcessRow 50604 0 'smpd.exe' '2026-10-01T06:00:00.0000000Z' 'smpd')) @() $run $fsp @(50604)
+if($r.Passed){throw 'Known orphan with unknown historical birth must block'}
+foreach($bad in @('',$null)) {
+    $refused=$false;try{$null=Get-D3CloseoutScope @() @() $run $bad @()}catch{$refused=$true}
+    if(-not $refused){throw 'Empty input path accepted'}
+}
+Write-Output 'D3_CLOSEOUT_SCOPE_PASS=14; remote_sessions=0; solver_starts=0'
+
+===== freeze_d3_worker06.ps1 SHA256 C432F597C91288553C030640377228D4078FC7545C0360A95F40F76F5ADDC918 =====
+param([Parameter(Mandatory=$true)][string]$OutputRoot,[int]$PriorHostPid,[string]$PriorHostBirth)
+$ErrorActionPreference='Stop';$ss=$null;$r=$null
+function Get-FunctionSource([string]$Path,[string]$Name) {
+    $tokens=$null;$errors=$null;$ast=[Management.Automation.Language.Parser]::ParseFile($Path,[ref]$tokens,[ref]$errors)
+    if($errors.Count){throw 'D3_CLOSEOUT_SOURCE_PARSE_ERROR'}
+    $fn=@($ast.FindAll({param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst]},$true)|Where-Object Name -eq $Name)
+    if($fn.Count -ne 1){throw 'D3_CLOSEOUT_SOURCE_FUNCTION_NOT_UNIQUE'}
+    $fn[0].Extent.Text
+}
+$identity=Get-FunctionSource (Join-Path $PSScriptRoot 'read_f0_d3_worker.ps1') 'Get-D3RemoteHostState'
+$copy=Get-FunctionSource (Join-Path $PSScriptRoot 'd2_closeout_guard.ps1') 'Copy-D2ProtectedSnapshot'
+$scope=[IO.File]::ReadAllText((Join-Path $PSScriptRoot 'd3_closeout_guard.ps1'))
+$review='E:\open\optical_size_return_20260928\review_exchange\OPT-SIZE-A2-PROGRESS-20260930-01\v23\PRO_LAUNCH_CLOSEOUT_20261001_06.md'
+$reviewHash=(Get-FileHash -LiteralPath $review).Hash
+$body=@'
+param($priorPid,$priorBirth,$reviewHash)
+$ErrorActionPreference='Stop'
+FUNCTIONS_PLACEHOLDER
+$runRoot='D:\yyz\optical_size_return_20260928\A2\F0_D3_AUTOSHUTOFF_TEST\run01'
+$inputFsp=Join-Path $runRoot 'F0_D3_AUTOSHUTOFF_1E8_input.fsp'
+$audit='D:\yyz\optical_size_return_20260928\A2\F0_D3_AUTOSHUTOFF_TEST\result_audit\closeout_review06_01'
+$result=@{operation='D3_INDEPENDENT_CLOSEOUT_REVIEW06_01';server_utc=[datetime]::UtcNow.ToString('o');remote_host_pid=$PID;remote_host_created_utc=(Get-Process -Id $PID).StartTime.ToUniversalTime().ToString('o');query_ok=$false;frozen=$false;error=$null;new_solver_starts=0;original_runner_modified=$false;imported_native_cache=$false;review_sha256=$reviewHash}
+try {
+    if($priorPid -le 0 -or [string]::IsNullOrWhiteSpace($priorBirth)){throw 'D3_PREVIOUS_HOST_IDENTITY_MISSING'}
+    $prior=Get-CimInstance Win32_Process -Filter ('ProcessId='+[int]$priorPid) -OperationTimeoutSec 5
+    $birth=$null;if($prior -and $prior.CreationDate){$birth=$prior.CreationDate.ToUniversalTime().ToString('o')}
+    $result.prior_host_state=Get-D3RemoteHostState ([bool]$prior) $birth $priorBirth
+    if($result.prior_host_state -notin @('CONFIRMED_ABSENT','PID_REUSED_CONFIRMED')){throw 'D3_PREVIOUS_HOST_NOT_PROVEN_GONE'}
+    if(Test-Path -LiteralPath $audit){throw 'D3_CLOSEOUT_EXISTS_NO_REPEAT'}
+    New-Item -ItemType Directory -Path $audit|Out-Null
+    $statusPath=Join-Path $runRoot 'runner_status.json'
+    $statusText=[IO.File]::ReadAllText($statusPath)
+    if($statusText.Length -gt 8192){throw 'D3_STATUS_SIZE_LIMIT'}
+    $status=$statusText|ConvertFrom-Json
+    $task=Get-ScheduledTask -TaskName 'YYZ_OPT_SIZE_F0_D3_20261001_01'
+    $taskInfo=Get-ScheduledTaskInfo -TaskName $task.TaskName
+    if($status.run_id -ne 'F0_D3_AUTOSHUTOFF_1E8_20261001_01' -or $null -eq $status.mpi_exit_code -or $status.mpi_exit_code -ne 0 -or $status.runner_exit -ne -1 -or $status.state -ne 'FAILED_STOP_NO_RETRY' -or $status.detail -ne 'D3_NO_WRITER_GATE_NOT_PROVEN_NO_FREEZE' -or $task.State.ToString() -ne 'Ready' -or $taskInfo.LastTaskResult -ne 1){throw 'D3_REAL_COMPLETION_CODES_CONFLICT'}
+    if($status.original_input_sha256 -ne '61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0' -or $status.mpi_pid -ne 52016 -or $status.runner_pid -ne 41564 -or $status.mpi_created_utc -ne '2026-10-01T05:16:17.0642506Z' -or $status.runner_created_utc -ne '2026-10-01T05:16:13.1704685Z'){throw 'D3_TRUSTED_START_BINDING_CONFLICT'}
+    $trusted=@(
+        @{ProcessId=41564;Name='powershell.exe';CreationDate='2026-10-01T05:16:13.1704685Z'},
+        @{ProcessId=52016;Name='mpiexec.exe';CreationDate='2026-10-01T05:16:17.0642506Z'},
+        @{ProcessId=53920;Name='fdtd-engine-msmpi.exe';CreationDate='2026-10-01T05:16:17.3654870Z'}
+    )
+    $all=@(Get-CimInstance Win32_Process -OperationTimeoutSec 10|ForEach-Object {
+        [pscustomobject]@{ProcessId=[int]$_.ProcessId;ParentProcessId=[int]$_.ParentProcessId;Name=[string]$_.Name;CreationDate=if($_.CreationDate){$_.CreationDate.ToUniversalTime().ToString('o')}else{$null};CommandLine=[string]$_.CommandLine}
+    })
+    $scope=Get-D3CloseoutScope $all $trusted $runRoot $inputFsp @(50604)
+    $all=$null
+    $scope|Add-Member NoteProperty server_utc ([datetime]::UtcNow.ToString('o'))
+    $scope|ConvertTo-Json -Depth 6|Set-Content -LiteralPath (Join-Path $audit 'current_no_writer_receipt.json') -Encoding UTF8
+    $result.no_writer_passed=$scope.Passed;$result.member_count=@($scope.Members).Count;$result.blocked_count=@($scope.Blocked).Count
+    if(-not $scope.Passed){throw 'D3_CURRENT_SCOPED_WRITER_OR_IDENTITY_CONFLICT'}
+    $logPath=Join-Path $runRoot 'F0_D3_AUTOSHUTOFF_1E8_input_p0.log'
+    if((Get-Item -LiteralPath $logPath).Length -gt 65536){throw 'D3_COMPLETION_LOG_SIZE_LIMIT'}
+    $log=[IO.File]::ReadAllText($logPath)
+    foreach($pattern in @('Simulation completed successfully','Finished collecting data','autoshutoff criteria are satisfied')){if($log -notmatch [regex]::Escape($pattern)){throw ('D3_COMPLETION_LOG_MISSING:'+ $pattern)}}
+    $iters=[regex]::Match($log,'Completed\s+(\d+)\s+iterations,\s+or\s+([\d.eE+-]+)s')
+    $levels=[regex]::Matches($log,'Auto Shutoff:\s*([\d.eE+-]+)')
+    if(-not $iters.Success -or $levels.Count -eq 0){throw 'D3_TERMINAL_TIME_OR_LEVEL_MISSING'}
+    $last=[double]$levels[$levels.Count-1].Groups[1].Value
+    $time=[double]$iters.Groups[2].Value
+    if($last -gt 1e-8 -or $time -le 1.70989e-13 -or $time -gt 2.9e-12){throw 'D3_TERMINATION_EVIDENCE_CONFLICT'}
+    $stderr=Join-Path $runRoot 'mpi_stderr.log'
+    if((Get-Item -LiteralPath $stderr).Length -ne 0){throw 'D3_MPI_STDERR_NOT_EMPTY'}
+    $meta=Get-Item -LiteralPath $inputFsp
+    if($meta.Length -le 560994 -or $meta.LastWriteTimeUtc -le ([datetime]$status.started_server_utc).ToUniversalTime()){throw 'D3_NEW_RESULT_SAVE_NOT_PROVEN'}
+    $freeze=Copy-D2ProtectedSnapshot $inputFsp (Join-Path $audit 'F0_D3_completed_snapshot.fsp') $meta.Length $meta.LastWriteTimeUtc.ToString('o')
+    $result.freeze=$freeze;$result.frozen=$true;$result.iterations=[int]$iters.Groups[1].Value;$result.physical_time_seconds=$time;$result.final_autoshutoff=$last
+    $result.original_mpi_exit_code=0;$result.original_runner_exit_code=-1;$result.original_task_result=1
+    $result.original_failure_reason=$status.detail;$result.original_runner_state=$status.state
+    $result.full_log_sha256=(Get-FileHash -LiteralPath $logPath).Hash
+    $result.original_runner_status_sha256=(Get-FileHash -LiteralPath $statusPath).Hash
+    $result.complete_normalend_collect_verified=$true;$result.stream_collection_returned_before_original_no_writer_failure=$true
+    $result.scientific_qualification='NOT_QUALIFIED_PENDING_RAW_ANALYSIS_AND_REVIEW'
+    $redacted=($log -split '\r?\n'|ForEach-Object {if($_ -match '(?i)license host|ANSYSLMD_LICENSE_FILE|License server|lmgrd|\d+@'){'[REDACTED_LICENSE_ROUTE_LINE]'}else{$_}})-join [Environment]::NewLine
+    [IO.File]::WriteAllText((Join-Path $audit 'p0.redacted.txt'),$redacted,[Text.UTF8Encoding]::new($false))
+    Copy-Item -LiteralPath $logPath -Destination (Join-Path $audit 'p0.internal.log')
+    Copy-Item -LiteralPath $statusPath -Destination (Join-Path $audit 'runner_status.original.json')
+    $result.query_ok=$true
+} catch {$result.error=$_.Exception.Message;$result.qualified_error_id=$_.FullyQualifiedErrorId}
+$result.server_ended_utc=[datetime]::UtcNow.ToString('o')
+$json=$result|ConvertTo-Json -Depth 6 -Compress
+if($json.Length -gt 8192){throw 'D3_CLOSEOUT_PRIMITIVE_RESPONSE_LIMIT'}
+if(Test-Path -LiteralPath $audit){[IO.File]::WriteAllText((Join-Path $audit 'frozen_result_receipt.json'),$json,[Text.UTF8Encoding]::new($false))}
+$json
+'@
+$body=$body.Replace('FUNCTIONS_PLACEHOLDER',$identity+[Environment]::NewLine+$copy+[Environment]::NewLine+$scope)
+$bootstrap=(Get-Content -LiteralPath 'E:\open\tmp\probe_existing_winrm_20260928.ps1' -TotalCount 8)-join [Environment]::NewLine
+. ([scriptblock]::Create($bootstrap));$credentialText=$null;$password=$null
+try {
+    $ss=New-PSSession -ComputerName $serverAddress -Credential $credential -SessionOption (New-PSSessionOption -ProxyAccessType NoProxyServer -OpenTimeout 10000 -OperationTimeout 20000)
+    $json=Invoke-Command -Session $ss -ScriptBlock ([scriptblock]::Create($body)) -ArgumentList $PriorHostPid,$PriorHostBirth,$reviewHash
+    if($json -isnot [string] -or $json.Length -gt 8192){throw 'D3_CLOSEOUT_NON_PRIMITIVE_RESPONSE'}
+    [IO.File]::WriteAllText((Join-Path $OutputRoot 'receipt.json'),$json,[Text.UTF8Encoding]::new($false))
+    $r=$json|ConvertFrom-Json
+    $remote='D:\yyz\optical_size_return_20260928\A2\F0_D3_AUTOSHUTOFF_TEST\result_audit\closeout_review06_01'
+    if($r.no_writer_passed -or $r.blocked_count -gt 0){Copy-Item -LiteralPath (Join-Path $remote 'current_no_writer_receipt.json') -Destination $OutputRoot -FromSession $ss}
+    if($r.query_ok){foreach($name in @('p0.redacted.txt','runner_status.original.json')){Copy-Item -LiteralPath (Join-Path $remote $name) -Destination $OutputRoot -FromSession $ss}}
+    if(-not $r.query_ok){exit 1}
+} catch {
+    @{client_utc=[datetime]::UtcNow.ToString('o');error=$_.Exception.Message;no_retry=$true;new_solver_starts=0}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $OutputRoot 'error.json') -Encoding UTF8
+    exit 1
+} finally {
+    if($ss){Remove-PSSession $ss}
+    @{client_utc=[datetime]::UtcNow.ToString('o');local_session_closed=($null -eq $ss -or $ss.State.ToString() -eq 'Closed');remote_host_pid=if($r){$r.remote_host_pid}else{$null};remote_host_created_utc=if($r){$r.remote_host_created_utc}else{$null};remote_exit_independently_verified=$false}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $OutputRoot 'session_closed.json') -Encoding UTF8
+}
+
+===== freeze_d3_closeout06.ps1 SHA256 7AB29FDCD1D057BEEC187ACE9449AF114C3BF5AFD476A38AA328D9C60C55678D =====
+$ErrorActionPreference='Stop'
+$case='E:\open\optical_size_return_20260928\evidence\a2_preflight_20260930\F0_D3_autoshutoff_20261001'
+$lock=[IO.File]::Open((Join-Path $case 'status_reads\controller.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)
+try {
+    $pending=[IO.File]::ReadAllText((Join-Path $case 'status_reads\pending.json'))|ConvertFrom-Json
+    $p=Get-Process -Id $pending.worker_pid -ErrorAction SilentlyContinue
+    if($p){throw 'D3_STATUS_WORKER_PRESENT_NO_CLOSEOUT_REQUEST'}
+    $prior=[IO.File]::ReadAllText((Join-Path $pending.directory 'receipt.json'))|ConvertFrom-Json
+    if(-not $prior.query_ok -or $null -eq $prior.runner.mpi_exit_code -or $prior.runner.mpi_exit_code -ne 0){throw 'D3_CURRENT_MPI_ZERO_RECEIPT_REQUIRED'}
+    $dir=Join-Path $case 'closeout_review06_01\freeze01'
+    if(Test-Path -LiteralPath $dir){throw 'D3_CLOSEOUT_LOCAL_OPERATION_EXISTS_INSPECT_NO_REPEAT'}
+    New-Item -ItemType Directory -Path $dir|Out-Null
+    $info=[Diagnostics.ProcessStartInfo]::new();$info.FileName=Join-Path $PSHOME 'powershell.exe';$info.UseShellExecute=$false;$info.CreateNoWindow=$true
+    $info.Arguments='-NoProfile -ExecutionPolicy Bypass -File "{0}" -OutputRoot "{1}" -PriorHostPid {2} -PriorHostBirth "{3}"' -f (Join-Path $PSScriptRoot 'freeze_d3_worker06.ps1'),$dir,$prior.remote_host_pid,$prior.remote_host_created_utc
+    $worker=[Diagnostics.Process]::new();$worker.StartInfo=$info
+    if(-not $worker.Start()){throw 'D3_CLOSEOUT_LOCAL_WORKER_START_FAILED'}
+    $null=$worker.Handle
+    @{worker_pid=$worker.Id;worker_created_utc=$worker.StartTime.ToUniversalTime().ToString('o');directory=$dir;started_client_utc=[datetime]::UtcNow.ToString('o');automatic_retry=$false}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $dir 'pending.json') -Encoding UTF8
+    if(-not $worker.WaitForExit(25000)){'D3_CLOSEOUT_TIMEOUT_PENDING_NO_KILL_NO_NEW_REQUEST';exit 0}
+    $exit=$worker.get_ExitCode()
+    @{worker_exit_code=$exit;client_utc=[datetime]::UtcNow.ToString('o')}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $dir 'worker_exit.json') -Encoding UTF8
+    if(Test-Path -LiteralPath (Join-Path $dir 'receipt.json')){[IO.File]::ReadAllText((Join-Path $dir 'receipt.json'))}
+    elseif(Test-Path -LiteralPath (Join-Path $dir 'error.json')){[IO.File]::ReadAllText((Join-Path $dir 'error.json'))}
+    if($null -eq $exit -or $exit -ne 0){exit 1}
+} finally {$lock.Dispose()}
+
+===== test_d3_protected_freeze06.ps1 SHA256 E8148A836ECE5D730675191D681448B8A6A58067691AFD6870400F9817BD1A89 =====
+$ErrorActionPreference='Stop'
+$tokens=$null;$errors=$null
+$ast=[Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot 'd2_closeout_guard.ps1'),[ref]$tokens,[ref]$errors)
+$fn=$ast.Find({param($n) $n -is [Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq 'Copy-D2ProtectedSnapshot'},$true)
+. ([scriptblock]::Create($fn.Extent.Text))
+$dir=Join-Path $env:TEMP ('d3_freeze06_'+[guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $dir|Out-Null
+$source=Join-Path $dir 'source.bin'
+[IO.File]::WriteAllBytes($source,[Text.Encoding]::ASCII.GetBytes('D3 completed result test'))
+$meta=Get-Item -LiteralPath $source;$time=$meta.LastWriteTimeUtc.ToString('o')
+$write=[IO.File]::Open($source,[IO.FileMode]::Open,[IO.FileAccess]::Write,[IO.FileShare]::ReadWrite)
+$blocked=$false
+try{Copy-D2ProtectedSnapshot $source (Join-Path $dir 'writer.bin') $meta.Length $time|Out-Null}catch{$blocked=$true}finally{$write.Dispose()}
+if(-not $blocked -or (Test-Path -LiteralPath (Join-Path $dir 'writer.bin'))){throw 'D3_WRITER_NOT_BLOCKED'}
+$snapshot=Join-Path $dir 'snapshot.bin';$result=Copy-D2ProtectedSnapshot $source $snapshot $meta.Length $time
+if($result.source_sha256 -ne $result.snapshot_sha256 -or -not $result.snapshot_readonly -or -not $result.same_source_handle_held_for_hash_and_copy){throw 'D3_COPY_ROUNDTRIP_FAILED'}
+$blocked=$false;try{Copy-D2ProtectedSnapshot $source $snapshot $meta.Length $time|Out-Null}catch{$blocked=$true}
+if(-not $blocked -or (Get-FileHash -LiteralPath $snapshot).Hash -ne $result.snapshot_sha256){throw 'D3_CREATE_NEW_FAILED'}
+$blocked=$false;try{Copy-D2ProtectedSnapshot $source (Join-Path $dir 'metadata.bin') ($meta.Length+1) $time|Out-Null}catch{$blocked=$true}
+if(-not $blocked){throw 'D3_METADATA_NOT_BLOCKED'}
+foreach($name in @('freeze_d3_worker06.ps1','freeze_d3_closeout06.ps1')) {
+    $tokens=$null;$errors=$null;$a=[Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot $name),[ref]$tokens,[ref]$errors)
+    if($errors.Count){throw ('D3_CLOSEOUT_PARSE_FAILED:'+ $name)}
+}
+$worker=[IO.File]::ReadAllText((Join-Path $PSScriptRoot 'freeze_d3_worker06.ps1'))
+$tokens=$null;$errors=$null;$a=[Management.Automation.Language.Parser]::ParseInput($worker,[ref]$tokens,[ref]$errors)
+$body=$a.Find({param($n) $n -is [Management.Automation.Language.StringConstantExpressionAst] -and $n.Value.StartsWith('param($priorPid')},$true)
+$tokens=$null;$errors=$null;$null=[Management.Automation.Language.Parser]::ParseInput($body.Value,[ref]$tokens,[ref]$errors)
+if($errors.Count){throw 'D3_REMOTE_BODY_PARSE_FAILED'}
+if($worker -match 'Get-D2CloseoutScope|monitor_known_members|native_resource_latest|WorkingSetSize|Win32_OperatingSystem'){throw 'D3_FORBIDDEN_SCOPE_OR_RAM_QUERY'}
+foreach($required in @('Get-D3CloseoutScope $all $trusted $runRoot $inputFsp @(50604)','D3_PREVIOUS_HOST_NOT_PROVEN_GONE','D3_REAL_COMPLETION_CODES_CONFLICT','D3_NEW_RESULT_SAVE_NOT_PROVEN','D3_CLOSEOUT_NON_PRIMITIVE_RESPONSE','D3_COMPLETION_LOG_MISSING','D3_MPI_STDERR_NOT_EMPTY')){if(-not $worker.Contains($required)){throw ('D3_PRODUCTION_GUARD_MISSING:'+ $required)}}
+$controller=[IO.File]::ReadAllText((Join-Path $PSScriptRoot 'freeze_d3_closeout06.ps1'))
+if(-not $controller.Contains('WaitForExit(25000)') -or -not $controller.Contains('D3_CLOSEOUT_LOCAL_OPERATION_EXISTS_INSPECT_NO_REPEAT')){throw 'D3_CONTROLLER_WAIT_OR_ONCE_GUARD_MISSING'}
+@{passed=$true;protected_copy_tests=4;production_parse_checks=2;production_guard_checks=9;remote_sessions=0;solver_starts=0;test_artifacts=$dir}|ConvertTo-Json
+
+===== prepare_d3_export06.py SHA256 BD69DE37706F5CBEF9339E800C6E4A9E4B8A24CEE49D22CFB76D3F08332F198F =====
+"""Derive one saved-data-only D3 exporter from the audited D1 exporter."""
+import hashlib
+import json
+import re
+import unittest
+from pathlib import Path
+
+ROOT = Path(r'E:\open\optical_size_return_20260928')
+CASE = ROOT / 'evidence/a2_preflight_20260930/F0_D3_autoshutoff_20261001/closeout_review06_01'
+SOURCE = ROOT / 'evidence/a2_preflight_20260930/F0_D1_single_rank/closeout_prepared/export_f0_d1_raw_no_solve.lsf'
+REMOTE = 'D:/yyz/optical_size_return_20260928/A2/F0_D3_AUTOSHUTOFF_TEST/result_audit/closeout_review06_01'
+
+
+def build(text):
+    text = text.replace('F0_D1_SINGLE_RANK_PARTITION_TEST/result_audit', 'F0_D3_AUTOSHUTOFF_TEST/result_audit/closeout_review06_01')
+    text = text.replace('F0_D1_', 'F0_D3_')
+    if 'F0_D1' in text or re.search(r'\b(?:run|runanalysis|switchtolayout|save)\s*\(', text):
+        raise ValueError('Old case or modifying command')
+    for required in ('F0_D3_completed_snapshot.fsp', 'if(layoutmode)', 'names=cell(8)',
+                     'actual_dt', 'x_grid', 'Ex_w1,Ey_w1,Ez_w1,Ex_w2,Ey_w2,Ez_w2',
+                     'index_x_offset,index_y_offset,index_z_offset', REMOTE):
+        if required not in text:
+            raise ValueError('Required saved-data check missing: ' + required)
+    return text
+
+
+class ExportTests(unittest.TestCase):
+    def test_actual_source(self):
+        self.assertIn(REMOTE, build(SOURCE.read_text(encoding='utf-8-sig')))
+
+    def test_modify_commands(self):
+        for command in ('run', 'runanalysis', 'save', 'switchtolayout'):
+            with self.subTest(command=command), self.assertRaises(ValueError):
+                build(SOURCE.read_text(encoding='utf-8-sig') + '\n' + command + '();')
+
+    def test_missing_witness(self):
+        with self.assertRaises(ValueError):
+            build(SOURCE.read_text(encoding='utf-8-sig').replace('Ex_w1,Ey_w1,Ez_w1,Ex_w2,Ey_w2,Ez_w2', 'missing'))
+
+
+if __name__ == '__main__':
+    result = unittest.TextTestRunner().run(unittest.defaultTestLoader.loadTestsFromTestCase(ExportTests))
+    if not result.wasSuccessful():
+        raise SystemExit(1)
+    out = CASE / 'export01'
+    out.mkdir()
+    target = out / 'export_f0_d3_saved_no_solve.lsf'
+    with target.open('x', encoding='ascii', newline='\n') as handle:
+        handle.write(build(SOURCE.read_text(encoding='utf-8-sig')))
+    receipt = dict(operation='D3_SAVED_DATA_EXPORT_PREPARE06', passed=True, tests=3,
+                   source_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest().upper(),
+                   generated_sha256=hashlib.sha256(target.read_bytes()).hexdigest().upper(),
+                   remote_root=REMOTE, new_solver_starts=0)
+    (out / 'preparation_receipt.json').write_text(json.dumps(receipt, indent=2), encoding='ascii')
+    print(json.dumps(receipt))
+
+===== export_d3_worker06.ps1 SHA256 CEDBC2A70364580811B87BF7D48E146D80C4629E7DFE6397DB61D1D23A3F63E4 =====
+param([Parameter(Mandatory=$true)][string]$OutputRoot,[int]$PriorHostPid,[string]$PriorHostBirth)
+$ErrorActionPreference='Stop';$ss=$null;$r=$null;$pending=$false
+$case='E:\open\optical_size_return_20260928\evidence\a2_preflight_20260930\F0_D3_autoshutoff_20261001\closeout_review06_01'
+$frozen=[IO.File]::ReadAllText((Join-Path $case 'freeze01\receipt.json'))|ConvertFrom-Json
+if(-not $frozen.query_ok -or -not $frozen.frozen){throw 'D3_FREEZE_REQUIRED'}
+$scriptPath=Join-Path $case 'export01\export_f0_d3_saved_no_solve.lsf'
+$scriptText=[IO.File]::ReadAllText($scriptPath);$scriptHash=(Get-FileHash -LiteralPath $scriptPath).Hash
+if($scriptHash -ne 'CFFB3E12F0E0037C0B4E4CBE3654C88B59841FB92EA7D5AC0A45B3AF12043108'){throw 'D3_EXPORT_PREPARED_HASH_CONFLICT'}
+$functions=''
+foreach($entry in @(@('read_f0_d3_worker.ps1','Get-D3RemoteHostState'),@('d2_runner_helpers.ps1','New-D2ProcessInfo'),@('d2_runner_helpers.ps1','Start-D2TrackedProcess'),@('d2_runner_helpers.ps1','Get-D2LicenseBindings'))) {
+    $t=$null;$e=$null;$a=[Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot $entry[0]),[ref]$t,[ref]$e)
+    $name=$entry[1];$fn=$a.Find({param($n) $n -is [Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq $name},$true)
+    if(-not $fn -or $e.Count){throw 'D3_EXPORT_FUNCTION_PARSE_FAILED'}
+    $functions+=$fn.Extent.Text+[Environment]::NewLine
+}
+$functions+=[IO.File]::ReadAllText((Join-Path $PSScriptRoot 'd3_closeout_guard.ps1'))
+$body=@'
+param($priorPid,$priorBirth,$scriptText,$scriptHash,$expectedSourceHash,$expectedBytes)
+$ErrorActionPreference='Stop'
+FUNCTIONS_PLACEHOLDER
+$root='D:\yyz\optical_size_return_20260928\A2\F0_D3_AUTOSHUTOFF_TEST\result_audit\closeout_review06_01'
+$runRoot='D:\yyz\optical_size_return_20260928\A2\F0_D3_AUTOSHUTOFF_TEST\run01'
+$inputFsp=Join-Path $runRoot 'F0_D3_AUTOSHUTOFF_1E8_input.fsp'
+$snapshot=Join-Path $root 'F0_D3_completed_snapshot.fsp'
+$op='EXPORT_D3_SAVED_RAW_REVIEW06_01'
+$receiptPath=Join-Path $root ($op+'_receipt.json')
+$r=@{operation=$op;remote_host_pid=$PID;remote_host_created_utc=(Get-Process -Id $PID).StartTime.ToUniversalTime().ToString('o');server_utc=[datetime]::UtcNow.ToString('o');cad_exit=$null;query_ok=$false;error=$null;cad_started=$false;cad_pending=$false;new_solver_starts=0;source_unchanged=$false;xml_present=$false;xml_errors=$null}
+$tracked=$null
+try {
+    $prior=Get-CimInstance Win32_Process -Filter ('ProcessId='+[int]$priorPid) -OperationTimeoutSec 5
+    $birth=$null;if($prior -and $prior.CreationDate){$birth=$prior.CreationDate.ToUniversalTime().ToString('o')}
+    $r.prior_host_state=Get-D3RemoteHostState ([bool]$prior) $birth $priorBirth
+    if($priorPid -le 0 -or $r.prior_host_state -notin @('CONFIRMED_ABSENT','PID_REUSED_CONFIRMED')){throw 'D3_EXPORT_PRIOR_HOST_NOT_GONE'}
+    foreach($name in @(($op+'_once.marker'),($op+'_receipt.json'),'F0_D3_raw_Yee_and_flux.mat','export_status.txt')){if(Test-Path -LiteralPath (Join-Path $root $name)){throw 'D3_EXPORT_PRIOR_ARTIFACT_EXISTS_NO_REPEAT'}}
+    $trusted=@(@{ProcessId=41564;Name='powershell.exe';CreationDate='2026-10-01T05:16:13.1704685Z'},@{ProcessId=52016;Name='mpiexec.exe';CreationDate='2026-10-01T05:16:17.0642506Z'},@{ProcessId=53920;Name='fdtd-engine-msmpi.exe';CreationDate='2026-10-01T05:16:17.3654870Z'})
+    $all=@(Get-CimInstance Win32_Process -OperationTimeoutSec 10|ForEach-Object {[pscustomobject]@{ProcessId=[int]$_.ProcessId;ParentProcessId=[int]$_.ParentProcessId;Name=[string]$_.Name;CreationDate=if($_.CreationDate){$_.CreationDate.ToUniversalTime().ToString('o')}else{$null};CommandLine=[string]$_.CommandLine}})
+    $scope=Get-D3CloseoutScope $all $trusted $runRoot $inputFsp @(50604);$all=$null
+    if(-not $scope.Passed){throw 'D3_EXPORT_CURRENT_SCOPE_CONFLICT'}
+    $free=[double](Get-CimInstance Win32_OperatingSystem -OperationTimeoutSec 5).FreePhysicalMemory*1KB/1GB
+    if($free -lt 10 -or (Get-PSDrive D).Free -lt 2GB){throw 'D3_EXPORT_IMMEDIATE_RESOURCE_GATE_FAILED'}
+    $r.immediate_preflight_free_gib=$free;$r.resource_check_not_periodic=$true
+    if((Get-Item -LiteralPath $snapshot).Length -ne $expectedBytes -or -not (Get-Item -LiteralPath $snapshot).IsReadOnly -or (Get-FileHash -LiteralPath $snapshot).Hash -ne $expectedSourceHash -or (Get-FileHash -LiteralPath $inputFsp).Hash -ne $expectedSourceHash){throw 'D3_EXPORT_SOURCE_SNAPSHOT_IDENTITY_FAILED'}
+    $bindings=Get-D2LicenseBindings
+    $license=Start-D2TrackedProcess 'D:\Program Files\Lumerical\v241\licensingclient\winx64\lmutil.exe' ('lmstat -c "'+$bindings.ANSYSLMD_LICENSE_FILE+'" -f lumerical_solve') $root 'cad_license_private' $bindings
+    if(-not $license.Process.WaitForExit(10000)){throw 'D3_EXPORT_LICENSE_TIMEOUT_NO_CAD'}
+    $licenseCode=$license.Process.get_ExitCode()
+    if($null -eq $licenseCode -or $licenseCode -ne 0 -or -not $license.OutTask.Wait(1000) -or -not $license.ErrTask.Wait(1000)){throw 'D3_EXPORT_LICENSE_EXIT_OR_STREAM_UNKNOWN'}
+    $license.Stdout.Flush();$license.Stderr.Flush();$license.Stdout.Dispose();$license.Stderr.Dispose();$license.Process.Dispose()
+    $lp=Join-Path $root 'cad_license_private_stdout.log'
+    if((Get-Item -LiteralPath $lp).Length -gt 65536){throw 'D3_EXPORT_LICENSE_OUTPUT_LIMIT'}
+    $m=[regex]::Match([IO.File]::ReadAllText($lp),'Users of lumerical_solve:.*?Total of (\d+) licenses? issued;\s*Total of (\d+) licenses? in use')
+    if(-not $m.Success -or [int]$m.Groups[1].Value-[int]$m.Groups[2].Value -lt 1){throw 'D3_EXPORT_LICENSE_UNAVAILABLE'}
+    $r.license_query_exit=$licenseCode;$r.license_query_not_checkout_proof=$true
+    $script=Join-Path $root 'export_f0_d3_saved_no_solve.lsf'
+    $stream=[IO.File]::Open($script,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None)
+    try{$bytes=[Text.Encoding]::ASCII.GetBytes($scriptText);$stream.Write($bytes,0,$bytes.Length)}finally{$stream.Dispose()}
+    if((Get-FileHash -LiteralPath $script).Hash -ne $scriptHash){throw 'D3_EXPORT_SCRIPT_TRANSFER_HASH_CONFLICT'}
+    $marker=[IO.File]::Open((Join-Path $root ($op+'_once.marker')),[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None);$marker.Dispose()
+    $start=[datetime]::UtcNow;$obs=@{}
+    $tracked=Start-D2TrackedProcess 'D:\Program Files\Lumerical\v241\bin\fdtd-solutions.exe' ('-nw -trust-script -run "'+$script+'" -t 1') $root $op $bindings $obs
+    $r.cad_started=$true;$r.cad_pid=$obs.process_id;$r.cad_created_utc=$obs.process_created_utc;$r.started_server_utc=$start.ToString('o')
+    if(-not $tracked.Process.WaitForExit(300000)){$r.cad_pending=$true;throw 'D3_CAD_TIMEOUT_UNKNOWN_NO_RETRY'}
+    $r.cad_exit=$tracked.Process.get_ExitCode()
+    if($null -eq $r.cad_exit -or $r.cad_exit -isnot [int]){throw 'D3_CAD_ACTUAL_EXIT_UNKNOWN'}
+    if(-not $tracked.OutTask.Wait(1000) -or -not $tracked.ErrTask.Wait(1000)){throw 'D3_CAD_STREAM_COLLECTION_UNKNOWN'}
+    $tracked.Stdout.Flush();$tracked.Stderr.Flush();$tracked.Stdout.Dispose();$tracked.Stderr.Dispose();$tracked.Process.Dispose();$tracked=$null
+    $r.stderr_bytes=(Get-Item -LiteralPath (Join-Path $root ($op+'_stderr.log'))).Length
+    $r.files=@()
+    foreach($name in @('F0_D3_raw_Yee_and_flux.mat','F0_D3_raw_coordinates.mat','F0_D3_saved_run_information.mat','loaded_result_audit.txt','export_status.txt')) {
+        $path=Join-Path $root $name;$meta=Get-Item -LiteralPath $path
+        if($meta.Length -eq 0 -or $meta.LastWriteTimeUtc -lt $start){throw 'D3_CAD_FRESH_OUTPUT_MISSING'}
+        $r.files+=@{name=$name;bytes=$meta.Length;sha256=(Get-FileHash -LiteralPath $path).Hash}
+    }
+    $r.success_marker=([IO.File]::ReadAllText((Join-Path $root 'export_status.txt')).Trim() -eq 'F0_D3_FRESH_RAW_EXPORT_COMPLETE_NO_SOLVE_NO_SAVE')
+    $xmlPath=Join-Path $root 'export_f0_d3_saved_no_solve.xml'
+    if(Test-Path -LiteralPath $xmlPath){[xml]$xml=[IO.File]::ReadAllText($xmlPath);$r.xml_present=$true;$r.xml_errors=[int]$xml.testsuites.errors+[int]$xml.testsuites.failures}
+    $r.source_sha256=(Get-FileHash -LiteralPath $inputFsp).Hash;$r.snapshot_sha256=(Get-FileHash -LiteralPath $snapshot).Hash
+    $r.source_unchanged=($r.source_sha256 -eq $expectedSourceHash -and $r.snapshot_sha256 -eq $expectedSourceHash)
+    $r.solver_engine_count=@(Get-CimInstance Win32_Process -Filter "Name='fdtd-engine-msmpi.exe'" -OperationTimeoutSec 5).Count
+    if($r.cad_exit -ne 0 -or $r.stderr_bytes -ne 0 -or -not $r.success_marker -or -not $r.source_unchanged -or $r.solver_engine_count -ne 0 -or ($r.xml_present -and $r.xml_errors -ne 0)){throw 'D3_CAD_EXPORT_GATES_FAILED_NO_REEXPORT'}
+    $r.query_ok=$true
+} catch {$r.error=$_.Exception.Message;$r.qualified_error_id=$_.FullyQualifiedErrorId}
+$r.server_ended_utc=[datetime]::UtcNow.ToString('o')
+$json=$r|ConvertTo-Json -Depth 6 -Compress
+if($json.Length -gt 8192){throw 'D3_EXPORT_RESPONSE_LIMIT'}
+[IO.File]::WriteAllText($receiptPath,$json,[Text.UTF8Encoding]::new($false))
+$json
+'@
+$body=$body.Replace('FUNCTIONS_PLACEHOLDER',$functions)
+$bootstrap=(Get-Content -LiteralPath 'E:\open\tmp\probe_existing_winrm_20260928.ps1' -TotalCount 8)-join [Environment]::NewLine
+. ([scriptblock]::Create($bootstrap));$credentialText=$null;$password=$null
+try {
+    $ss=New-PSSession -ComputerName $serverAddress -Credential $credential -SessionOption (New-PSSessionOption -ProxyAccessType NoProxyServer -OpenTimeout 10000 -OperationTimeout 20000)
+    $json=Invoke-Command -Session $ss -ScriptBlock ([scriptblock]::Create($body)) -ArgumentList $PriorHostPid,$PriorHostBirth,$scriptText,$scriptHash,$frozen.freeze.source_sha256,$frozen.freeze.bytes
+    if($json -isnot [string] -or $json.Length -gt 8192){throw 'D3_EXPORT_NON_PRIMITIVE_RESPONSE'}
+    [IO.File]::WriteAllText((Join-Path $OutputRoot 'receipt.json'),$json,[Text.UTF8Encoding]::new($false))
+    $r=$json|ConvertFrom-Json;$pending=[bool]$r.cad_pending
+    if(-not $r.query_ok){exit 1}
+    $remote='D:\yyz\optical_size_return_20260928\A2\F0_D3_AUTOSHUTOFF_TEST\result_audit\closeout_review06_01'
+    foreach($file in $r.files) {
+        $target=Join-Path $OutputRoot $file.name
+        if(Test-Path -LiteralPath $target){throw 'D3_LOCAL_RAW_EXISTS_NO_OVERWRITE'}
+        Copy-Item -LiteralPath (Join-Path $remote $file.name) -Destination $target -FromSession $ss
+        if((Get-FileHash -LiteralPath $target).Hash -ne $file.sha256 -or (Get-Item -LiteralPath $target).Length -ne $file.bytes){throw 'D3_RAW_TRANSFER_HASH_CONFLICT'}
+    }
+    @{client_utc=[datetime]::UtcNow.ToString('o');all_files_hash_size_verified=$true;file_count=@($r.files).Count;new_solver_starts=0}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $OutputRoot 'transfer_receipt.json') -Encoding UTF8
+} catch {
+    @{client_utc=[datetime]::UtcNow.ToString('o');error=$_.Exception.Message;no_retry=$true;new_solver_starts=0}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $OutputRoot 'error.json') -Encoding UTF8
+    exit 1
+} finally {
+    if($ss -and -not $pending){Remove-PSSession $ss}
+    @{client_utc=[datetime]::UtcNow.ToString('o');local_session_closed=($null -eq $ss -or $ss.State.ToString() -eq 'Closed');remote_host_pid=if($r){$r.remote_host_pid}else{$null};remote_host_created_utc=if($r){$r.remote_host_created_utc}else{$null};remote_exit_independently_verified=$false;cad_pending=$pending}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $OutputRoot 'session_closed.json') -Encoding UTF8
+}
+
+===== export_d3_closeout06.ps1 SHA256 83117509736AAE0C776DCFD4F8ACD313FF55F593BA7B6B5EC6DBA458A6359654 =====
+$ErrorActionPreference='Stop'
+$case='E:\open\optical_size_return_20260928\evidence\a2_preflight_20260930\F0_D3_autoshutoff_20261001'
+$lock=[IO.File]::Open((Join-Path $case 'status_reads\controller.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)
+try {
+    $pending=[IO.File]::ReadAllText((Join-Path $case 'closeout_review06_01\freeze01\pending.json'))|ConvertFrom-Json
+    if(Get-Process -Id $pending.worker_pid -ErrorAction SilentlyContinue){throw 'D3_FREEZE_WORKER_PRESENT_NO_EXPORT_REQUEST'}
+    $prior=[IO.File]::ReadAllText((Join-Path $pending.directory 'receipt.json'))|ConvertFrom-Json
+    if(-not $prior.query_ok -or -not $prior.frozen){throw 'D3_EXPORT_FROZEN_RECEIPT_REQUIRED'}
+    $dir=Join-Path $case 'closeout_review06_01\export_raw01'
+    if(Test-Path -LiteralPath $dir){throw 'D3_EXPORT_LOCAL_OPERATION_EXISTS_INSPECT_NO_REPEAT'}
+    New-Item -ItemType Directory -Path $dir|Out-Null
+    $info=[Diagnostics.ProcessStartInfo]::new();$info.FileName=Join-Path $PSHOME 'powershell.exe';$info.UseShellExecute=$false;$info.CreateNoWindow=$true
+    $info.Arguments='-NoProfile -ExecutionPolicy Bypass -File "{0}" -OutputRoot "{1}" -PriorHostPid {2} -PriorHostBirth "{3}"' -f (Join-Path $PSScriptRoot 'export_d3_worker06.ps1'),$dir,$prior.remote_host_pid,$prior.remote_host_created_utc
+    $worker=[Diagnostics.Process]::new();$worker.StartInfo=$info
+    if(-not $worker.Start()){throw 'D3_EXPORT_LOCAL_WORKER_START_FAILED'}
+    $null=$worker.Handle
+    @{worker_pid=$worker.Id;worker_created_utc=$worker.StartTime.ToUniversalTime().ToString('o');directory=$dir;started_client_utc=[datetime]::UtcNow.ToString('o');automatic_retry=$false}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $dir 'pending.json') -Encoding UTF8
+    if(-not $worker.WaitForExit(25000)){'D3_EXPORT_TIMEOUT_PENDING_NO_KILL_NO_NEW_REQUEST';exit 0}
+    $exit=$worker.get_ExitCode()
+    @{worker_exit_code=$exit;client_utc=[datetime]::UtcNow.ToString('o')}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $dir 'worker_exit.json') -Encoding UTF8
+    if(Test-Path -LiteralPath (Join-Path $dir 'receipt.json')){[IO.File]::ReadAllText((Join-Path $dir 'receipt.json'))}
+    elseif(Test-Path -LiteralPath (Join-Path $dir 'error.json')){[IO.File]::ReadAllText((Join-Path $dir 'error.json'))}
+    if($null -eq $exit -or $exit -ne 0){exit 1}
+} finally {$lock.Dispose()}
+
+===== test_d3_native_exit06.ps1 SHA256 4AA2AEFD32857B17A2A7B8966C8B1A322062C5ED241259DC261E80B71CEA7396 =====
+$ErrorActionPreference='Stop'
+$t=$null;$e=$null;$a=[Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot 'd2_runner_helpers.ps1'),[ref]$t,[ref]$e)
+foreach($name in @('New-D2ProcessInfo','Start-D2TrackedProcess')) {
+    $fn=$a.Find({param($n) $n -is [Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq $name},$true)
+    . ([scriptblock]::Create($fn.Extent.Text))
+}
+$root=Join-Path $env:TEMP ('d3_native_exit06_'+[guid]::NewGuid().ToString('N'));New-Item -ItemType Directory -Path $root|Out-Null
+foreach($code in @(0,7)) {
+    $p=Start-D2TrackedProcess (Join-Path $PSHOME 'powershell.exe') ('-NoProfile -Command "exit '+$code+'"') $root ('exit'+$code) @{}
+    if(-not $p.Process.WaitForExit(5000)){throw 'TEST_PROCESS_DID_NOT_FINISH'}
+    $actual=$p.Process.get_ExitCode()
+    if($null -eq $actual -or $actual -isnot [int] -or $actual -ne $code){throw 'ACTUAL_EXIT_NOT_RETAINED'}
+    if(-not $p.OutTask.Wait(1000) -or -not $p.ErrTask.Wait(1000)){throw 'STREAM_COMPLETION_FAILED'}
+    $p.Stdout.Flush();$p.Stderr.Flush();$p.Stdout.Dispose();$p.Stderr.Dispose();$p.Process.Dispose()
+}
+foreach($name in @('export_d3_worker06.ps1','export_d3_closeout06.ps1')) {
+    $t=$null;$e=$null;$a=[Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot $name),[ref]$t,[ref]$e)
+    if($e.Count){throw 'D3_EXPORT_SCRIPT_PARSE_FAILED'}
+    if($name -eq 'export_d3_worker06.ps1') {
+        $body=$a.Find({param($n) $n -is [Management.Automation.Language.StringConstantExpressionAst] -and $n.Value.StartsWith('param($priorPid')},$true)
+        $t=$null;$e=$null;$null=[Management.Automation.Language.Parser]::ParseInput($body.Value,[ref]$t,[ref]$e)
+        if($e.Count){throw 'D3_EXPORT_REMOTE_BODY_PARSE_FAILED'}
+        foreach($guard in @('D3_EXPORT_PRIOR_HOST_NOT_GONE','D3_EXPORT_PRIOR_ARTIFACT_EXISTS_NO_REPEAT','D3_EXPORT_CURRENT_SCOPE_CONFLICT','D3_CAD_ACTUAL_EXIT_UNKNOWN','D3_RAW_TRANSFER_HASH_CONFLICT','D3_CAD_EXPORT_GATES_FAILED_NO_REEXPORT')) {
+            if(-not ([IO.File]::ReadAllText((Join-Path $PSScriptRoot $name))).Contains($guard)){throw 'D3_EXPORT_GUARD_MISSING'}
+        }
+    }
+}
+'D3_NATIVE_PROCESS_EXIT_TESTS_PASS=2; production_parse_checks=3; production_guards=6; remote_sessions=0; solver_starts=0'
+
+===== compare_f0_d3.py SHA256 405B41C8D7A30631C145C0A7870C26DEE895B8C8B0D02CB959FDCEABCA8E9DFC =====
+"""Use the existing scientific calculation on fresh D3 raw, without changing gates."""
+import csv
+import hashlib
+import json
+from pathlib import Path
+import numpy as np
+from compare_f0_d2 import ROOT, OLD, load_data, validate_pair, field_metrics, key_fields, evaluate
+from process_f0_raw import analyze
+
+CASE = ROOT / 'evidence/a2_preflight_20260930/F0_D3_autoshutoff_20261001/closeout_review06_01'
+RAW = CASE / 'export_raw01'
+OUT = CASE / 'analysis01'
+
+
+def paths(root, prefix):
+    return [root / (prefix + name) for name in ('raw_Yee_and_flux.mat', 'raw_coordinates.mat', 'saved_run_information.mat')]
+
+
+def main():
+    if OUT.exists():
+        raise ValueError('D3 analysis exists: inspect, never repeat')
+    transfer = json.loads((RAW / 'transfer_receipt.json').read_text(encoding='utf-8-sig'))
+    receipt = json.loads((RAW / 'receipt.json').read_text(encoding='utf-8-sig'))
+    if not transfer['all_files_hash_size_verified'] or not receipt['query_ok'] or receipt['cad_exit'] != 0:
+        raise ValueError('D3 fresh export execution and transfer evidence required')
+    for file in receipt['files']:
+        path = RAW / file['name']
+        if path.stat().st_size != file['bytes'] or hashlib.sha256(path.read_bytes()).hexdigest().upper() != file['sha256']:
+            raise ValueError('D3 raw integrity conflict')
+    sources = dict(D3=paths(RAW, 'F0_D3_'),
+                   D2=paths(ROOT / 'evidence/a2_preflight_20260930/F0_D2_boundary_pad_decision20/closeout_20261001_01/export_resume02', 'F0_D2_'),
+                   D1=paths(ROOT / 'evidence/a2_preflight_20260930/F0_D1_single_rank/closeout_prepared', 'F0_D1_'),
+                   F0_4rank=[OLD/'F0_X_raw_Yee_and_flux.mat', OLD/'F0_X_raw_coordinates.mat', OLD/'localization_decision15_01/F0_actual_grid_dt_numerical_permittivity.mat'])
+    data = {name: load_data(*files) for name, files in sources.items()}
+    for name in ('D2', 'D1', 'F0_4rank'):
+        validate_pair(data['D3'], data[name])
+    solar = np.loadtxt(ROOT/'evidence/a2_preflight_20260930/solar_reference/ASTMG173.csv', delimiter=',', skiprows=2)
+    results = {name: evaluate(values, solar) for name, values in data.items()}
+    OUT.mkdir()
+    wl = 299792458 / data['D3']['f'].reshape(-1) * 1e9
+    order = np.argsort(wl)
+    summary = dict(operation='D3_FRESH_RAW_OFFLINE_COMPARISON01', new_solver_starts=0, remote_sessions=0,
+                   actual_mapping='PASS_NO_INTERPOLATION', actual_dt_seconds=float(data['D3']['actual_dt'].item()),
+                   sample_xyz_lengths={axis: int(data['D3'][axis+'_grid'].size) for axis in 'xyz'},
+                   results={name: values[0] for name, values in results.items()},
+                   key_fields={name: key_fields(values) for name, values in data.items()},
+                   paired_numerical_convergence='NOT_YET_TESTED', dynamic_root_cause='NARROWED_BUT_NOT_UNIQUE',
+                   scientific_qualification='NOT_QUALIFIED_PENDING_ALL_GATES_AND_REVIEW',
+                   source_hashes={str(p): hashlib.sha256(p.read_bytes()).hexdigest().upper() for files in sources.values() for p in files})
+    for name, (s, error, flux) in results.items():
+        columns = ['wavelength_nm', 'frequency_Hz'] + list(s['maxima'])
+        arrays = [wl, data[name]['f'].reshape(-1)] + [error[:, j] for j in range(6)]
+        for key in ('Rraw', 'Traw', 'Pbottom', 'Ptop', 'Pin'):
+            columns.append(key); arrays.append(data[name][key].reshape(-1))
+        columns.append('one_minus_Rraw_Traw'); arrays.append(1-data[name]['Rraw']-data[name]['Traw'])
+        for key, value in flux.items():
+            columns.append(key); arrays.append(value)
+        table = np.column_stack(arrays)[order]
+        if not np.all(np.isfinite(table)):
+            raise ValueError('Nonfinite diagnostic')
+        np.savetxt(OUT/(name+'_full_diagnostic_91.csv'), table, delimiter=',', header=','.join(columns), comments='', fmt='%.17g')
+    rows = [dict(run=name, **row) for name, values in data.items() for row in key_fields(values)]
+    with (OUT/'key_Ex_complex.csv').open('x', newline='', encoding='ascii') as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
+    columns = ['wavelength_nm'] + [f'D3_minus_{old}_{key}' for old in ('D2','D1','F0_4rank') for key in ('Rraw','Traw','Pbottom','Ptop')]
+    table = np.column_stack([wl]+[data['D3'][key]-data[old][key] for old in ('D2','D1','F0_4rank') for key in ('Rraw','Traw','Pbottom','Ptop')])[order]
+    np.savetxt(OUT/'D3_minus_baselines_raw_flux_91.csv', table, delimiter=',', header=','.join(columns), comments='', fmt='%.17g')
+    if results['D3'][0]['uniformity_pass']:
+        try:
+            qualification, table, columns = analyze(data['D3'])
+            summary['independent_four_material_integral'] = qualification
+            np.savetxt(OUT/'D3_independent_materials_and_closure_91.csv', table, delimiter=',', header=','.join(columns), comments='', fmt='%.17g')
+        except ValueError as error:
+            summary['independent_four_material_integral'] = dict(state='PREREQUISITE_OR_INTEGRAL_REJECTED', error=str(error))
+    else:
+        summary['independent_four_material_integral'] = dict(state='NOT_COMPUTED_UNIFORMITY_FAILED')
+    (OUT/'comparison_summary.json').write_text(json.dumps(summary, indent=2), encoding='ascii')
+    print(json.dumps(dict(D3=summary['results']['D3'], integral=summary['independent_four_material_integral']), indent=2))
+
+
+if __name__ == '__main__':
+    main()
+
+===== test_compare_f0_d3.py SHA256 BFF8C943A2CB0A9CC5B5852753CEA846A4EFD4D9A927102B5673D011838323F4 =====
+import unittest
+import numpy as np
+from compare_f0_d3 import RAW, paths, load_data, validate_pair, field_metrics
+from test_compare_f0_d2 import D2ComparisonTests
+
+
+class D3ComparisonTests(D2ComparisonTests):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = load_data(*paths(RAW, 'F0_D3_'))
+
+    def test_actual_d3_saved_witnesses(self):
+        maxima, _ = field_metrics(self.data)
+        self.assertLessEqual(max(v['max_relative_difference'] for v in maxima.values()), 1e-6)
+
+    def test_changed_saved_material_rejected(self):
+        changed = dict(self.data)
+        changed['nk_ITO'] = np.asarray(changed['nk_ITO']).copy() + 1e-4
+        with self.assertRaises(ValueError):
+            validate_pair(changed, self.data)
+
+
+if __name__ == '__main__':
+    unittest.main(defaultTest='D3ComparisonTests')
+
+===== compare_f0_d2.py SHA256 3468741395A36AEC3AC98044522918C71CD0716E700B0A832553B2C8C02A98F1 =====
+"""Audit the unique protected D2 result against D1 and original four-rank F0."""
+import argparse
+import csv
+import hashlib
+import json
+from pathlib import Path
+import numpy as np
+from compare_f0_d1 import (ROOT, OLD, load_data, validate_pair, field_metrics,
+                           key_fields, flux_metrics, weighted_metric)
+from process_f0_raw import analyze
+
+CASE = ROOT / 'evidence/a2_preflight_20260930/F0_D2_boundary_pad_decision20/closeout_20261001_01'
+
+
+def evaluate(data, solar):
+    maxima, errors = field_metrics(data)
+    flux = flux_metrics(data)
+    wl = 299792458 / data['f'].reshape(-1) * 1e9
+    metric = lambda difference: weighted_metric(difference, wl, solar)
+    r = metric(flux['R_control'] - flux['TMM_R'])
+    t = metric(flux['T_control'] - flux['TMM_T'])
+    direct = metric(flux['A_direct_corrected'] - flux['A_net'])
+    summary = dict(maxima=maxima, uniformity_pass=all(v['max_relative_difference'] <= 1e-6 for v in maxima.values()),
+                   R_vs_TMM=r, T_vs_TMM=t, corrected_direct_vs_net=direct,
+                   RT_TMM_pass=all(v['weighted_absolute_difference'] <= .002 and v['max_absolute_difference'] <= .01 for v in (r, t)),
+                   corrected_direct_net_pass=direct['weighted_absolute_difference'] <= .002 and direct['max_absolute_difference'] <= .005)
+    return summary, errors, flux
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--raw-root', type=Path, default=CASE/'export_resume02')
+    parser.add_argument('--output', type=Path, default=CASE/'analysis01')
+    args = parser.parse_args()
+    if args.raw_root.resolve() != (CASE/'export_resume02').resolve() or args.output.exists():
+        raise ValueError('D2 case binding or output preservation failed')
+    paths = dict(
+        D2=[args.raw_root/name for name in ('F0_D2_raw_Yee_and_flux.mat','F0_D2_raw_coordinates.mat','F0_D2_saved_run_information.mat')],
+        D1=[ROOT/'evidence/a2_preflight_20260930/F0_D1_single_rank/closeout_prepared'/name for name in ('F0_D1_raw_Yee_and_flux.mat','F0_D1_raw_coordinates.mat','F0_D1_saved_run_information.mat')],
+        F0_4rank=[OLD/'F0_X_raw_Yee_and_flux.mat',OLD/'F0_X_raw_coordinates.mat',OLD/'localization_decision15_01/F0_actual_grid_dt_numerical_permittivity.mat'])
+    data = {name: load_data(*files) for name, files in paths.items()}
+    validate_pair(data['D2'], data['D1'])
+    validate_pair(data['D2'], data['F0_4rank'])
+    solar = np.loadtxt(ROOT/'evidence/a2_preflight_20260930/solar_reference/ASTMG173.csv', delimiter=',', skiprows=2)
+    results = {name: evaluate(values, solar) for name, values in data.items()}
+    args.output.mkdir()
+    summary = dict(run_id='F0_D2_BOUNDARY_PAD_1CELL_20260930_01', new_solver_starts=0,
+                   actual_mapping='PASS_NO_INTERPOLATION', actual_dt_seconds=float(data['D2']['actual_dt'].item()),
+                   sample_xyz_lengths={axis: int(data['D2'][axis+'_grid'].size) for axis in 'xyz'},
+                   results={name: values[0] for name, values in results.items()},
+                   key_fields={name:key_fields(values) for name,values in data.items()},
+                   paired_numerical_convergence='NOT_YET_TESTED', dynamic_root_cause='NOT_YET_UNIQUELY_ESTABLISHED',
+                   scientific_qualification='NOT_QUALIFIED_PENDING_ALL_GATES_AND_REVIEW',
+                   source_hashes={str(p):hashlib.sha256(p.read_bytes()).hexdigest().upper() for files in paths.values() for p in files})
+    wl = 299792458 / data['D2']['f'].reshape(-1) * 1e9
+    order = np.argsort(wl)
+    for label in ('D2','D1','F0_4rank'):
+        s, error, flux = results[label]
+        columns = ['wavelength_nm','frequency_Hz'] + list(s['maxima'])
+        arrays = [wl,data[label]['f'].reshape(-1)] + [error[:,j] for j in range(6)]
+        for key in ('Rraw','Traw','Pbottom','Ptop','Pin'):
+            columns.append(key); arrays.append(data[label][key].reshape(-1))
+        columns.append('one_minus_Rraw_Traw');arrays.append(1-data[label]['Rraw']-data[label]['Traw'])
+        for key,value in flux.items():
+            columns.append(key);arrays.append(value)
+        table = np.column_stack(arrays)[order]
+        if not np.all(np.isfinite(table)):
+            raise ValueError('Nonfinite derived output')
+        np.savetxt(args.output/(label+'_full_diagnostic_91.csv'),table,delimiter=',',header=','.join(columns),comments='',fmt='%.17g')
+    rows = [dict(run=label,**row) for label, values in data.items() for row in key_fields(values)]
+    with (args.output/'key_Ex_complex.csv').open('x',newline='',encoding='ascii') as file:
+        writer=csv.DictWriter(file,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
+    columns=['wavelength_nm']+[f'D2_minus_{old}_{key}' for old in ('D1','F0_4rank') for key in ('Rraw','Traw','Pbottom','Ptop')]
+    table=np.column_stack([wl]+[data['D2'][key]-data[old][key] for old in ('D1','F0_4rank') for key in ('Rraw','Traw','Pbottom','Ptop')])[order]
+    np.savetxt(args.output/'D2_minus_baselines_raw_flux_91.csv',table,delimiter=',',header=','.join(columns),comments='',fmt='%.17g')
+    if results['D2'][0]['uniformity_pass']:
+        try:
+            qualification, table, columns = analyze(data['D2'])
+            summary['independent_four_material_integral']=qualification
+            np.savetxt(args.output/'D2_independent_materials_and_closure_91.csv',table,delimiter=',',header=','.join(columns),comments='',fmt='%.17g')
+        except ValueError as error:
+            summary['independent_four_material_integral']=dict(state='PREREQUISITE_OR_INTEGRAL_REJECTED',error=str(error))
+    else:
+        summary['independent_four_material_integral']=dict(state='NOT_COMPUTED_UNIFORMITY_FAILED',no_center_line_area_promotion=True)
+    (args.output/'comparison_summary.json').write_text(json.dumps(summary,indent=2),encoding='ascii')
+    print(json.dumps(summary,indent=2))
+
+
+if __name__ == '__main__':
+    main()
+
+===== compare_f0_d1.py SHA256 240C41D5598F6F520DEDF4F66AE3C62EC31F8628396B474B945F873228243E67 =====
+"""Compare immutable one-rank and four-rank results without promoting qualification."""
+import argparse
+import csv
+import hashlib
+import json
+from pathlib import Path
+import numpy as np
+from process_f0_raw import numeric_mat, validate_raw_data
+from f0_power_reference import plane_reference, ROOT
+
+OLD = ROOT / 'evidence/a2_preflight_20260930/F0_X_v2'
+
+
+def load_data(raw, coordinates, information):
+    data = numeric_mat(raw)
+    for extra in (numeric_mat(coordinates), numeric_mat(information)):
+        for key in data.keys() & extra.keys():
+            if not np.array_equal(data[key], extra[key]):
+                raise ValueError('Conflicting raw data: ' + key)
+        data.update(extra)
+    return data
+
+
+def validate_pair(new, old):
+    for data in (new, old):
+        validate_raw_data(data)
+        for key in ('actual_dt', 'x_grid', 'y_grid', 'z_grid'):
+            value = np.asarray(data[key])
+            if not value.size or not np.all(np.isfinite(value)):
+                raise ValueError('Missing or nonfinite actual grid/dt: ' + key)
+        if np.asarray(data['actual_dt']).size != 1 or float(np.asarray(data['actual_dt']).squeeze()) <= 0:
+            raise ValueError('Actual dt must be one positive value')
+        f = np.asarray(data['f']).reshape(-1)
+        if len(f) != 91 or len(np.unique(f)) != 91 or np.max(abs(np.sort(299792458 / f * 1e9) - np.arange(350, 801, 5))) > 1e-8:
+            raise ValueError('Incomplete actual 91-point frequencies')
+        if np.max(abs(data['f_all'] - f[:, None])) > 1:
+            raise ValueError('Actual eight-monitor frequency mapping mismatch')
+    keys = ['f', 'f_all', 'actual_dt', 'x_grid', 'y_grid', 'z_grid', 'area', 'source_z', 'zR', 'zT', 'zbottom', 'ztop']
+    keys += [axis + suffix for axis in ('x', 'y', 'z', 'delta_x', 'delta_y', 'delta_z') for suffix in ('', '_w1', '_w2')]
+    keys += ['index_' + key for key in ('x_coordinates', 'y_coordinates', 'z_coordinates', 'x_offset', 'y_offset', 'z_offset')]
+    keys += ['nk_' + name for name in ('PDMS', 'ITO', 'Fe', 'water')]
+    for key in keys:
+        a, b = np.asarray(new[key]), np.asarray(old[key])
+        tolerance = 1. if key in ('f', 'f_all') else (1e-29 if key == 'actual_dt' else 1e-15)
+        if a.shape != b.shape or not np.allclose(a, b, rtol=0, atol=tolerance):
+            raise ValueError('Cross-run actual mapping mismatch, no interpolation: ' + key)
+
+
+def field_metrics(data):
+    fields = {axis: np.asarray(data['E' + axis]) for axis in 'xyz'}
+    scale = np.max(np.sqrt(sum(abs(value) ** 2 for value in fields.values())), axis=0)
+    wl = 299792458 / np.asarray(data['f']).reshape(-1) * 1e9
+    maxima, spectra = {}, []
+    for witness in (1, 2):
+        for axis in 'xyz':
+            observed = np.asarray(data[f'E{axis}_w{witness}'])
+            if observed.shape != fields[axis].shape:
+                raise ValueError('Actual witness shape mismatch')
+            error = abs(observed - fields[axis]) / np.maximum(scale, 1e-100)
+            iz, iw = np.unravel_index(np.argmax(error), error.shape)
+            label = f'witness{witness}_E{axis}'
+            maxima[label] = dict(max_relative_difference=float(error[iz, iw]), wavelength_nm=float(wl[iw]),
+                                 z_m=float(data['z'][iz]), absolute_complex_difference=float(abs(observed[iz, iw] - fields[axis][iz, iw])))
+            spectra.append(error.max(axis=0))
+    return maxima, np.column_stack(spectra)
+
+
+def key_fields(data):
+    wl = 299792458 / np.asarray(data['f']).reshape(-1) * 1e9
+    iw = np.flatnonzero(abs(wl - 525.) <= 1e-8)
+    iz = np.flatnonzero(abs(np.asarray(data['z']).reshape(-1) + 155e-9) <= 1e-15)
+    if len(iw) != 1 or len(iz) != 1:
+        raise ValueError('525nm/-155nm actual key point absent, no interpolation')
+    result = []
+    for suffix, monitor in (('', 'E_control_raw_Yee'), ('_w1', 'E_uniformity_witness_1'), ('_w2', 'E_uniformity_witness_2')):
+        value = data['Ex' + suffix][iz[0], iw[0]]
+        result.append(dict(monitor=monitor, wavelength_nm=float(wl[iw[0]]), z_m=float(data['z'][iz[0]]),
+                           x_m=float(np.asarray(data['x' + suffix]).squeeze()), y_m=float(np.asarray(data['y' + suffix]).squeeze()),
+                           Ex_real=float(value.real), Ex_imag=float(value.imag)))
+    return result
+
+
+def flux_metrics(data):
+    wl = 299792458 / np.asarray(data['f']).reshape(-1) * 1e9
+    planes = {key: float(np.asarray(data[key]).squeeze()) for key in ('source_z', 'zR', 'zT', 'zbottom', 'ztop')}
+    nk = np.array([data['nk_' + name].reshape(-1) for name in ('PDMS', 'ITO', 'Fe', 'water')])
+    ref = [plane_reference(wl[j], nk[:, j], **planes) for j in range(91)]
+    incident = np.array([value['control_incident_per_source'] for value in ref])
+    if not np.all(np.isfinite(incident)) or np.any(incident <= 0):
+        raise ValueError('Invalid incident normalization')
+    k = 2 * np.pi * nk[3].imag / (wl * 1e-9)
+    r = data['Rraw'] * np.exp(2 * k * (planes['zbottom'] - planes['zR'])) / incident
+    t = data['Traw'] * np.exp(2 * k * (planes['zT'] - planes['ztop'])) / incident
+    net = (data['Pbottom'] - data['Ptop']) / incident
+    correction = np.array([value['incident_interference_correction'] for value in ref])
+    direct = 1 - r - t + correction
+    return dict(R_control=r, T_control=t, A_net=net, one_minus_R_T_control=1-r-t,
+                incident_interference_correction=correction, A_direct_corrected=direct,
+                TMM_R=np.array([value['R_control'] for value in ref]), TMM_T=np.array([value['T_control'] for value in ref]))
+
+
+def weighted_metric(difference, wl, solar):
+    order = np.argsort(wl)
+    x = wl[order]
+    weight = np.interp(x, solar[:, 0], solar[:, 2]) * x
+    denominator = np.trapezoid(weight, x)
+    if denominator <= 0 or not np.all(np.isfinite(difference)):
+        raise ValueError('Nonfinite diagnostic or invalid solar normalization')
+    return dict(weighted_absolute_difference=float(np.trapezoid(abs(difference[order])*weight, x)/denominator),
+                max_absolute_difference=float(max(abs(difference))), max_wavelength_nm=float(wl[np.argmax(abs(difference))]))
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--raw', type=Path, required=True)
+    parser.add_argument('--coordinates', type=Path, required=True)
+    parser.add_argument('--information', type=Path, required=True)
+    parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--old-self-check', action='store_true')
+    args = parser.parse_args()
+    if not args.old_self_check:
+        expected = ROOT / 'evidence/a2_preflight_20260930/F0_D1_single_rank/closeout_prepared'
+        if any(path.resolve().parent != expected.resolve() for path in (args.raw, args.coordinates, args.information)) or args.raw.name != 'F0_D1_raw_Yee_and_flux.mat':
+            raise ValueError('Diagnostic inputs must bind the new D1 case, never old F0 basename')
+    if args.output.exists():
+        raise ValueError('Output exists, preserve evidence')
+    old_paths = [OLD/'F0_X_raw_Yee_and_flux.mat', OLD/'F0_X_raw_coordinates.mat', OLD/'localization_decision15_01/F0_actual_grid_dt_numerical_permittivity.mat']
+    new_paths = [args.raw, args.coordinates, args.information]
+    old = load_data(*old_paths)
+    new = load_data(*new_paths)
+    validate_pair(new, old)
+    new_max, new_error = field_metrics(new)
+    old_max, old_error = field_metrics(old)
+    new_flux, old_flux = flux_metrics(new), flux_metrics(old)
+    wl = 299792458/new['f'].reshape(-1)*1e9
+    solar = np.loadtxt(ROOT/'evidence/a2_preflight_20260930/solar_reference/ASTMG173.csv', delimiter=',', skiprows=2)
+    metric = lambda diff: weighted_metric(diff, wl, solar)
+    summary = dict(run_id='OFFLINE_OLD_VS_OLD_SELF_CHECK' if args.old_self_check else 'F0_D1_SINGLE_RANK_PARTITION_TEST_20260930_01',
+                   new_solver_starts=0, uniformity_gate=1e-6, new_maxima=new_max, old_maxima=old_max,
+                   actual_mapping='PASS_NO_INTERPOLATION', actual_dt_seconds=float(new['actual_dt']),
+                   key_fields_new=key_fields(new), key_fields_old=key_fields(old),
+                   R_vs_TMM=metric(new_flux['R_control']-new_flux['TMM_R']), T_vs_TMM=metric(new_flux['T_control']-new_flux['TMM_T']),
+                   corrected_direct_vs_net=metric(new_flux['A_direct_corrected']-new_flux['A_net']),
+                   old_R_vs_TMM=metric(old_flux['R_control']-old_flux['TMM_R']), old_T_vs_TMM=metric(old_flux['T_control']-old_flux['TMM_T']),
+                   old_corrected_direct_vs_net=metric(old_flux['A_direct_corrected']-old_flux['A_net']),
+                   new_minus_old_raw_flux={key:metric(new[key]-old[key]) for key in ('Rraw','Traw','Pbottom','Ptop')},
+                   uniformity_pass=bool(max(value['max_relative_difference'] for value in new_max.values())<=1e-6),
+                   paired_numerical_convergence='NOT_YET_TESTED', scientific_qualification='DIAGNOSTIC_COMPARISON_ONLY_REQUIRES_PRO_REVIEW',
+                   four_material_integral='NOT_COMPUTED_BY_PARTITION_DIAGNOSTIC', source_hashes={str(path):hashlib.sha256(path.read_bytes()).hexdigest().upper() for path in new_paths+old_paths})
+    columns = ['wavelength_nm', 'frequency_Hz']
+    arrays = [wl, new['f'].reshape(-1)]
+    for label, data, error, flux in (('new',new,new_error,new_flux),('old',old,old_error,old_flux)):
+        for j, key in enumerate(new_max):
+            columns.append(label+'_'+key); arrays.append(error[:,j])
+        for key in ('Rraw','Traw','Pbottom','Ptop','Pin'):
+            columns.append(label+'_'+key); arrays.append(data[key].reshape(-1))
+        columns.append(label+'_one_minus_Rraw_Traw'); arrays.append(1-data['Rraw']-data['Traw'])
+        for key,value in flux.items():
+            columns.append(label+'_'+key); arrays.append(value)
+    for key in ('Rraw','Traw','Pbottom','Ptop'):
+        columns.append('new_minus_old_'+key);arrays.append(new[key]-old[key])
+    table = np.column_stack(arrays)[np.argsort(wl)]
+    if not np.all(np.isfinite(table)):
+        raise ValueError('Nonfinite output rejected')
+    args.output.mkdir(parents=True)
+    np.savetxt(args.output/'F0_D1_vs_four_rank_diagnostic_91.csv',table,delimiter=',',header=','.join(columns),comments='',fmt='%.17g')
+    (args.output/'comparison_summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+    rows = [dict(run=label,**row) for label, data in (('new',new),('old',old)) for row in key_fields(data)]
+    with (args.output/'F0_D1_key_Ex_complex.csv').open('w',newline='',encoding='utf-8') as file:
+        writer=csv.DictWriter(file,fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
+    print(json.dumps(summary,indent=2))
+
+
+if __name__ == '__main__':
+    main()
+
+===== process_f0_raw.py SHA256 B98CAFBBD51934BD9FA5A4BC744AFEFE15A09E5AE94B114E668D80BA944229D5 =====
+"""Analyze an audited fresh F0 raw export, never using embedded historical data."""
+import argparse
+import json
+from pathlib import Path
+import h5py
+import numpy as np
+from flat_yee_absorption import component_spectra
+from f0_power_reference import plane_reference,ROOT
+
+
+def numeric_mat(path):
+    result={}
+    with h5py.File(path) as file:
+        for name,value in file.items():
+            if not isinstance(value,h5py.Dataset) or name.startswith('#'):
+                continue
+            data=value[...]
+            if data.dtype.names:
+                data=data['real']+1j*data['imag']
+            result[name]=data.transpose(tuple(reversed(range(data.ndim)))).squeeze()
+    return result
+
+
+def validate_raw_data(data):
+    required = ['f', 'f_all', 'z', 'index_z_coordinates', 'delta_z', 'Pin', 'area',
+                'source_z', 'zR', 'zT', 'zbottom', 'ztop', 'Rraw', 'Traw', 'Pbottom', 'Ptop']
+    required += ['nk_' + name for name in ['PDMS', 'ITO', 'Fe', 'water']]
+    required += [prefix + axis for prefix in ['E', 'index_'] for axis in ['x', 'y', 'z']]
+    required += [f'E{axis}_w{witness}' for witness in [1, 2] for axis in ['x', 'y', 'z']]
+    required += ['x', 'y', 'delta_x', 'delta_y', 'index_x_coordinates', 'index_y_coordinates',
+                 'index_x_offset', 'index_y_offset', 'index_z_offset']
+    required += [name + f'_w{witness}' for witness in [1, 2] for name in ['x', 'y', 'z', 'delta_x', 'delta_y', 'delta_z']]
+    for name in required:
+        value = np.asarray(data[name])
+        if not value.size or not np.all(np.isfinite(value)):
+            raise ValueError(f'Empty or non-finite raw data: {name}')
+    if np.any(np.asarray(data['f']) <= 0) or np.any(np.asarray(data['Pin']) <= 0) or float(data['area']) <= 0:
+        raise ValueError('Frequency, source power and area must be positive')
+    if np.asarray(data['f_all']).shape != (91, 8):
+        raise ValueError('Expected eight complete 91-point frequency arrays')
+    validate_coordinates(data)
+
+
+def validate_coordinates(data):
+    z = np.asarray(data['z']).reshape(-1)
+    if len(z) < 2 or np.any(np.diff(z) <= 0):
+        raise ValueError('Center Yee z coordinates must ascend')
+
+    def equal(left, right, label):
+        a, b = np.asarray(left).reshape(-1), np.asarray(right).reshape(-1)
+        if a.shape != b.shape or not np.allclose(a, b, rtol=0, atol=1e-15):
+            raise ValueError('Yee coordinate mismatch: ' + label)
+
+    for axis in 'xyz':
+        base = np.asarray(data[axis]).reshape(-1)
+        delta = np.broadcast_to(np.asarray(data['delta_' + axis]).reshape(-1), base.shape)
+        index_base = 'index_z_coordinates' if axis == 'z' else 'index_' + axis + '_coordinates'
+        equal(base, data[index_base], axis + ' index base')
+        equal(base + delta, data['index_' + axis + '_offset'], axis + ' index offset')
+    for witness in [1, 2]:
+        observed_z = np.asarray(data[f'z_w{witness}']).reshape(-1)
+        dz = np.broadcast_to(np.asarray(data[f'delta_z_w{witness}']).reshape(-1), observed_z.shape)
+        equal(observed_z, z, f'witness {witness} base z')
+        equal(observed_z + dz, data['index_z_offset'], f'witness {witness} offset z')
+        for axis in 'xy':
+            if np.asarray(data[f'{axis}_w{witness}']).size != 1:
+                raise ValueError('Witness must remain a single actual transverse line')
+            equal(data[f'delta_{axis}_w{witness}'], data['delta_' + axis], f'witness {witness} transverse offset {axis}')
+
+
+def analyze(data):
+    validate_raw_data(data)
+    f=np.asarray(data['f']).reshape(-1)
+    wl=299792458/f*1e9
+    if len(f)!=91 or np.max(np.abs(np.sort(wl)-np.arange(350,801,5)))>1e-8:
+        raise ValueError('Actual fresh field wavelengths are not 350:5:800 nm')
+    if np.max(np.abs(data['f_all']-f[:,None]))>1:
+        raise ValueError('Actual field/flux/index frequency pairing failed')
+    z=np.asarray(data['z']).reshape(-1)
+    if not np.allclose(z,data['index_z_coordinates'],rtol=0,atol=1e-15):
+        raise ValueError('Actual field and index Yee origins differ')
+    fields={v:np.asarray(data['E'+v]).squeeze() for v in ['x','y','z']}
+    index={v:np.asarray(data['index_'+v]).squeeze() for v in ['x','y','z']}
+    witness_error=0.
+    witness_errors={}
+    for witness in [1,2]:
+        per_witness_error=0.
+        for v in ['x','y','z']:
+            observed=np.asarray(data[f'E{v}_w{witness}']).squeeze()
+            if observed.shape!=fields[v].shape:
+                raise ValueError('Uniformity witness dimensions differ')
+            scale=np.max(np.sqrt(sum(np.abs(e)**2 for e in fields.values())),axis=0)
+            per_witness_error=max(per_witness_error,float(np.max(np.abs(observed-fields[v])/np.maximum(scale,1e-100))))
+        witness_errors[str(witness)]=per_witness_error
+        witness_error=max(witness_error,per_witness_error)
+    if witness_error>1e-6:
+        raise ValueError(f'Flat-plane translational invariance failed: {witness_error}')
+    material_nk=np.asarray([np.asarray(data['nk_'+name]).reshape(-1) for name in ['PDMS','ITO','Fe','water']])
+    planes={key:float(np.asarray(data[key]).reshape(-1)[0]) for key in ['source_z','zR','zT','zbottom','ztop']}
+    area=float(data['area'])
+    absorption=component_spectra(f,z,data['delta_z'],fields,index,material_nk**2,data['Pin'],area,planes['zbottom'],planes['ztop'])
+    reference=[plane_reference(wl[j],material_nk[:,j],**planes) for j in range(91)]
+    incident=np.array([r['control_incident_per_source'] for r in reference])
+    kz_imag=2*np.pi*material_nk[3].imag/(wl*1e-9)
+    R=data['Rraw']*np.exp(2*kz_imag*(planes['zbottom']-planes['zR']))/incident
+    T=data['Traw']*np.exp(2*kz_imag*(planes['zT']-planes['ztop']))/incident
+    absorption/=incident[:,None]
+    net=(data['Pbottom']-data['Ptop'])/incident
+    correction=np.array([r['incident_interference_correction'] for r in reference])
+    direct=1-R-T+correction
+    closure=net-absorption.sum(axis=1)
+    tmm=np.array([[r['R_control'],r['T_control']]+r['material_absorption'] for r in reference])
+    actual=np.column_stack([R,T,absorption])
+    order=np.argsort(wl)
+    x=wl[order]
+    solar=np.loadtxt(ROOT/'evidence/a2_preflight_20260930/solar_reference/ASTMG173.csv',delimiter=',',skiprows=2)
+    weight=np.interp(x,solar[:,0],solar[:,2])*x
+    mean=lambda values:float(np.trapezoid(np.abs(values[order])*weight,x)/np.trapezoid(weight,x))
+    errors=np.abs(actual-tmm)
+    labels=['R','T','A_PDMS','A_ITO','A_Fe2O3','A_water']
+    means={label:mean(errors[:,j]) for j,label in enumerate(labels)}
+    maxima={label:float(errors[:,j].max()) for j,label in enumerate(labels)}
+    maximum_wavelengths={label:float(wl[np.argmax(errors[:,j])]) for j,label in enumerate(labels)}
+    component_pass=mean(closure)<=.005 and np.max(np.abs(closure))<=.02
+    flat_pass=all(means[q]<=.002 and maxima[q]<=.01 for q in ['R','T','A_ITO','A_Fe2O3'])
+    flux_pass=mean(direct-net)<=.002 and np.max(np.abs(direct-net))<=.005
+    summary={'actual_planes_m':planes,'uniformity_max_relative_field_difference':witness_error,
+             'uniformity_max_relative_field_difference_per_witness':witness_errors,
+             'weighted_abs_component_closure':mean(closure),'max_component_closure':float(np.max(np.abs(closure))),
+             'max_component_closure_wavelength_nm':float(wl[np.argmax(np.abs(closure))]),
+             'direct_vs_net_weighted_abs_difference':mean(direct-net),'direct_vs_net_max_difference':float(np.max(np.abs(direct-net))),
+             'direct_vs_net_max_difference_wavelength_nm':float(wl[np.argmax(np.abs(direct-net))]),
+             'flat_TMM_weighted_abs_errors':means,'flat_TMM_max_errors':maxima,
+             'flat_TMM_max_error_wavelength_nm':maximum_wavelengths,
+             'COMPONENT_PASS':bool(component_pass),'FLAT_CALIBRATION_PASS':bool(flat_pass),'FLUX_REFERENCE_PASS':bool(flux_pass),
+             'paired_numerical_convergence':'NOT_YET_TESTED',
+             'qualification':'COMPONENT_CALIBRATED_CONVERGENCE_PENDING' if component_pass and flat_pass and flux_pass else 'RAW_RESULT_REQUIRES_REVIEW'}
+    table=np.column_stack([wl,actual,tmm,net,direct,closure,1-R-T,correction,1-data['Rraw']-data['Traw'],
+                           data['Rraw'],data['Traw'],data['Pbottom'],data['Ptop'],data['Pin'],f])[order]
+    if not np.all(np.isfinite(table)):
+        raise ValueError('Non-finite derived spectrum cannot be qualified')
+    return summary,table,['wavelength_nm']+labels+['TMM_'+v for v in labels]+['A_net','A_direct_corrected','component_closure','one_minus_R_T_control_unadjusted','incident_interference_correction','one_minus_Rraw_Traw_source_planes','R_raw_source_planes','T_raw_source_planes','Pbottom_raw','Ptop_raw','source_power_W','source_frequency_Hz']
+
+
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('raw',type=Path)
+    parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--coordinates',type=Path,required=True)
+    args=parser.parse_args()
+    if args.output.exists():
+        raise ValueError('Refusing to replace an existing result-analysis directory')
+    data = numeric_mat(args.raw)
+    coordinates = numeric_mat(args.coordinates)
+    for name in data.keys() & coordinates.keys():
+        if not np.array_equal(data[name], coordinates[name]):
+            raise ValueError('Conflicting data between fresh export files: ' + name)
+    data.update(coordinates)
+    summary,table,columns=analyze(data)
+    args.output.mkdir(parents=True)
+    np.savetxt(args.output/'F0_X_components_and_calibration_91.csv',table,delimiter=',',header=','.join(columns),comments='',fmt='%.17g')
+    (args.output/'F0_X_result_qualification.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='ascii')
+    print(json.dumps(summary,indent=2))
+
+
+if __name__=='__main__':
+    main()
+
+===== flat_yee_absorption.py SHA256 5E8D7B5D7A1EA5BFB3E33E71E6C53272464ED40FE80B970A2E7830121A9823B2 =====
+"""Flat-stack, component-aligned Yee loss integration; never clips or rescales."""
+import numpy as np
+
+EPS0=8.8541878128e-12
+BOUNDS=np.array([-10e-6,0,100e-9,125e-9])
+# Material order: PDMS, ITO, Fe2O3, water.
+REGION_MATERIAL=np.array([3,0,1,2,3])
+ADJACENT=[(3,0),(0,1),(1,2),(2,3)]
+
+
+def loss_parts(effective,materials,component,z,window,tolerance=1e-7):
+    effective=np.asarray(effective,dtype=complex).reshape(-1)
+    materials=np.asarray(materials,dtype=complex)
+    z=np.asarray(z).reshape(-1)
+    window=np.asarray(window).reshape(-1)
+    if len(effective)!=len(z) or len(window)!=len(z):
+        raise ValueError('Yee coordinate shape mismatch')
+    if np.min(materials.imag)<-1e-12 or np.min(effective.imag)<-1e-12:
+        raise ValueError('Unexplained gain: no absolute-value correction allowed')
+    if not np.isfinite(effective).all() or not np.isfinite(materials).all():
+        raise ValueError('Nonfinite permittivity')
+    result=np.zeros((len(z),4))
+    geometric=REGION_MATERIAL[np.searchsorted(BOUNDS,z,side='right')]
+    for p,value in enumerate(effective):
+        distances=np.abs(value-materials)/np.maximum(1,np.abs(materials))
+        near=np.flatnonzero(np.abs(z[p]-BOUNDS)<=window[p])
+        allowed={int(geometric[p])}
+        for boundary in near:
+            allowed.update(ADJACENT[boundary])
+        pure=int(np.argmin(distances))
+        if distances[pure]<=tolerance and pure in allowed:
+            result[p,pure]=value.imag
+            continue
+        accepted=False
+        for boundary in near:
+            a,b=ADJACENT[boundary]
+            if component=='z':
+                observed=1/value
+                ma,mb=1/materials[a],1/materials[b]
+            else:
+                observed=value
+                ma,mb=materials[a],materials[b]
+            delta=ma-mb
+            fraction=float(np.real((observed-mb)*np.conj(delta))/abs(delta)**2)
+            reconstructed=fraction*ma+(1-fraction)*mb
+            if 0<=fraction<=1 and abs(reconstructed-observed)<=tolerance*max(1,abs(observed)):
+                if component=='z':
+                    result[p,a]=abs(value)**2*fraction*materials[a].imag/abs(materials[a])**2
+                    result[p,b]=abs(value)**2*(1-fraction)*materials[b].imag/abs(materials[b])**2
+                else:
+                    result[p,a]=fraction*materials[a].imag
+                    result[p,b]=(1-fraction)*materials[b].imag
+                accepted=True
+                break
+        if not accepted:
+            raise ValueError(f'unassigned Yee permittivity at z={z[p]:.17g}, component={component}, epsilon={value}')
+    if np.max(np.abs(result.sum(axis=1)-effective.imag))>tolerance*max(1,float(np.max(np.abs(effective)))):
+        raise ValueError('Material decomposition does not reproduce actual loss')
+    return result
+
+
+def integrate_density(z,density,lower,upper):
+    z=np.asarray(z).reshape(-1)
+    density=np.asarray(density)
+    if density.shape[0]!=len(z) or np.any(np.diff(z)<=0):
+        raise ValueError('Nonascending density coordinates')
+    if not z[0]<=lower<upper<=z[-1]:
+        raise ValueError('Control volume not fully captured by raw Yee data')
+    inside=(z>lower)&(z<upper)
+    coordinates=np.concatenate([[lower],z[inside],[upper]])
+    values=np.vstack([[np.interp(lower,z,density[:,i]) for i in range(density.shape[1])],
+                      density[inside],
+                      [np.interp(upper,z,density[:,i]) for i in range(density.shape[1])]])
+    return np.trapezoid(values,coordinates,axis=0)
+
+
+def component_spectra(f,z,delta_z,fields,index,material_epsilon,pin,area,lower,upper):
+    f=np.asarray(f).reshape(-1)
+    z=np.asarray(z).reshape(-1)
+    dz=np.broadcast_to(np.asarray(delta_z).reshape(-1),z.shape)
+    pin=np.asarray(pin).reshape(-1)
+    if len(f)!=91 or len(pin)!=91 or np.min(pin)<=0:
+        raise ValueError('Invalid frequency samples or incident power')
+    output=np.zeros((91,4))
+    for component in ['x','y','z']:
+        positions=z+dz if component=='z' else z
+        window=1.5*np.gradient(positions)
+        e=np.squeeze(fields[component])
+        eps=np.squeeze(index[component])**2
+        if e.shape!=(len(z),91) or eps.shape!=e.shape:
+            raise ValueError('Actual index/field shapes do not match: '+component)
+        for j,frequency in enumerate(f):
+            parts=loss_parts(eps[:,j],material_epsilon[:,j],component,positions,window)
+            density=.5*EPS0*2*np.pi*frequency*np.abs(e[:,j,None])**2*parts
+            output[j]+=integrate_density(positions,density,lower,upper)*area/pin[j]
+    if not np.isfinite(output).all():
+        raise ValueError('Nonfinite independent material absorption')
+    return output
+
+===== web_readable_evidence.py SHA256 388BB51FFBCAA70AEAB440F066DE4943100B6FBB038908A564E27AAAC9D6B4C0 =====
+"""Convert archived MAT/text evidence to verified, standalone TXT/CSV, without solving."""
+import argparse
+import csv
+import hashlib
+import io
+import json
+from pathlib import Path
+import shutil
+import zipfile
+import h5py
+import numpy as np
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest().upper()
+
+
+def number(value):
+    return str(int(value)) if np.issubdtype(type(value), np.integer) else format(float(value), '.17g')
+
+
+def numeric_rows(data):
+    flat = np.ascontiguousarray(data).reshape(-1)
+    if not flat.size:
+        return
+    # Compare stored bits, so signed zero and close floating values never merge.
+    bits = flat.view(np.dtype(('V', flat.dtype.itemsize)))
+    starts = np.r_[0, np.flatnonzero(bits[1:] != bits[:-1]) + 1]
+    ends = np.r_[starts[1:], flat.size]
+    for start, end in zip(starts, ends):
+        value = flat[start]
+        if flat.dtype.names:
+            if flat.dtype.names != ('real', 'imag'):
+                raise ValueError('UNSUPPORTED_COMPOUND_TYPE')
+            real, imag = number(value['real']), number(value['imag'])
+        else:
+            real, imag = number(value), ''
+        yield dict(start=int(start), count=int(end-start), real=real, imag=imag)
+
+
+def restore_numeric(rows, shape, dtype):
+    flat = np.empty(int(np.prod(shape)), dtype=dtype)
+    cursor = 0
+    for row in rows:
+        start, count = int(row['start']), int(row['count'])
+        if start != cursor or count <= 0 or start + count > flat.size:
+            raise ValueError('INVALID_RUN_COVERAGE')
+        if dtype.names:
+            flat['real'][start:start+count] = row['real']
+            flat['imag'][start:start+count] = row['imag']
+        else:
+            flat[start:start+count] = row['real']
+        cursor += count
+    if cursor != flat.size:
+        raise ValueError('INCOMPLETE_RUN_COVERAGE')
+    return flat.reshape(shape)
+
+
+def json_value(value):
+    if isinstance(value, (bytes, np.bytes_)):
+        return value.decode('utf-8')
+    if isinstance(value, np.ndarray):
+        return [json_value(v) for v in value.reshape(-1)]
+    if isinstance(value, np.generic):
+        return json_value(value.item())
+    if isinstance(value, (tuple, list)):
+        return [json_value(v) for v in value]
+    return value
+
+
+def text_content(data):
+    if data.startswith((b'\xff\xfe', b'\xfe\xff')):
+        return data.decode('utf-16')
+    if b'\x00' in data:
+        raise ValueError('UNIDENTIFIED_BINARY_IN_TEXT_ARCHIVE')
+    return data.decode('utf-8-sig')
+
+
+def verified_archive(path):
+    archive = zipfile.ZipFile(path)
+    manifest = json.loads(archive.read('manifest.json'))
+    for item in manifest:
+        content = archive.read(item['name'])
+        if len(content) != item['bytes'] or sha(content) != item['sha256']:
+            raise ValueError('SOURCE_ARCHIVE_HASH_FAILED:'+item['name'])
+    return archive
+
+
+def convert(source, output, *, raw_archive='F0_material_grid_v10_raw_planes.zip',
+            evidence_archive='F0_material_grid_v10_evidence.zip', report_version='v10',
+            table_name='transverse_material_differences.csv'):
+    if output.exists():
+        raise ValueError('OUTPUT_EXISTS_NO_OVERWRITE')
+    raw_path = source/raw_archive
+    evidence_path = source/evidence_archive
+    original_hashes = {str(p): sha(p.read_bytes()) for p in
+                       [raw_path, evidence_path, source/'REPORT.md', source/table_name]}
+    raw = verified_archive(raw_path)
+    evidence = verified_archive(evidence_path)
+    output.mkdir()
+    schema = dict(format='MAT_NUMERIC_RLE_CSV_V1', flatten_order='C in HDF5 storage dimensions',
+                  matlab_dimensions='Reverse HDF5 axes; singleton dimensions retained in metadata',
+                  run_rule='start is zero-based; repeat real/imag count times; consecutive runs exactly cover each dataset',
+                  precision='17 significant decimal digits; verified byte-for-byte numeric reconstruction including signed zero',
+                  no_interpolation=True, no_clipping=True, no_solver=True, datasets=[], objects=[])
+    raw_csv = output/'material_grid_raw_rle.csv'
+    dataset_count = values_count = runs_count = 0
+    with raw_csv.open('x', encoding='utf-8', newline='') as handle:
+        writer = csv.DictWriter(handle, fieldnames=['source_mat','dataset','start','count','real','imag'])
+        writer.writeheader()
+        for name in raw.namelist():
+            if not name.endswith('.mat'):
+                continue
+            with h5py.File(io.BytesIO(raw.read(name))) as file:
+                def visit(path, item):
+                    nonlocal dataset_count, values_count, runs_count
+                    obj = dict(source_mat=name, path=path, kind='dataset' if isinstance(item, h5py.Dataset) else 'group',
+                               attributes={k: json_value(v) for k,v in item.attrs.items()})
+                    schema['objects'].append(obj)
+                    if not isinstance(item, h5py.Dataset):
+                        return
+                    data = item[...]
+                    obj['hdf5_shape'] = list(data.shape)
+                    if h5py.check_dtype(ref=item.dtype) is not None:
+                        obj['reference_targets_C_order'] = [file[ref].name if ref else None for ref in data.reshape(-1)]
+                        return
+                    if data.dtype.kind not in 'fiuV':
+                        raise ValueError('UNSUPPORTED_RAW_DTYPE:'+path)
+                    rows = list(numeric_rows(data))
+                    if restore_numeric(rows, data.shape, data.dtype).tobytes() != data.tobytes():
+                        raise ValueError('NUMERIC_ROUNDTRIP_FAILED:'+path)
+                    info = dict(source_mat=name, dataset=path, hdf5_shape=list(data.shape),
+                                matlab_shape=list(reversed(data.shape)), dtype=data.dtype.descr if data.dtype.names else data.dtype.str,
+                                elements=data.size, runs=len(rows), original_numeric_bytes_sha256=sha(data.tobytes()))
+                    if item.attrs.get('MATLAB_class') == b'char':
+                        info['decoded_utf16_text'] = np.asarray(data, dtype='<u2').tobytes().decode('utf-16le')
+                    schema['datasets'].append(info)
+                    dataset_count += 1
+                    values_count += data.size
+                    runs_count += len(rows)
+                    writer.writerows(dict(source_mat=name, dataset=path, **r) for r in rows)
+                file.visititems(visit)
+    # Read the emitted CSV back, not just the in-memory representation.
+    with raw_csv.open(encoding='utf-8', newline='') as handle:
+        reader = iter(csv.DictReader(handle))
+        current = next(reader, None)
+        for info in schema['datasets']:
+            rows = []
+            while current is not None and (current['source_mat'], current['dataset']) == (info['source_mat'], info['dataset']):
+                rows.append(current)
+                current = next(reader, None)
+            dtype = np.dtype([tuple(v) for v in info['dtype']]) if isinstance(info['dtype'], list) else np.dtype(info['dtype'])
+            restored = restore_numeric(rows, tuple(info['hdf5_shape']), dtype)
+            if sha(restored.tobytes()) != info['original_numeric_bytes_sha256']:
+                raise ValueError('EMITTED_CSV_RECONSTRUCTION_FAILED:'+info['dataset'])
+        if current is not None:
+            raise ValueError('UNEXPECTED_TRAILING_CSV_ROWS')
+    shutil.copy2(source/table_name, output/table_name)
+    report = source.joinpath('REPORT.md').read_text(encoding='utf-8')
+    prefix = ('WEB-READABLE REPLACEMENT FOR ZIP/MAT ATTACHMENTS\n'
+              'Scientific report ID/version remain unchanged; conversion only, no new audit or solve.\n'
+              'Upload this report TXT, full_evidence.txt, material_grid_metadata.txt, '
+              'material_grid_raw_rle.csv and '+table_name+'.\n'
+              'ZIP names inside the original report identify preserved originals, not required web attachments.\n'
+              'The raw CSV losslessly represents every numeric dataset, including original dataset references; '
+              'metadata lists all dimensions, structures and reference targets. No material/physics claims changed.\n\n')
+    (output/'REPORT_FOR_PRO.txt').write_text(prefix+report, encoding='utf-8')
+    sections = ['COMPLETE TEXT EVIDENCE FROM PRESERVED '+report_version.upper()+' ZIP; NO SECTIONS OMITTED\n']
+    for name in evidence.namelist():
+        data = evidence.read(name)
+        sections.append('\n===== BEGIN '+name+' | original SHA256 '+sha(data)+' =====\n'+
+                        text_content(data)+'\n===== END '+name+' =====\n')
+    (output/'full_evidence.txt').write_text(''.join(sections), encoding='utf-8')
+    for path, expected in original_hashes.items():
+        if sha(Path(path).read_bytes()) != expected:
+            raise ValueError('ORIGINAL_CHANGED:'+path)
+    receipt = dict(status='CONVERSION_COMPLETE_NOT_WEB_UPLOADED', numeric_datasets=dataset_count,
+                   numeric_elements=values_count, csv_runs=runs_count, reconstructed_numeric_bytes_exact=True,
+                   all_mat_object_references_exported=True, all_evidence_text_members=len(evidence.namelist()),
+                   original_files_unchanged=True, original_file_hashes=original_hashes, new_solver_starts=0,
+                   source_report_version=report_version, current_model='NOT_VERIFIED', delivery='NOT_SUBMITTED')
+    schema['verification'] = receipt
+    schema['attachment_hashes'] = {p.name: sha(p.read_bytes()) for p in output.iterdir() if p.is_file()}
+    (output/'material_grid_metadata.txt').write_text(json.dumps(schema, ensure_ascii=False, indent=2), encoding='utf-8')
+    (output/'conversion_receipt.json').write_text(json.dumps(receipt, indent=2), encoding='utf-8')
+    print(json.dumps(receipt, indent=2))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--source', type=Path, required=True)
+    parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--raw-archive', default='F0_material_grid_v10_raw_planes.zip')
+    parser.add_argument('--evidence-archive', default='F0_material_grid_v10_evidence.zip')
+    parser.add_argument('--report-version', default='v10')
+    parser.add_argument('--table-name', default='transverse_material_differences.csv')
+    args = parser.parse_args()
+    convert(args.source, args.output, raw_archive=args.raw_archive,
+            evidence_archive=args.evidence_archive, report_version=args.report_version,
+            table_name=args.table_name)
+
+===== read_f0_d3_worker.ps1 SHA256 38569DDC53E47E03702866128CCC40A859F419B1E3E9E459813FD40AC516C821 =====
+param([Parameter(Mandatory=$true)][string]$OutputRoot,[int]$PriorHostPid,[string]$PriorHostBirth)
+$ErrorActionPreference='Stop';$ss=$null;$r=$null
+$bootstrap=(Get-Content -LiteralPath 'E:\open\tmp\probe_existing_winrm_20260928.ps1' -TotalCount 8)-join [Environment]::NewLine
+. ([scriptblock]::Create($bootstrap));$credentialText=$null;$password=$null
+try {
+    $ss=New-PSSession -ComputerName $serverAddress -Credential $credential -SessionOption (New-PSSessionOption -ProxyAccessType NoProxyServer -OpenTimeout 10000 -OperationTimeout 20000)
+    $json=Invoke-Command -Session $ss -ArgumentList $PriorHostPid,$PriorHostBirth -ScriptBlock {
+        param($priorPid,$priorBirth)
+        $ErrorActionPreference='Stop'
+        $result=@{operation='D3_PRIMITIVE_STATUS_READ';server_utc=[datetime]::UtcNow.ToString('o');remote_host_pid=$PID;remote_host_created_utc=(Get-Process -Id $PID).StartTime.ToUniversalTime().ToString('o');query_ok=$false;error=$null;new_solver_starts=0;active_code_modified=$false;native_case_scope_record_invalid=$true;prior_host_state='IDENTITY_UNKNOWN';prior_host_gone=$null}
+        function Get-D3RemoteHostState([bool]$ProcessExists,[string]$ObservedBirth,[string]$ExpectedBirth) {
+            if(-not $ProcessExists){return 'CONFIRMED_ABSENT'}
+            $ranges=@()
+            foreach($stamp in @($ExpectedBirth,$ObservedBirth)) {
+                $match=[regex]::Match($stamp,'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.(\d{1,7}))?(?:Z|[+-]\d{2}:\d{2})$')
+                if(-not $match.Success){return 'IDENTITY_UNKNOWN'}
+                try{$date=[DateTimeOffset]::Parse($stamp,[Globalization.CultureInfo]::InvariantCulture,[Globalization.DateTimeStyles]::None)}catch{return 'IDENTITY_UNKNOWN'}
+                $quantum=[long][math]::Pow(10,7-$match.Groups[1].Value.Length)
+                $start=$date.UtcDateTime.Ticks
+                $ranges+=@{start=$start;end=$start+$quantum-1;quantum=$quantum}
+            }
+            $expected=$ranges[0];$observed=$ranges[1]
+            if($expected.quantum -eq 1 -and $observed.quantum -eq 1 -and $expected.start -eq $observed.start){return 'SAME_IDENTITY'}
+            # Only a later, disjoint birth interval proves PID reuse; overlapping precision remains unknown.
+            if($observed.start -gt $expected.end){return 'PID_REUSED_CONFIRMED'}
+            return 'IDENTITY_UNKNOWN'
+        }
+        function Read-SharedText([string]$Path,[int]$Limit) {
+            $stream=[IO.File]::Open($Path,[IO.FileMode]::Open,[IO.FileAccess]::Read,([IO.FileShare]::ReadWrite -bor [IO.FileShare]::Delete))
+            $reader=$null
+            try{$reader=[IO.StreamReader]::new($stream);$buf=New-Object char[] $Limit;$n=$reader.Read($buf,0,$Limit);return [string]::new($buf,0,$n)}finally{if($reader){$reader.Dispose()}else{$stream.Dispose()}}
+        }
+        try {
+            if($priorPid -le 0 -or [string]::IsNullOrWhiteSpace($priorBirth)){throw 'D3_PRIOR_REMOTE_HOST_IDENTITY_UNKNOWN_NO_NEXT_READ'}
+            $prior=Get-CimInstance Win32_Process -Filter ('ProcessId='+[int]$priorPid) -OperationTimeoutSec 5
+            $observedBirth=$null
+            if($prior -and $prior.CreationDate){$observedBirth=$prior.CreationDate.ToUniversalTime().ToString('o')}
+            $priorState=Get-D3RemoteHostState ([bool]$prior) $observedBirth $priorBirth
+            $result.prior_host_state=$priorState
+            $result.prior_host_observed_birth_utc=$observedBirth
+            if($priorState -eq 'SAME_IDENTITY'){$result.prior_host_gone=$false}
+            if($priorState -notin @('CONFIRMED_ABSENT','PID_REUSED_CONFIRMED')){throw ('D3_PRIOR_REMOTE_HOST_'+$priorState+'_NO_NEXT_READ')}
+            $result.prior_host_gone=$true
+            $root='D:\yyz\optical_size_return_20260928\A2\F0_D3_AUTOSHUTOFF_TEST\run01'
+            $inputFsp=Join-Path $root 'F0_D3_AUTOSHUTOFF_1E8_input.fsp'
+            $result.runner=(Read-SharedText (Join-Path $root 'runner_status.json') 8192)|ConvertFrom-Json
+            $task=Get-ScheduledTask -TaskName 'YYZ_OPT_SIZE_F0_D3_20261001_01'
+            $result.task_state=[string]$task.State;$result.task_result=(Get-ScheduledTaskInfo -TaskName $task.TaskName).LastTaskResult
+            $engines=@(Get-CimInstance Win32_Process -Filter "Name='fdtd-engine-msmpi.exe'" -OperationTimeoutSec 5)
+            $exact=@();foreach($engine in $engines) {
+                if($engine.CommandLine -and $engine.CommandLine -match ([regex]::Escape($inputFsp)+'(?=["\s]|$)')) {
+                    $exact+=@{pid=[int]$engine.ProcessId;parent_pid=[int]$engine.ParentProcessId;created_utc=$engine.CreationDate.ToUniversalTime().ToString('o');cpu_seconds=([double]$engine.KernelModeTime+[double]$engine.UserModeTime)/1e7;engine_memory_gib=[double]$engine.WorkingSetSize/1GB;exact_input_argument_matched=$true}
+                }
+            }
+            $result.exact_d3_engine_count=$exact.Count;$result.exact_d3_engines=$exact;$result.other_fdtd_engine_count=$engines.Count-$exact.Count
+            $log=Join-Path $root 'F0_D3_AUTOSHUTOFF_1E8_input_p0.log';$result.latest_progress=$null
+            if(Test-Path -LiteralPath $log){$text=Read-SharedText $log 65536;foreach($line in ($text -split '\r?\n')){if($line -match '^\s*\d+(\.\d+)?% complete\.'){ $result.latest_progress=[string]$line }};$result.log_bytes=(Get-Item -LiteralPath $log).Length}
+            $result.stderr_bytes=(Get-Item -LiteralPath (Join-Path $root 'mpi_stderr.log')).Length
+            $result.query_ok=$true
+        } catch {$result.error=$_.Exception.Message}
+        $json=$result|ConvertTo-Json -Depth 6 -Compress
+        if($json.Length -gt 8192){throw 'D3_READER_PRIMITIVE_RESPONSE_EXCEEDS_LIMIT'}
+        $json
+    }
+    if($json -isnot [string] -or $json.Length -gt 8192){throw 'D3_READER_NON_PRIMITIVE_RESPONSE'}
+    $r=$json|ConvertFrom-Json
+    [IO.File]::WriteAllText((Join-Path $OutputRoot 'receipt.json'),$json,[Text.UTF8Encoding]::new($false))
+} catch {
+    @{client_utc=[datetime]::UtcNow.ToString('o');error=$_.Exception.Message;remote_host_identity_unknown=$true;automatic_retry=$false;new_solver_starts=0}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $OutputRoot 'error.json') -Encoding UTF8
+    exit 1
+} finally {
+    if($ss){Remove-PSSession $ss}
+    @{client_utc=[datetime]::UtcNow.ToString('o');local_session_closed=($null -eq $ss -or $ss.State.ToString() -eq 'Closed');remote_host_pid=if($r){$r.remote_host_pid}else{$null};remote_host_created_utc=if($r){$r.remote_host_created_utc}else{$null};remote_exit_independently_verified=$false}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $OutputRoot 'session_closed.json') -Encoding UTF8
+}
+
+===== test_d3_remote_host_identity.ps1 SHA256 1EC1A8928F593C7109B86EF359E84AA6FDA38D22A5C8B711BE4A58F54FEDA06C =====
+$ErrorActionPreference = 'Stop'
+$tokens = $null; $parseErrors = $null
+$ast = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot 'read_f0_d3_worker.ps1'), [ref]$tokens, [ref]$parseErrors)
+if ($parseErrors.Count) { throw 'Production worker parse failed' }
+$fn = $ast.Find({param($n) $n -is [System.Management.Automation.Language.FunctionDefinitionAst] -and $n.Name -eq 'Get-D3RemoteHostState'}, $true)
+if (-not $fn) { throw 'D3_HOST_IDENTITY_REGRESSION: production worker lacks conservative identity classification' }
+. ([scriptblock]::Create($fn.Extent.Text))
+$cases = @(
+    @{name='PID absent'; exists=$false; observed=$null; expected='2026-10-01T06:33:30.1062139Z'; want='CONFIRMED_ABSENT'},
+    @{name='same exact timestamp'; exists=$true; observed='2026-10-01T06:33:30.1062139Z'; expected='2026-10-01T06:33:30.1062139Z'; want='SAME_IDENTITY'},
+    @{name='equivalent timezone'; exists=$true; observed='2026-10-01T14:33:30.1062139+08:00'; expected='2026-10-01T06:33:30.1062139Z'; want='SAME_IDENTITY'},
+    @{name='coarse precision overlaps'; exists=$true; observed='2026-10-01T06:33:30.1062139Z'; expected='2026-10-01T06:33:30.106Z'; want='IDENTITY_UNKNOWN'},
+    @{name='coarse observed overlaps'; exists=$true; observed='2026-10-01T06:33:30.106Z'; expected='2026-10-01T06:33:30.1062139Z'; want='IDENTITY_UNKNOWN'},
+    @{name='reliably later birth'; exists=$true; observed='2026-10-01T06:35:00.0000000Z'; expected='2026-10-01T06:33:30.1062139Z'; want='PID_REUSED_CONFIRMED'},
+    @{name='earlier birth contradictory'; exists=$true; observed='2026-10-01T06:30:00.0000000Z'; expected='2026-10-01T06:33:30.1062139Z'; want='IDENTITY_UNKNOWN'},
+    @{name='missing observed'; exists=$true; observed=$null; expected='2026-10-01T06:33:30.1062139Z'; want='IDENTITY_UNKNOWN'},
+    @{name='malformed expected'; exists=$true; observed='2026-10-01T06:33:30.1062139Z'; expected='invalid'; want='IDENTITY_UNKNOWN'},
+    @{name='no timezone'; exists=$true; observed='2026-10-01T06:33:30.1062139'; expected='2026-10-01T06:33:30.1062139Z'; want='IDENTITY_UNKNOWN'},
+    @{name='invalid calendar date'; exists=$true; observed='2026-10-99T06:33:30.1062139Z'; expected='2026-10-01T06:33:30.1062139Z'; want='IDENTITY_UNKNOWN'},
+    @{name='coarse later interval disjoint'; exists=$true; observed='2026-10-01T06:34:00Z'; expected='2026-10-01T06:33:30.106Z'; want='PID_REUSED_CONFIRMED'}
+)
+foreach ($case in $cases) {
+    $actual = Get-D3RemoteHostState $case.exists $case.observed $case.expected
+    if ($actual -ne $case.want) { throw ('FAIL {0}: expected {1}; actual {2}' -f $case.name,$case.want,$actual) }
+}
+$text = [IO.File]::ReadAllText((Join-Path $PSScriptRoot 'read_f0_d3_worker.ps1'))
+if (-not $text.Contains("prior_host_state='IDENTITY_UNKNOWN';prior_host_gone=" + '$null')) { throw 'Default host outcome must preserve unknown' }
+if (-not $text.Contains('$priorState -notin @(''CONFIRMED_ABSENT'',''PID_REUSED_CONFIRMED'')')) { throw 'Non-cleared host must block status query' }
+Write-Output ('D3_REMOTE_HOST_IDENTITY_PASS {0} cases plus 2 production guards; 0 remote sessions' -f $cases.Count)
+
+===== package_d3_v24.py SHA256 65CB91D0ECE31DD213716497917D81E0EB20BA76ACB3BF31DCF9A067DDFE873F =====
+"""Publishable allowlisted D3 closeout evidence and lossless readable numeric parts."""
+import csv
+import hashlib
+import json
+import re
+import shutil
+import sys
+from pathlib import Path
+import h5py
+import numpy as np
+from web_readable_evidence import numeric_rows, restore_numeric, json_value, sha
+
+ROOT = Path(r'E:\open\optical_size_return_20260928')
+CASE = ROOT/'evidence/a2_preflight_20260930/F0_D3_autoshutoff_20261001'
+CLOSE = CASE/'closeout_review06_01'
+OUT = ROOT/'review_exchange/OPT-SIZE-A2-PROGRESS-20260930-01/v24'
+
+
+def load(path):
+    return json.loads(path.read_text(encoding='utf-8-sig'))
+
+
+def convert_d3():
+    schema = dict(format='MAT_NUMERIC_RLE_CSV_V1', flatten_order='C in original HDF5 dimensions',
+                  matlab_dimensions='Reverse HDF5 axes; retain singleton dimensions',
+                  precision='17 significant digits, bit-exact reconstruction including signed zero',
+                  no_interpolation=True, no_clipping=True, datasets=[], objects=[], original_mats=[])
+    handles = {}; writers = {}; counts = {}
+    try:
+        for source in sorted((CLOSE/'export_raw01').glob('*.mat')):
+            schema['original_mats'].append(dict(name=source.name, bytes=source.stat().st_size, sha256=sha(source.read_bytes())))
+            with h5py.File(source) as file:
+                def visit(path, item):
+                    obj = dict(source_mat=source.name, path=path, kind='dataset' if isinstance(item,h5py.Dataset) else 'group', attributes={k:json_value(v) for k,v in item.attrs.items()})
+                    schema['objects'].append(obj)
+                    if not isinstance(item,h5py.Dataset):
+                        return
+                    data = item[...]; obj['hdf5_shape'] = list(data.shape)
+                    if h5py.check_dtype(ref=item.dtype) is not None:
+                        obj['reference_targets_C_order'] = [file[ref].name if ref else None for ref in data.reshape(-1)]
+                        return
+                    if data.dtype.kind not in 'fiuV':
+                        raise ValueError('Unsupported original numeric type')
+                    if source.name.endswith('coordinates.mat'):
+                        group = 'coordinates_and_Yee_offsets'
+                    elif source.name.endswith('information.mat'):
+                        group = 'saved_status_and_engine_grids'
+                    elif path.startswith('#refs#'):
+                        group = 'index_detail_object_numeric_targets'
+                    elif path in ('Ex','Ey','Ez'):
+                        group = 'control_field_'+path
+                    elif re.match(r'E[xyz]_w[12]$',path):
+                        group = 'witness_'+path[-1]+'_fields'
+                    elif path.startswith('index_') or path.startswith('nk_'):
+                        group = 'sampled_index_and_fitted_materials'
+                    else:
+                        group = 'frequency_flux_planes_source'
+                    name = 'D3_raw_'+group+'.csv'
+                    if name not in handles:
+                        handles[name] = (OUT/name).open('x', encoding='ascii', newline='')
+                        writers[name] = csv.DictWriter(handles[name], fieldnames=['source_mat','dataset','start','count','real','imag'])
+                        writers[name].writeheader(); counts[name] = 0
+                    rows = list(numeric_rows(data))
+                    if restore_numeric(rows,data.shape,data.dtype).tobytes() != data.tobytes():
+                        raise ValueError('In-memory numeric roundtrip failed')
+                    info = dict(source_mat=source.name, dataset=path, csv_part=name, hdf5_shape=list(data.shape), matlab_shape=list(reversed(data.shape)), dtype=data.dtype.descr if data.dtype.names else data.dtype.str, elements=data.size, runs=len(rows), original_numeric_bytes_sha256=sha(data.tobytes()))
+                    if item.attrs.get('MATLAB_class') == b'char':
+                        info['decoded_utf16_text'] = np.asarray(data,dtype='<u2').tobytes().decode('utf-16le')
+                    schema['datasets'].append(info)
+                    writers[name].writerows(dict(source_mat=source.name,dataset=path,**r) for r in rows)
+                    counts[name] += len(rows)
+                file.visititems(visit)
+    finally:
+        for handle in handles.values():
+            handle.close()
+    for name in handles:
+        infos = [i for i in schema['datasets'] if i['csv_part'] == name]
+        with (OUT/name).open(encoding='ascii',newline='') as handle:
+            reader=iter(csv.DictReader(handle)); current=next(reader,None)
+            for info in infos:
+                rows=[]
+                while current and (current['source_mat'],current['dataset']) == (info['source_mat'],info['dataset']):
+                    rows.append(current); current=next(reader,None)
+                dtype=np.dtype([tuple(v) for v in info['dtype']]) if isinstance(info['dtype'],list) else np.dtype(info['dtype'])
+                if sha(restore_numeric(rows,tuple(info['hdf5_shape']),dtype).tobytes()) != info['original_numeric_bytes_sha256']:
+                    raise ValueError('Emitted CSV bit-exact reconstruction failed')
+            if current:
+                raise ValueError('Trailing numeric CSV rows')
+    schema['verification']=dict(numeric_datasets=len(schema['datasets']), numeric_elements=sum(i['elements'] for i in schema['datasets']), csv_rows=sum(counts.values()), csv_parts=len(handles), emitted_csv_reconstructed_byte_exact=True, all_object_references_exported=True, source_mats_unchanged=True)
+    for source in schema['original_mats']:
+        if sha((CLOSE/'export_raw01'/source['name']).read_bytes()) != source['sha256']:
+            raise ValueError('Original MAT changed')
+    (OUT/'D3_raw_metadata.txt').write_text(json.dumps(schema,indent=2),encoding='ascii')
+    return schema['verification']
+
+
+def main():
+    finalize = '--finalize-existing' in sys.argv
+    if not finalize:
+        OUT.mkdir()
+    science=load(CLOSE/'analysis01/comparison_summary.json')
+    freeze=load(CLOSE/'freeze01/receipt.json'); export=load(CLOSE/'export_raw01/receipt.json')
+    raw=load(OUT/'D3_raw_metadata.txt')['verification'] if finalize else convert_d3()
+    for path in sorted((CLOSE/'analysis01').iterdir()):
+        shutil.copyfile(path,OUT/path.name)
+    for folder,names in ((CLOSE/'freeze01',['receipt.json','current_no_writer_receipt.json','p0.redacted.txt','runner_status.original.json','session_closed.json','worker_exit.json']),
+                         (CLOSE/'export_raw01',['receipt.json','loaded_result_audit.txt','export_status.txt','transfer_receipt.json','session_closed.json','worker_exit.json']),
+                         (CLOSE/'export01',['export_f0_d3_saved_no_solve.lsf','preparation_receipt.json'])):
+        for name in names:
+            shutil.copyfile(folder/name,OUT/(folder.name+'_'+name))
+    codes=['d3_closeout_guard.ps1','test_d3_closeout_guard.ps1','freeze_d3_worker06.ps1','freeze_d3_closeout06.ps1','test_d3_protected_freeze06.ps1','prepare_d3_export06.py','export_d3_worker06.ps1','export_d3_closeout06.ps1','test_d3_native_exit06.ps1','compare_f0_d3.py','test_compare_f0_d3.py','compare_f0_d2.py','compare_f0_d1.py','process_f0_raw.py','flat_yee_absorption.py','web_readable_evidence.py','read_f0_d3_worker.ps1','test_d3_remote_host_identity.ps1','package_d3_v24.py']
+    sections=[]
+    for name in codes:
+        p=ROOT/'scripts'/name
+        sections.append('\n===== '+name+' SHA256 '+sha(p.read_bytes())+' =====\n'+p.read_text(encoding='utf-8-sig'))
+    (OUT/'offline_and_closeout_code.txt').write_text(''.join(sections),encoding='ascii')
+    tests=dict(scope_tests=14, protected_copy_tests=4, freeze_parse_checks=3, freeze_static_guards=9,
+               exporter_tests=3, actual_native_exit_tests=2, export_parse_checks=3, export_static_guards=6,
+               D3_scientific_comparison_tests=8, offline_analysis_exit=0,
+               original_native_scope_cache_not_used=True, non_solving_export_count=1, protected_freeze_count=1)
+    (OUT/'focused_test_evidence.json').write_text(json.dumps(tests,indent=2),encoding='ascii')
+    summary=science['results']['D3']; integral=science['independent_four_material_integral']
+    report=f'''# OPT-SIZE-A2-PROGRESS-20260930-01 v24
+
+## Sole D3 completed: time-sensitive flux and closure pass; R/T and Fe2O3 still fail
+
+This is actual completion of the already-approved sole D3, followed by the single conditional non-solving closeout explicitly permitted in OPT-SIZE-PRO-D3-V23-LAUNCH-CLOSEOUT-20261001-06. No further solve, retry, modified physical input, relaxed gate, or model change was performed. Budget remains MAIN1/6 DIAGNOSTIC4/4 RECOVERY0/2 TOTAL5/12; the diagnostic budget is exhausted. This submission requests review and, only if useful, a uniquely scoped existing-data offline next step, NOT a new solver authorization.
+
+## Actual execution and protected identity
+
+Run F0_D3_AUTOSHUTOFF_1E8_20261001_01, only D2 auto shutoff minimum 1e-4 -> 1e-8; maximum2900fs,1MPIx1thread and other873 properties/15 objects unchanged. Frozen pre-solve input560994bytes SHA61B24C378622FDD91E0F4D02F0E80F47BF3103E4E02AD8E45FBB0F31491D16E0. Full log normal completion and Finished collecting data verified: {freeze['iterations']} iterations, {freeze['physical_time_seconds']*1e15:.7g}fs, finalAutoShutoff {freeze['final_autoshutoff']:.7g}; it actually met1e-8 before2900fs. This exceeds D2's170.989fs. It is numerical termination, not overall scientific acceptance.
+
+Actual MPIexit0; original runner FAILED_STOP_NO_RETRY/-1, taskReady/LastTaskResult1 and D3_NO_WRITER_GATE_NOT_PROVEN_NO_FREEZE remain unchanged. Original $input scope defect and476-member native history/cache remain preserved and INVALID as case identity/memory/no-writer evidence. Independent scope used explicit nonempty inputFsp/exactrun root and trusted runner/MPI/engine PID+100ns birth+name; fresh empty cache, recursive descendants, known orphan50604 and unknown global MPI/CAD/smpd blocked. It used no D2 external-PID exceptions. Actual fresh check found0members/0blocked, not a reused native476 result. Full original failure and independent receipts are separate.
+
+One FileShare.Read continuous source handle performed hash+CreateNewcopy; snapshot marked readonly. Source/snapshot{freeze['freeze']['bytes']}bytes SHA{freeze['freeze']['source_sha256']}, actual source save serverUTC{freeze['freeze']['source_last_write_utc']}. Freeze serverUTC{freeze['server_utc']} to{freeze['server_ended_utc']}; client times retained in local receipts, never clock-adjusted. Full unredacted original p0 retained on server; original SHA{freeze['full_log_sha256']}. p0.redacted.txt removes only license-route lines. No original FSP/runner/task modification.
+
+One native tracked CAD Process.Start loaded ONLY readonly snapshot and executed saved-data-only LSF. Actual CADexit{export['cad_exit']}, stderr{export['stderr_bytes']}, complete marker/layout0/status2/all8monitors91points. XML absent, xml_errors=null, NOT inventedXML0. All3fresh MATs and two small audit files transferred and hash/size matched. Source/snapshot hashes unchanged before/after. No solver engine after export; no newsolve. Native Process0/7 tests verify actual exit retention, avoiding D2's old Start-Process getter problem. Existing nativetracked primitive functions were reused without the old classifier.
+
+Remote lifecycle: prior reader55268 was actually absent at freeze, freezehost45116 absent at export. Last exporthost12748 locally closed but NOT independently verified gone; no new remote session was created just to chase this proof. Remaining work is offline. Old rich-object FDTD monitors permanently retired. Bounded worker returns <=8192-character primitive JSON; immediate CAD resource check is not periodic monitoring. No kill, auth/permission/policy/clock change.
+
+## Full scientific gates, unchanged
+
+All91 frequencies, both witnesses eachEx/Ey/Ez: six maxima0.0, pass1e-6. Actualfreq/coordinates/Yeeoffsets/dt/sampledindex/materialfit/plane mapping vsD2/D1/old4rank passes without interpolation. dt3.3973566775471255e-17s, sampledgrid451/261/545; p0 engine452/262/560 remains a different preserved counting convention. At525nm/-155nm D3 center/witness1/witness2 Ex=-0.16833494127076593+1.2537125677285597i; D2=-0.16966355313677955+1.2532229062299705i. Complete12-row complex table includes D3/D2/D1/old4rank.
+
+|Metric|D2 weighted / max|D3 weighted / max|Frozen gate|D3|
+|---|---|---|---|---|
+|R vs actual-fit TMM|.017801553381861117 / .07482454347573314|{summary['R_vs_TMM']['weighted_absolute_difference']:.17g} / {summary['R_vs_TMM']['max_absolute_difference']:.17g}|.002 / .01|FAIL|
+|T vs actual-fit TMM|.01120488878777557 / .02883346288798211|{summary['T_vs_TMM']['weighted_absolute_difference']:.17g} / {summary['T_vs_TMM']['max_absolute_difference']:.17g}|.002 / .01|FAIL|
+|corrected direct/net|.0022904161290306538 / .005879774134613935|{summary['corrected_direct_vs_net']['weighted_absolute_difference']:.17g} / {summary['corrected_direct_vs_net']['max_absolute_difference']:.17g}|.002 / .005|PASS|
+|independent material closure|.0026817355967726363 / .02381349262776411|{integral['weighted_abs_component_closure']:.17g} / {integral['max_component_closure']:.17g}|.005 / .02|PASS|
+|Fe2O3 vs actual-fit TMM|.0060703613668729815 / .04449714149223799|{integral['flat_TMM_weighted_abs_errors']['A_Fe2O3']:.17g} / {integral['flat_TMM_max_errors']['A_Fe2O3']:.17g}|.002 / .01|FAIL|
+
+Full91point Rraw/Traw/Pbottom/Ptop/Pin/1-Rraw-Traw/interference/direct/net/actual-fitTMM, material spectra and baseline differences are supplied. Original raw values are not rescaled/clipped or deleted. Independent4material integration used D3's OWN fresh fields/index AFTER uniformity/finite/coordinate/f/materialownership prerequisites passed; closure evaluated only AFTER integration, not a prerequisite or normalization. No newindex*oldfield, residual add-back, or three-line->3D claim. ITOweighted.0005344937290119546/max.0028322009450201663 passes; PDMS/water numbers remain in full summary.
+
+Longer decay substantially reduces direct/net and closure mismatch and passes those two old gates. R/T remain well outside the old thresholds; Fe2O3 is slightly worse, not improved universally. This bounds a temporal sensitivity of particular errors, not a unique cause of all discrepancies or proof of paired time/grid/PML convergence. Overall NOT_QUALIFIED_PENDING_ALL_GATES_AND_REVIEW; rootNARROWED_BUT_NOT_UNIQUE; pairedconvergenceNOT_YET_TESTED. D2's scientificFAIL remains.
+
+## Readable evidence and requested decision
+
+All3NEW D3MAT numeric datasets, complex real+imag, coordinates/frequencies/Yeeoffsets/materialfit and every HDF5 object reference target are emitted as meaningful standalone CSV parts. D3_raw_metadata.txt defines each dataset dimensions/types/part and original numeric bytesSHA. Emitted CSVs were READ BACK and reconstructed bit-exact including signedzero: {raw['numeric_datasets']}datasets/{raw['numeric_elements']}elements/{raw['csv_rows']}rows/{raw['csv_parts']}parts. This proves exported numeric representation, not whole original FSP/MAT containers, nor Pro reading. Original MAT size/SHA identities are retained; binaries are not the only readable evidence. Already-reviewed D2/D1/4rank raw are not re-uploaded/reconverted; their original hashes and full comparative tables are supplied for correspondence with your previous v20 raw review.
+
+INDEX.md/manifest.json give complete file list, bytes andSHA. offline_and_closeout_code.txt contains full scoped helper/tests, production controls, reused scientific functions and this packaging source. Only allowlisted project files are public; no passwords/tokens/keys/private account IDs/license routes/otherproject data. Public delivery does not claim you have read or independently recalculated it.
+
+Please adjudicate the actual termination, separate0/-1/1 codes, protectedidentity/CAD0withabsentXML, and the split scientific outcome. State files/rows/raw datasets actually read. Does D3 now narrow the earlier closure/direct-net residual to a time-sensitive contribution while leaving the R/T/Fe branch unresolved? Give only a specific existing-data offline next step if one adds value; otherwise provide a bounded closeout conclusion. No extra solve, mesh/PML/time/padding change or safety/budget change is authorized. Any such newproposal must go to the user/Dudu for evaluation.
+'''
+    (OUT/'REPORT.md').write_text(report,encoding='ascii')
+    names=sorted(p.name for p in OUT.iterdir() if p.is_file())
+    (OUT/'INDEX.md').write_text('# v24 D3 Completion Evidence\n\nRead REPORT.md first, then comparison_summary.json and91-point tables.\nFor fresh raw reconstruction, use D3_raw_metadata.txt and every D3_raw_*.csv below.\nNo nativeMAT/ZIP/LFS support is required.\n\n'+'\n'.join('- ['+n+']('+n+')' for n in names)+'\n',encoding='ascii')
+    rows=[]
+    forbidden=[r'gh[pousr]_[A-Za-z0-9]{20,}',r'github_pat_[A-Za-z0-9_]{20,}','-----'+'BEGIN .*PRIVATE KEY'+'-----',r'\b\d+@(?:\d{1,3}\.){3}\d{1,3}\b',r'101\.6\.33\.147',r'S-1-5-21-\d+',r'(?:password|token|secret)\s*[:=]\s*[\"\'][^\"\']{8,}[\"\']']
+    for p in sorted(OUT.iterdir()):
+        content=p.read_bytes();text=content.decode('utf-8-sig')
+        if any(re.search(pattern,text,re.I) for pattern in forbidden):
+            raise ValueError('PUBLIC_SECRET_SCREEN_FAILED:'+p.name)
+        if len(content)>24_000_000:
+            raise ValueError('Single readable file too large:'+p.name)
+        rows.append(dict(path=p.name,bytes=len(content),sha256=sha(content)))
+    manifest=dict(project='OPTICAL_SIZE_RETURN_STUDY',version='v24',files=rows,conversion=raw,screen_matches=0,public_allowlist_reviewed=True,new_solver_starts=0,science='NOT_QUALIFIED',budget=dict(MAIN=1,DIAGNOSTIC=4,RECOVERY=0,TOTAL=5))
+    (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2),encoding='ascii')
+    print(json.dumps(dict(files=len(rows)+1,total_bytes=sum(r['bytes'] for r in rows),raw=raw,screen_matches=0)))
+
+
+if __name__=='__main__':
+    main()

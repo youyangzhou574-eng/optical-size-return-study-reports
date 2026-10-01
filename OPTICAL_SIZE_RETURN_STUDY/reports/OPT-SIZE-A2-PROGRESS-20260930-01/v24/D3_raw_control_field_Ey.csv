@@ -1,0 +1,11 @@
+source_mat,dataset,start,count,real,imag
+F0_D3_raw_Yee_and_flux.mat,Ey,0,2850,0,0
+F0_D3_raw_Yee_and_flux.mat,Ey,2850,1425,-0,0
+F0_D3_raw_Yee_and_flux.mat,Ey,4275,1900,0,-0
+F0_D3_raw_Yee_and_flux.mat,Ey,6175,4275,0,0
+F0_D3_raw_Yee_and_flux.mat,Ey,10450,2375,-0,0
+F0_D3_raw_Yee_and_flux.mat,Ey,12825,3325,0,-0
+F0_D3_raw_Yee_and_flux.mat,Ey,16150,8075,0,0
+F0_D3_raw_Yee_and_flux.mat,Ey,24225,5225,-0,0
+F0_D3_raw_Yee_and_flux.mat,Ey,29450,7125,0,-0
+F0_D3_raw_Yee_and_flux.mat,Ey,36575,6650,0,0

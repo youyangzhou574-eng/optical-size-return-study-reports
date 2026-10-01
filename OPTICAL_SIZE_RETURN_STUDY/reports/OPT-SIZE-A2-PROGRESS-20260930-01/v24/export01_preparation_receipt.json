@@ -1,0 +1,9 @@
+{
+  "operation": "D3_SAVED_DATA_EXPORT_PREPARE06",
+  "passed": true,
+  "tests": 3,
+  "source_sha256": "9D0EB7AD0CB782E85CCBDFE8DF373CD3C81344DEBAC5AC4EBFD973C51CEDCD12",
+  "generated_sha256": "CFFB3E12F0E0037C0B4E4CBE3654C88B59841FB92EA7D5AC0A45B3AF12043108",
+  "remote_root": "D:/yyz/optical_size_return_20260928/A2/F0_D3_AUTOSHUTOFF_TEST/result_audit/closeout_review06_01",
+  "new_solver_starts": 0
+}

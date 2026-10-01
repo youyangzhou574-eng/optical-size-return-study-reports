@@ -1,0 +1,17 @@
+﻿{
+    "Passed":  true,
+    "Members":  [
+
+                ],
+    "Blocked":  [
+
+                ],
+    "TrustedStartIdentityCount":  3,
+    "ImportedNativeCache":  false,
+    "ExternalPidExclusions":  [
+
+                              ],
+    "RunRoot":  "D:\\yyz\\optical_size_return_20260928\\A2\\F0_D3_AUTOSHUTOFF_TEST\\run01",
+    "InputFsp":  "D:\\yyz\\optical_size_return_20260928\\A2\\F0_D3_AUTOSHUTOFF_TEST\\run01\\F0_D3_AUTOSHUTOFF_1E8_input.fsp",
+    "server_utc":  "2026-10-01T07:50:29.2103792Z"
+}

@@ -1,0 +1,3920 @@
+{
+  "format": "MAT_NUMERIC_RLE_CSV_V1",
+  "flatten_order": "C in original HDF5 dimensions",
+  "matlab_dimensions": "Reverse HDF5 axes; retain singleton dimensions",
+  "precision": "17 significant digits, bit-exact reconstruction including signed zero",
+  "no_interpolation": true,
+  "no_clipping": true,
+  "datasets": [
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "delta_x",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "E972F4B445C8285197ECDC3F8831870D6EEC67C062060C2ACA46408DD58AEFCA"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "delta_x_w1",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "B5F65496BFA8A0381578B6FC95CB4438DBDC13655D4253876374F0B4B3D3D4CA"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "delta_x_w2",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "B5F65496BFA8A0381578B6FC95CB4438DBDC13655D4253876374F0B4B3D3D4CA"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "delta_y",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "B828EA6C3078112418726F2679DAD317EC03A281BBA063D589DDB66D1CFC3F49"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "delta_y_w1",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "B132D85E670FA668D06E77CF9962EAAC205BF94DE30A440361E32F84F18B0E16"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "delta_y_w2",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "069270B446F8961AD7F07D15A2E43DEF78516BA111A49F8050C5D861AE6808CE"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "delta_z_w1",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 151,
+      "original_numeric_bytes_sha256": "CB0B8E5FB5508D86A3E667832F26C31D86B22D097B568431A29FF8F01B462EB9"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "delta_z_w2",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 151,
+      "original_numeric_bytes_sha256": "CB0B8E5FB5508D86A3E667832F26C31D86B22D097B568431A29FF8F01B462EB9"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "index_x_coordinates",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "9362BC648FB422DBA99DE7108111907348E97E636619BCC597DB7FCF59109F58"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "index_x_offset",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "1EC958FC6323E40B726CE15AF90A75109D852938A3058FFB876F89C9D123827D"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "index_y_coordinates",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "7D6B51CBEF2B176FF14518A2FC997F3723B0B3F9B8C69635A26224A0AD00EEDE"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "index_y_offset",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "57C952E7266F757A3D002DCE46396C1FD5446693EB117542FF3877AC94AB4423"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "index_z_coordinates",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 475,
+      "original_numeric_bytes_sha256": "F747CF20E41B84204B7932341B0E835A1489ADF59DE936B1E654C59153B5E38F"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "index_z_offset",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 475,
+      "original_numeric_bytes_sha256": "5CDE3F40802B9CBDE6CF6719FE5FF7D60D32581978F39D1CC6DBB4189ED8B26F"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "x",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "9362BC648FB422DBA99DE7108111907348E97E636619BCC597DB7FCF59109F58"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "x_w1",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "85351B931F3D81D41DE7AC292048BD318F28142C6983AD653A5771D3FC1770B7"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "x_w2",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "C706E695DF022AE3AC20DBFB416ED1A13F41B04FF13CBA6105908B0B51EB91ED"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "y",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "7D6B51CBEF2B176FF14518A2FC997F3723B0B3F9B8C69635A26224A0AD00EEDE"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "y_w1",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "D54267C9AFF563265EBC7327E5A2065B2F97369034976372C3F500CE22590410"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "y_w2",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "D3C3C146CB59AEF65FD4347B18168E7878B4DBFAF0D5E7F214BE48426FE4DEAF"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "z_w1",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 475,
+      "original_numeric_bytes_sha256": "F747CF20E41B84204B7932341B0E835A1489ADF59DE936B1E654C59153B5E38F"
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "dataset": "z_w2",
+      "csv_part": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 475,
+      "original_numeric_bytes_sha256": "F747CF20E41B84204B7932341B0E835A1489ADF59DE936B1E654C59153B5E38F"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#a#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "14F825B2BBC32DD8D196367FA8776873069C12A8954D8DA7513AA7704DDD09EB",
+      "decoded_utf16_text": "x"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#b#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        8,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        8
+      ],
+      "dtype": "<u2",
+      "elements": 8,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "2AD09758028BD32105612C2C6749974087A173B0B8F306D8FC957AAF33017954",
+      "decoded_utf16_text": "x_offset"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#c#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "14F825B2BBC32DD8D196367FA8776873069C12A8954D8DA7513AA7704DDD09EB",
+      "decoded_utf16_text": "x"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#d#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        8,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        8
+      ],
+      "dtype": "<u2",
+      "elements": 8,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "2AD09758028BD32105612C2C6749974087A173B0B8F306D8FC957AAF33017954",
+      "decoded_utf16_text": "x_offset"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#db#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "8E5C5126FA02A8B231438ADCB5397294BEED749152F68E7275E2B69405EDDFDE"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#e#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "6A75DA5DA0CD28492372C3DDE802E4BBE80564F01926CC1AF00066623653770C",
+      "decoded_utf16_text": "y"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#eb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 819,
+      "original_numeric_bytes_sha256": "DC7BE83505CC6491B987B62A44762009990CCE80B36DCF0AFE3F7FD0E66841B0"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#f#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        8,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        8
+      ],
+      "dtype": "<u2",
+      "elements": 8,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "543C0B3C22485A8982C2589182BF0AD897468A1CDB3DE97E147519A3917CC7AA",
+      "decoded_utf16_text": "y_offset"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#fb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 819,
+      "original_numeric_bytes_sha256": "DC7BE83505CC6491B987B62A44762009990CCE80B36DCF0AFE3F7FD0E66841B0"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#g#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "6A75DA5DA0CD28492372C3DDE802E4BBE80564F01926CC1AF00066623653770C",
+      "decoded_utf16_text": "y"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#gb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 637,
+      "original_numeric_bytes_sha256": "67E0114BF64C1106E91A6E737ADAB7C84EEB81F4A787889BD29FEF9AF1ED1969"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#h#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        8,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        8
+      ],
+      "dtype": "<u2",
+      "elements": 8,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "543C0B3C22485A8982C2589182BF0AD897468A1CDB3DE97E147519A3917CC7AA",
+      "decoded_utf16_text": "y_offset"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#hb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "234EA6D07A9CEC008910C67D48FA1816AC73E87211B2F22A86608D5CED3A0957"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#i#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "C03AD57F5B1B1BDDF59DDB5C973B459F432291EDAD374FE9D051C59D102D8742",
+      "decoded_utf16_text": "z"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#ib#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "9362BC648FB422DBA99DE7108111907348E97E636619BCC597DB7FCF59109F58"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#j#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        8,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        8
+      ],
+      "dtype": "<u2",
+      "elements": 8,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "05A0EF5890FD9414758FC310C95FFAC97D41B3DE3CEC78FA19D69F0CF3F0E389",
+      "decoded_utf16_text": "z_offset"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#jb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "1EC958FC6323E40B726CE15AF90A75109D852938A3058FFB876F89C9D123827D"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#k#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "C03AD57F5B1B1BDDF59DDB5C973B459F432291EDAD374FE9D051C59D102D8742",
+      "decoded_utf16_text": "z"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#kb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "7D6B51CBEF2B176FF14518A2FC997F3723B0B3F9B8C69635A26224A0AD00EEDE"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#l#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        8,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        8
+      ],
+      "dtype": "<u2",
+      "elements": 8,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "05A0EF5890FD9414758FC310C95FFAC97D41B3DE3CEC78FA19D69F0CF3F0E389",
+      "decoded_utf16_text": "z_offset"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#lb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "57C952E7266F757A3D002DCE46396C1FD5446693EB117542FF3877AC94AB4423"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#m#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        6,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        6
+      ],
+      "dtype": "<u2",
+      "elements": 6,
+      "runs": 6,
+      "original_numeric_bytes_sha256": "67299234074CFC81F7D798E6CFEC9AEFA7D7A51218C691A39AA0B6632BE02237",
+      "decoded_utf16_text": "lambda"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#mb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 475,
+      "original_numeric_bytes_sha256": "F747CF20E41B84204B7932341B0E835A1489ADF59DE936B1E654C59153B5E38F"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#n#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "887A0529FD9D76EB33C0EC808C05DAAF32FA9F5E21E4C32224FB4BFAAA0AF385",
+      "decoded_utf16_text": "f"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#nb#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 475,
+      "original_numeric_bytes_sha256": "5CDE3F40802B9CBDE6CF6719FE5FF7D60D32581978F39D1CC6DBB4189ED8B26F"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#o#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        6,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        6
+      ],
+      "dtype": "<u2",
+      "elements": 6,
+      "runs": 6,
+      "original_numeric_bytes_sha256": "67299234074CFC81F7D798E6CFEC9AEFA7D7A51218C691A39AA0B6632BE02237",
+      "decoded_utf16_text": "lambda"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#p#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "887A0529FD9D76EB33C0EC808C05DAAF32FA9F5E21E4C32224FB4BFAAA0AF385",
+      "decoded_utf16_text": "f"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#u#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        7,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        7
+      ],
+      "dtype": "<u2",
+      "elements": 7,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "B29FDB0BFDA8B62DCC4A69D9865491D18405E1CA28D7A277469539E91AA10D4C",
+      "decoded_utf16_text": "index_x"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#v#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        7,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        7
+      ],
+      "dtype": "<u2",
+      "elements": 7,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "4700DEA3805EBEEC9C2F5637E7DD9B753C25C6ED773891CFB08823B8B9CB951B",
+      "decoded_utf16_text": "index_y"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#w#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        7,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        7
+      ],
+      "dtype": "<u2",
+      "elements": 7,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "0AF35F1FAFEC508B32B98A9E6808617E2D439E5AEBE815F501B80CC04462A321",
+      "decoded_utf16_text": "index_z"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#x#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        7,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        7
+      ],
+      "dtype": "<u2",
+      "elements": 7,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "B29FDB0BFDA8B62DCC4A69D9865491D18405E1CA28D7A277469539E91AA10D4C",
+      "decoded_utf16_text": "index_x"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#y#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        7,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        7
+      ],
+      "dtype": "<u2",
+      "elements": 7,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "4700DEA3805EBEEC9C2F5637E7DD9B753C25C6ED773891CFB08823B8B9CB951B",
+      "decoded_utf16_text": "index_y"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "#refs#/#z#",
+      "csv_part": "D3_raw_index_detail_object_numeric_targets.csv",
+      "hdf5_shape": [
+        7,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        7
+      ],
+      "dtype": "<u2",
+      "elements": 7,
+      "runs": 7,
+      "original_numeric_bytes_sha256": "0AF35F1FAFEC508B32B98A9E6808617E2D439E5AEBE815F501B80CC04462A321",
+      "decoded_utf16_text": "index_z"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ex",
+      "csv_part": "D3_raw_control_field_Ex.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 43225,
+      "original_numeric_bytes_sha256": "846D440A67D1B6EB339851310828404C732894E9615A1DD8745F8C473EAD0AD0"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ex_w1",
+      "csv_part": "D3_raw_witness_1_fields.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 43225,
+      "original_numeric_bytes_sha256": "846D440A67D1B6EB339851310828404C732894E9615A1DD8745F8C473EAD0AD0"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ex_w2",
+      "csv_part": "D3_raw_witness_2_fields.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 43225,
+      "original_numeric_bytes_sha256": "846D440A67D1B6EB339851310828404C732894E9615A1DD8745F8C473EAD0AD0"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ey",
+      "csv_part": "D3_raw_control_field_Ey.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 10,
+      "original_numeric_bytes_sha256": "C392D83C1F97BE90977A7A6E3ACE5CFC2E575DC5FC106FAFD25A2BBB379D461E"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ey_w1",
+      "csv_part": "D3_raw_witness_1_fields.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 10,
+      "original_numeric_bytes_sha256": "C392D83C1F97BE90977A7A6E3ACE5CFC2E575DC5FC106FAFD25A2BBB379D461E"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ey_w2",
+      "csv_part": "D3_raw_witness_2_fields.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 10,
+      "original_numeric_bytes_sha256": "C392D83C1F97BE90977A7A6E3ACE5CFC2E575DC5FC106FAFD25A2BBB379D461E"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ez",
+      "csv_part": "D3_raw_control_field_Ez.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 10,
+      "original_numeric_bytes_sha256": "C392D83C1F97BE90977A7A6E3ACE5CFC2E575DC5FC106FAFD25A2BBB379D461E"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ez_w1",
+      "csv_part": "D3_raw_witness_1_fields.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 10,
+      "original_numeric_bytes_sha256": "C392D83C1F97BE90977A7A6E3ACE5CFC2E575DC5FC106FAFD25A2BBB379D461E"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ez_w2",
+      "csv_part": "D3_raw_witness_2_fields.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 10,
+      "original_numeric_bytes_sha256": "C392D83C1F97BE90977A7A6E3ACE5CFC2E575DC5FC106FAFD25A2BBB379D461E"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Pbottom",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "46AD95A9BE06A2E3DF4875CE61636FDD024701C0E7C0349ECE1797BB94A1DDFB"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Pin",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "A653A7F84F2819169747C841C7304D6C9135108EFAEE3E455987A61E26846051"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Ptop",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "EDFEB5FF910612B03435BA07539DCCBFF4B749035DC117007DCD59DD455D78FA"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Rraw",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "C2658516DA1728E5827ED2CC6D82763E3384CC69C1DA6F0D89FB3B457FD5F49B"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "Traw",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "5495257F7B14A601FC8881803F639867DB947CE8F74C78315AC6E96871CC4F27"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "area",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "6AC14F9A5AEFE8687F15CCD2D761431D322E9B73A11FEDF25EBB665A5A225863"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "delta_z",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 151,
+      "original_numeric_bytes_sha256": "CB0B8E5FB5508D86A3E667832F26C31D86B22D097B568431A29FF8F01B462EB9"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "f",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "8E5C5126FA02A8B231438ADCB5397294BEED749152F68E7275E2B69405EDDFDE"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "f_all",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        8,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        8
+      ],
+      "dtype": "<f8",
+      "elements": 728,
+      "runs": 728,
+      "original_numeric_bytes_sha256": "8DED1D1FBC7B03C9219043BEA7D72EA5ED857A8F7669415A4C07898DD5E6996E"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "index_f",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "8E5C5126FA02A8B231438ADCB5397294BEED749152F68E7275E2B69405EDDFDE"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "index_x",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 819,
+      "original_numeric_bytes_sha256": "DC7BE83505CC6491B987B62A44762009990CCE80B36DCF0AFE3F7FD0E66841B0"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "index_y",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 819,
+      "original_numeric_bytes_sha256": "DC7BE83505CC6491B987B62A44762009990CCE80B36DCF0AFE3F7FD0E66841B0"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "index_z",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1,
+        475,
+        91
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 43225,
+      "runs": 637,
+      "original_numeric_bytes_sha256": "67E0114BF64C1106E91A6E737ADAB7C84EEB81F4A787889BD29FEF9AF1ED1969"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "index_z_coordinates",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 475,
+      "original_numeric_bytes_sha256": "F747CF20E41B84204B7932341B0E835A1489ADF59DE936B1E654C59153B5E38F"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "nk_Fe",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "B9DE07ECFBE840A2332A569269FB53AC0C6718C165006757E1CE09D67F514D3C"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "nk_ITO",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "4533C1B28D292F5953524D4B1A7799034B9925EEA76E45CE44924AD095995709"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "nk_PDMS",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "E65DB19619FBD1331984DE89CFA3224968CEEDFF11EC4043D252CDF203F13DF6"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "nk_water",
+      "csv_part": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "hdf5_shape": [
+        1,
+        91
+      ],
+      "matlab_shape": [
+        91,
+        1
+      ],
+      "dtype": [
+        [
+          "real",
+          "<f8"
+        ],
+        [
+          "imag",
+          "<f8"
+        ]
+      ],
+      "elements": 91,
+      "runs": 91,
+      "original_numeric_bytes_sha256": "8667949FA9DFADE9C2AA5248995213EB41F1AD3BEBBE356A1C23FB7DDB78B585"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "source_z",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "A2E277101D82EF23697950F94B9890DD0F6921AEE17B62C55675B2C4A1671F5E"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "z",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        475
+      ],
+      "matlab_shape": [
+        475,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 475,
+      "runs": 475,
+      "original_numeric_bytes_sha256": "F747CF20E41B84204B7932341B0E835A1489ADF59DE936B1E654C59153B5E38F"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "zR",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "91E701C7FC78EAED4C6AC83B9C07B4E7ECB1F06A7EA27D74DB48D4E9FEC50721"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "zT",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "6992F523D161B06AB5B77D83A91C234D2EFF2C0B32D891FB27960AB044822043"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "zbottom",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "97DF8F9815DB2106958BF96B7752017DED2B59657CE020C2C529C1EAF76CEA59"
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "dataset": "ztop",
+      "csv_part": "D3_raw_frequency_flux_planes_source.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "E01AAFA9C16BD9FD2CE4F1EF3E34E13D13A18DA8EA918457C0C538CCFFA31E59"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#a#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "3776096E9733584BD622E7E6417B65BA6640F8A8B809F475CD15ED5923CCE3F6",
+      "decoded_utf16_text": "t"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#b#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        15,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        15
+      ],
+      "dtype": "<u2",
+      "elements": 15,
+      "runs": 14,
+      "original_numeric_bytes_sha256": "ECE85B178C16D9E98E670B55E3C3095D9EF3C9D0E99B542869382893ECBAF6DD",
+      "decoded_utf16_text": "wall_clock_time"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#c#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<u2",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "3776096E9733584BD622E7E6417B65BA6640F8A8B809F475CD15ED5923CCE3F6",
+      "decoded_utf16_text": "t"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#d#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        15,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        15
+      ],
+      "dtype": "<u2",
+      "elements": 15,
+      "runs": 14,
+      "original_numeric_bytes_sha256": "E4683E2569C2B960AAB5306A9669B9AF1331ED7F6D7755757B331E95715FD90B",
+      "decoded_utf16_text": "wall clock time"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#f#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        11,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        11
+      ],
+      "dtype": "<u2",
+      "elements": 11,
+      "runs": 10,
+      "original_numeric_bytes_sha256": "36CFDE92E9B4E66C67634D941F7A5E6C54142C60F69C7C0E34C01D8B66992A83",
+      "decoded_utf16_text": "autoshutoff"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#g#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        11,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        11
+      ],
+      "dtype": "<u2",
+      "elements": 11,
+      "runs": 10,
+      "original_numeric_bytes_sha256": "36CFDE92E9B4E66C67634D941F7A5E6C54142C60F69C7C0E34C01D8B66992A83",
+      "decoded_utf16_text": "autoshutoff"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#k#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        27,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        27
+      ],
+      "dtype": "<f8",
+      "elements": 27,
+      "runs": 26,
+      "original_numeric_bytes_sha256": "CFA5C74804C560CDB6EE2D6162AEB202B200EBA348AC1A2CCDE6993E1B13366C"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#l#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        27,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        27
+      ],
+      "dtype": "<f8",
+      "elements": 27,
+      "runs": 27,
+      "original_numeric_bytes_sha256": "C49E09C46C4BAB713F99887B43CC031F6D1EECF3AA52EDBE92ED37001AC67FE2"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "#refs#/#m#",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        27,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        27
+      ],
+      "dtype": "<f8",
+      "elements": 27,
+      "runs": 27,
+      "original_numeric_bytes_sha256": "DF6C4DF695AEF0FBD811AD58703A9939863D2F294AC8F7B5CFBCD08FCFC66F8C"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "actual_dt",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "223C35A899B61A3B0C188F374BA48D765E3575E4D19AA2553288C1868186B67D"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "saved_status",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "matlab_shape": [
+        1,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 1,
+      "runs": 1,
+      "original_numeric_bytes_sha256": "3F710AC088DB33363087DE2B9A657541FE5447821DEBAA9FE5CBD538EB1A5F29"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "x_grid",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        1,
+        451
+      ],
+      "matlab_shape": [
+        451,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 451,
+      "runs": 451,
+      "original_numeric_bytes_sha256": "E7470C29545BA382FAAA3FEB69560756BDA702F227A72120EEBF842FE7FDDDFF"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "y_grid",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        1,
+        261
+      ],
+      "matlab_shape": [
+        261,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 261,
+      "runs": 261,
+      "original_numeric_bytes_sha256": "231F5F78F9F9F0B2397F2E448CBC2F394C126AA279C5F95CD3F324F9DA9A465F"
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "dataset": "z_grid",
+      "csv_part": "D3_raw_saved_status_and_engine_grids.csv",
+      "hdf5_shape": [
+        1,
+        545
+      ],
+      "matlab_shape": [
+        545,
+        1
+      ],
+      "dtype": "<f8",
+      "elements": 545,
+      "runs": 545,
+      "original_numeric_bytes_sha256": "72DFF38EBC1C3AB861E652AA24018C3A7F3C07AB7E00969DBE5DC71939E3997B"
+    }
+  ],
+  "objects": [
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "delta_x",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "delta_x_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "delta_x_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "delta_y",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "delta_y_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "delta_y_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "delta_z_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "delta_z_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "index_x_coordinates",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "index_x_offset",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "index_y_coordinates",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "index_y_offset",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "index_z_coordinates",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "index_z_offset",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "x",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "x_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "x_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "y",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "y_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "y_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "z_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_coordinates.mat",
+      "path": "z_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#",
+      "kind": "group",
+      "attributes": {}
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#a#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#ab#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#ab#/name",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        3
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#x#",
+        "/#refs#/#y#",
+        "/#refs#/#z#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#ab#/variable",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        3
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#u#",
+        "/#refs#/#v#",
+        "/#refs#/#w#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#b#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        8,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#bb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "cell"
+      },
+      "hdf5_shape": [
+        1,
+        4
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#q#",
+        "/#refs#/#r#",
+        "/#refs#/#s#",
+        "/#refs#/#t#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#c#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#cb#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#cb#/attributes",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#ab#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#cb#/parameters",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#bb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#d#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        8,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#db#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#e#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#eb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#f#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        8,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#fb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#g#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#gb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#h#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        8,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#hb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#i#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#ib#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#j#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        8,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#jb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#k#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#kb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#l#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        8,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#lb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#m#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        6,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#mb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#n#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#nb#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#o#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        6,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#p#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#q#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#q#/name",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#c#",
+        "/#refs#/#d#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#q#/variable",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#a#",
+        "/#refs#/#b#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#r#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#r#/name",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#g#",
+        "/#refs#/#h#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#r#/variable",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#e#",
+        "/#refs#/#f#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#s#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#s#/name",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#k#",
+        "/#refs#/#l#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#s#/variable",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#i#",
+        "/#refs#/#j#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#t#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#t#/name",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#o#",
+        "/#refs#/#p#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#t#/variable",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#m#",
+        "/#refs#/#n#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#u#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        7,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#v#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        7,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#w#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        7,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#x#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        7,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#y#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        7,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "#refs#/#z#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        7,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ex",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ex_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ex_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ey",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ey_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ey_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ez",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ez_w1",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ez_w2",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Pbottom",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Pin",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Ptop",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Rraw",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "Traw",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "area",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "delta_z",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "f",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "f_all",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        8,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/Lumerical_dataset",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#cb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/f",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#db#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/index_x",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#eb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/index_y",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#fb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/index_z",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#gb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/lambda",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#hb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/x",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#ib#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/x_offset",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#jb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/y",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#kb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/y_offset",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#lb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/z",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#mb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "idx/z_offset",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#nb#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "index_f",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "index_x",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "index_y",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "index_z",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        91,
+        475,
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "index_z_coordinates",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "nk_Fe",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "nk_ITO",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "nk_PDMS",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "nk_water",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        91
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "source_z",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "z",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        475
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "zR",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "zT",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "zbottom",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_raw_Yee_and_flux.mat",
+      "path": "ztop",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#",
+      "kind": "group",
+      "attributes": {}
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#a#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#b#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        15,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#c#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#d#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        15,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#e#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#e#/name",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#c#",
+        "/#refs#/#d#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#e#/variable",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        2
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#a#",
+        "/#refs#/#b#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#f#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        11,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#g#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "char",
+        "MATLAB_int_decode": 2
+      },
+      "hdf5_shape": [
+        11,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#h#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#h#/name",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#g#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#h#/variable",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#f#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#i#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "cell"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#e#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#j#",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#j#/attributes",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#h#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#j#/parameters",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#i#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#k#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        27,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#l#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        27,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "#refs#/#m#",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        27,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "actual_dt",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "saved_autoshutoff",
+      "kind": "group",
+      "attributes": {
+        "MATLAB_class": "struct"
+      }
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "saved_autoshutoff/Lumerical_dataset",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#j#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "saved_autoshutoff/autoshutoff",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#k#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "saved_autoshutoff/t",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#l#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "saved_autoshutoff/wall_clock_time",
+      "kind": "dataset",
+      "attributes": {},
+      "hdf5_shape": [
+        1,
+        1
+      ],
+      "reference_targets_C_order": [
+        "/#refs#/#m#"
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "saved_status",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        1
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "x_grid",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        451
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "y_grid",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        261
+      ]
+    },
+    {
+      "source_mat": "F0_D3_saved_run_information.mat",
+      "path": "z_grid",
+      "kind": "dataset",
+      "attributes": {
+        "MATLAB_class": "double"
+      },
+      "hdf5_shape": [
+        1,
+        545
+      ]
+    }
+  ],
+  "original_mats": [
+    {
+      "name": "F0_D3_raw_coordinates.mat",
+      "bytes": 35056,
+      "sha256": "11CD9ED718C6FC2538B3900B35F2C0F1F373651408972853D725A982233CDA71"
+    },
+    {
+      "name": "F0_D3_raw_Yee_and_flux.mat",
+      "bytes": 10456720,
+      "sha256": "F4662507422221C8AADBF8DA2DDA211D0DD7C85DC2B806E243DEF65D01648E14"
+    },
+    {
+      "name": "F0_D3_saved_run_information.mat",
+      "bytes": 29128,
+      "sha256": "4CE0868788966FFB11666F2938B11F4BC336798E11F0C7C0DD36D3DB7CC03721"
+    }
+  ],
+  "verification": {
+    "numeric_datasets": 102,
+    "numeric_elements": 657041,
+    "csv_rows": 141968,
+    "csv_parts": 10,
+    "emitted_csv_reconstructed_byte_exact": true,
+    "all_object_references_exported": true,
+    "source_mats_unchanged": true
+  }
+}

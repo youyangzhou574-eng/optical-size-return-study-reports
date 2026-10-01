@@ -1,0 +1,19 @@
+CURRENT_FILE: D:/yyz/optical_size_return_20260928/A2/F0_D3_AUTOSHUTOFF_TEST/result_audit/closeout_review06_01/F0_D3_completed_snapshot.fsp
+SAVED_FDTD_STATUS: 2
+LAYOUT_MODE: 0
+MONITOR_91: R_below_source
+
+MONITOR_91: T_above_coating
+
+MONITOR_91: P_bottom_before_structure
+
+MONITOR_91: P_top_after_structure
+
+MONITOR_91: E_control_raw_Yee
+
+MONITOR_91: index_control_raw_Yee
+
+MONITOR_91: E_uniformity_witness_1
+
+MONITOR_91: E_uniformity_witness_2
+

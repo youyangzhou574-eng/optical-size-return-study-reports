@@ -1,0 +1,15 @@
+{
+  "scope_tests": 14,
+  "protected_copy_tests": 4,
+  "freeze_parse_checks": 3,
+  "freeze_static_guards": 9,
+  "exporter_tests": 3,
+  "actual_native_exit_tests": 2,
+  "export_parse_checks": 3,
+  "export_static_guards": 6,
+  "D3_scientific_comparison_tests": 8,
+  "offline_analysis_exit": 0,
+  "original_native_scope_cache_not_used": true,
+  "non_solving_export_count": 1,
+  "protected_freeze_count": 1
+}

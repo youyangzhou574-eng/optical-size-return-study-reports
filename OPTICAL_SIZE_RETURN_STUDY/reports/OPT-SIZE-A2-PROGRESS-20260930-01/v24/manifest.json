@@ -1,0 +1,210 @@
+{
+  "project": "OPTICAL_SIZE_RETURN_STUDY",
+  "version": "v24",
+  "files": [
+    {
+      "path": "comparison_summary.json",
+      "bytes": 16806,
+      "sha256": "EE785A5CBE393EABE7A622A4C0660E45FCDCFF4A7BA4C1CEE731749C66D20DDF"
+    },
+    {
+      "path": "D1_full_diagnostic_91.csv",
+      "bytes": 41092,
+      "sha256": "0C54748626D75E520382107DAD5D8F7F30D1A6B716D1D8575015AE41F3ABC6DB"
+    },
+    {
+      "path": "D2_full_diagnostic_91.csv",
+      "bytes": 30228,
+      "sha256": "F51998C484A061E0B5198ECE5FF106EB64081B99C2103884886F5921F47AB9E5"
+    },
+    {
+      "path": "D3_full_diagnostic_91.csv",
+      "bytes": 30228,
+      "sha256": "F57B96F146E307238BA0B616F4741E0FE0D574BD6AC9AF9B9E67DF8B99A90C91"
+    },
+    {
+      "path": "D3_independent_materials_and_closure_91.csv",
+      "bytes": 47171,
+      "sha256": "BE98E971C41B751BF87A1A8CA0A1BD6200B209E1A597AB7F0A9F84658ED31687"
+    },
+    {
+      "path": "D3_minus_baselines_raw_flux_91.csv",
+      "bytes": 26045,
+      "sha256": "B9CEEBDB4DC91DF81A476C0027EE7344988C9E212760762B925A8610C4F49851"
+    },
+    {
+      "path": "D3_raw_control_field_Ex.csv",
+      "bytes": 3428939,
+      "sha256": "83F4C435F96AC3B30678FAFAFF62C1A164DD93595B90B99C7EB82F81D23C5934"
+    },
+    {
+      "path": "D3_raw_control_field_Ey.csv",
+      "bytes": 501,
+      "sha256": "0C0ACFF12157BD2EBECC9C13011393DBC40CF5BD18C8FDA2BC44516F7D55F953"
+    },
+    {
+      "path": "D3_raw_control_field_Ez.csv",
+      "bytes": 501,
+      "sha256": "0461BB373F7FB8187F85B76901C20888ABD8F877D456333F20FADB89D7D94A51"
+    },
+    {
+      "path": "D3_raw_coordinates_and_Yee_offsets.csv",
+      "bytes": 152081,
+      "sha256": "DDC97317CC5B22155D4169C2938FACFC3A1DF7DBB5026F43AD13DCA2E8DBF1B2"
+    },
+    {
+      "path": "D3_raw_frequency_flux_planes_source.csv",
+      "bytes": 114403,
+      "sha256": "D4A902FE91271C4DDB4BA86100EED8D8FDB1F8BA0310F99BF30355DE8D2E40EC"
+    },
+    {
+      "path": "D3_raw_index_detail_object_numeric_targets.csv",
+      "bytes": 286454,
+      "sha256": "CB53E007AD7FEF55A6162A5C7B961C6611C5F7B73B85085CFD1F86C58C43C47E"
+    },
+    {
+      "path": "D3_raw_metadata.txt",
+      "bytes": 90092,
+      "sha256": "D5D3E18E6079222A38B3D8F2C10F09F73110803BF155F586BF18F2D87BE7ACAC"
+    },
+    {
+      "path": "D3_raw_sampled_index_and_fitted_materials.csv",
+      "bytes": 265337,
+      "sha256": "060937C3CE70CE8D03573FBD3DCA1550BE4AD3DA5E38B8FC544BB4A3C846C500"
+    },
+    {
+      "path": "D3_raw_saved_status_and_engine_grids.csv",
+      "bytes": 96802,
+      "sha256": "EB5D1A18424F025B806D6C7E05FEBF183EBBE8FFCE37476F1332D14A2427FAD1"
+    },
+    {
+      "path": "D3_raw_witness_1_fields.csv",
+      "bytes": 3559592,
+      "sha256": "6931BF74AEB3D7355107D7CE50E777CDE19ED5F6DB494BAA615BE8D3483AC8A4"
+    },
+    {
+      "path": "D3_raw_witness_2_fields.csv",
+      "bytes": 3559592,
+      "sha256": "F3F7396185280C433010302019BF6896DBC426A8B64ECD69446FC758319F6963"
+    },
+    {
+      "path": "export01_export_f0_d3_saved_no_solve.lsf",
+      "bytes": 5156,
+      "sha256": "CFFB3E12F0E0037C0B4E4CBE3654C88B59841FB92EA7D5AC0A45B3AF12043108"
+    },
+    {
+      "path": "export01_preparation_receipt.json",
+      "bytes": 410,
+      "sha256": "BFB8C157B91EB5ACF12D58693AEC97025EAA8CC0ABB05550B45541B960E5F21A"
+    },
+    {
+      "path": "export_raw01_export_status.txt",
+      "bytes": 50,
+      "sha256": "49CCFE4F78628903FED3990223D1C2008242139B27C18583FE2747ED46B3FCDE"
+    },
+    {
+      "path": "export_raw01_loaded_result_audit.txt",
+      "bytes": 463,
+      "sha256": "423D305317EBF28AA93863C51146D828458D4824C0E952AB456F4C41E96E9A7C"
+    },
+    {
+      "path": "export_raw01_receipt.json",
+      "bytes": 1559,
+      "sha256": "5914A23801C478EDD969F5C132CF67E093B0928CFCE9F92CB11D75B2FD85CFFA"
+    },
+    {
+      "path": "export_raw01_session_closed.json",
+      "bytes": 272,
+      "sha256": "590A7E22523783A03CBAFB11E429DB3375C452EAA2E0B2A8E8FBAAA8C186238D"
+    },
+    {
+      "path": "export_raw01_transfer_receipt.json",
+      "bytes": 157,
+      "sha256": "5C668B0CB9AF078D5068D8F4C5B509053945C350AFDCA2FA0CB19B81677A2BEF"
+    },
+    {
+      "path": "export_raw01_worker_exit.json",
+      "bytes": 89,
+      "sha256": "3B02EE4B57F37647C04DE81236CA23952696033AD8EC58978923A2F949C4F73B"
+    },
+    {
+      "path": "F0_4rank_full_diagnostic_91.csv",
+      "bytes": 41079,
+      "sha256": "BD5644990944508970B82026542B9C0373D3CC17CC028C6D782E118C70EA12D5"
+    },
+    {
+      "path": "focused_test_evidence.json",
+      "bytes": 417,
+      "sha256": "9084380C2AAF2EE5C86DC7B7FDCEEF75E5CBD6BEE9966411C5F56A9C22B083E8"
+    },
+    {
+      "path": "freeze01_current_no_writer_receipt.json",
+      "bytes": 527,
+      "sha256": "1885AF68251D54BD0789A38EB290C3732DCA95EDA9F34B92F5D6C54D856C9EC9"
+    },
+    {
+      "path": "freeze01_p0.redacted.txt",
+      "bytes": 6425,
+      "sha256": "B483E147923ABED58EA6B2FEDFD069E86E9BB26D226069CEC2531FD774CB3A88"
+    },
+    {
+      "path": "freeze01_receipt.json",
+      "bytes": 1868,
+      "sha256": "A59474E324BF1D1C49E0FCC2BEA5A4AD123EBA5699E284D97DD1C57125523DDC"
+    },
+    {
+      "path": "freeze01_runner_status.original.json",
+      "bytes": 911,
+      "sha256": "8A2B10AE29527FC64563194C882E6249E811082F339265429153A03EAE3495C7"
+    },
+    {
+      "path": "freeze01_session_closed.json",
+      "bytes": 244,
+      "sha256": "1863380533ABE42F48899A21B6816A779B4E3A15E7537156AA7F19D99BE3F027"
+    },
+    {
+      "path": "freeze01_worker_exit.json",
+      "bytes": 89,
+      "sha256": "84956ED69277D108519ED5B007E822B13DF658DDE37FE03ABB4319B74F6A51FD"
+    },
+    {
+      "path": "INDEX.md",
+      "bytes": 2710,
+      "sha256": "ACC03BDAB4F799FFA5226BCCA588307CFD33D63B65448C151F2A422EC64BA3A5"
+    },
+    {
+      "path": "key_Ex_complex.csv",
+      "bytes": 1664,
+      "sha256": "E0370EE224DDFE0AB444525287F137A25769D993239B3108F7D074221C6162AD"
+    },
+    {
+      "path": "offline_and_closeout_code.txt",
+      "bytes": 120414,
+      "sha256": "15B0166683A01B68ADC3EFCCDA2BC9B27A9FA8B22A22BF13C9CDD5CAE8EEFE02"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 7743,
+      "sha256": "3971877522E2AC2598CEDF4D3B6DE3FDC79E2528CD3BE3BDECB973D8E8D7A492"
+    }
+  ],
+  "conversion": {
+    "numeric_datasets": 102,
+    "numeric_elements": 657041,
+    "csv_rows": 141968,
+    "csv_parts": 10,
+    "emitted_csv_reconstructed_byte_exact": true,
+    "all_object_references_exported": true,
+    "source_mats_unchanged": true
+  },
+  "screen_matches": 0,
+  "public_allowlist_reviewed": true,
+  "new_solver_starts": 0,
+  "science": "NOT_QUALIFIED",
+  "budget": {
+    "MAIN": 1,
+    "DIAGNOSTIC": 4,
+    "RECOVERY": 0,
+    "TOTAL": 5
+  }
+}

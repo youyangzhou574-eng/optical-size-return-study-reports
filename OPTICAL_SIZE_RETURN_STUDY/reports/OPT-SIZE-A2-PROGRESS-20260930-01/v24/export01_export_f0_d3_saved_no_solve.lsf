@@ -1,0 +1,64 @@
+# Post-solve export must only load an immutable result copy, never the launch input.
+format long;
+cd("D:/yyz/optical_size_return_20260928/A2/F0_D3_AUTOSHUTOFF_TEST/result_audit/closeout_review06_01");
+load("F0_D3_completed_snapshot.fsp");
+if(layoutmode) {error("F0_RESULT_COPY_HAS_NO_SOLVE_DATA");}
+expected_path="D:/yyz/optical_size_return_20260928/A2/F0_D3_AUTOSHUTOFF_TEST/result_audit/closeout_review06_01/F0_D3_completed_snapshot.fsp";
+if(currentfilename != expected_path) {error("F0_LOADED_PATH_MISMATCH");}
+saved_status=getresult("FDTD","status");
+actual_dt=getnamed("FDTD","dt");
+if(actual_dt<=0) {error("D1_INVALID_ACTUAL_DT");}
+x_grid=getresult("FDTD","x");y_grid=getresult("FDTD","y");z_grid=getresult("FDTD","z");
+if(saved_status != 2) {error("F0_SAVED_STATUS_NOT_AUTOSHUTOFF");}
+write("loaded_result_audit.txt","CURRENT_FILE: "+currentfilename+"\nSAVED_FDTD_STATUS: "+num2str(saved_status)+"\nLAYOUT_MODE: "+num2str(layoutmode),"overwrite");
+?getresult("FDTD");
+names=cell(8);
+names{1}="R_below_source";names{2}="T_above_coating";names{3}="P_bottom_before_structure";names{4}="P_top_after_structure";
+names{5}="E_control_raw_Yee";names{6}="index_control_raw_Yee";names{7}="E_uniformity_witness_1";names{8}="E_uniformity_witness_2";
+for(j=1:8) {
+    if(!havedata(names{j},"f")) {error("F0_MONITOR_DATA_MISSING");}
+    f_check=getdata(names{j},"f",1);
+    if(length(f_check)!=91) {error("F0_MONITOR_NOT_91_POINTS");}
+    write("loaded_result_audit.txt","MONITOR_91: "+names{j}+"\n");
+}
+if(haveresult("FDTD","autoshutoff level")) {
+    saved_autoshutoff=getresult("FDTD","autoshutoff level");
+    matlabsave("F0_D3_saved_run_information.mat",saved_status,saved_autoshutoff,actual_dt,x_grid,y_grid,z_grid);
+} else {matlabsave("F0_D3_saved_run_information.mat",saved_status,actual_dt,x_grid,y_grid,z_grid);}
+m="E_control_raw_Yee";
+f=getdata(m,"f",1);z=getdata(m,"z",1);delta_z=getdata(m,"delta_z",1);
+x=getdata(m,"x",1);y=getdata(m,"y",1);delta_x=getdata(m,"delta_x",1);delta_y=getdata(m,"delta_y",1);
+Ex=getdata(m,"Ex",1);Ey=getdata(m,"Ey",1);Ez=getdata(m,"Ez",1);
+index_f=getdata("index_control_raw_Yee","f",1);index_z_coordinates=getdata("index_control_raw_Yee","z",1);
+index_x=getdata("index_control_raw_Yee","index_x",1);index_y=getdata("index_control_raw_Yee","index_y",1);index_z=getdata("index_control_raw_Yee","index_z",1);
+idx=getresult("index_control_raw_Yee","index_detail");
+index_x_coordinates=idx.x;index_y_coordinates=idx.y;
+index_x_offset=idx.x_offset;index_y_offset=idx.y_offset;index_z_offset=idx.z_offset;
+z_w1=getdata("E_uniformity_witness_1","z",1);delta_z_w1=getdata("E_uniformity_witness_1","delta_z",1);
+x_w1=getdata("E_uniformity_witness_1","x",1);y_w1=getdata("E_uniformity_witness_1","y",1);
+delta_x_w1=getdata("E_uniformity_witness_1","delta_x",1);delta_y_w1=getdata("E_uniformity_witness_1","delta_y",1);
+z_w2=getdata("E_uniformity_witness_2","z",1);delta_z_w2=getdata("E_uniformity_witness_2","delta_z",1);
+x_w2=getdata("E_uniformity_witness_2","x",1);y_w2=getdata("E_uniformity_witness_2","y",1);
+delta_x_w2=getdata("E_uniformity_witness_2","delta_x",1);delta_y_w2=getdata("E_uniformity_witness_2","delta_y",1);
+Ex_w1=getdata("E_uniformity_witness_1","Ex",1);Ey_w1=getdata("E_uniformity_witness_1","Ey",1);Ez_w1=getdata("E_uniformity_witness_1","Ez",1);
+Ex_w2=getdata("E_uniformity_witness_2","Ex",1);Ey_w2=getdata("E_uniformity_witness_2","Ey",1);Ez_w2=getdata("E_uniformity_witness_2","Ez",1);
+f_all=matrix(length(f),8);
+f_all(:,1)=getdata("R_below_source","f",1);f_all(:,2)=getdata("T_above_coating","f",1);
+f_all(:,3)=getdata("P_bottom_before_structure","f",1);f_all(:,4)=getdata("P_top_after_structure","f",1);
+f_all(:,5)=f;f_all(:,6)=index_f;
+f_all(:,7)=getdata("E_uniformity_witness_1","f",1);f_all(:,8)=getdata("E_uniformity_witness_2","f",1);
+Pin=sourcepower(f);
+Rraw=-transmission("R_below_source");Traw=transmission("T_above_coating");
+Pbottom=transmission("P_bottom_before_structure");Ptop=transmission("P_top_after_structure");
+zR=getdata("R_below_source","z",1);zT=getdata("T_above_coating","z",1);
+zbottom=getdata("P_bottom_before_structure","z",1);ztop=getdata("P_top_after_structure","z",1);
+source_z=getnamed("source_from_bottom_water_side","z");
+area=getnamed("FDTD","x span")*getnamed("FDTD","y span");
+nk_PDMS=getfdtdindex("OPT_SIZE_PDMS_M0_A2",f,c/800e-9,c/350e-9);
+nk_ITO=getfdtdindex("OPT_SIZE_ITO_Minenkov110_A2",f,c/800e-9,c/350e-9);
+nk_Fe=getfdtdindex("OPT_SIZE_Fe2O3_Querry_nkavg_A2",f,c/800e-9,c/350e-9);
+nk_water=getfdtdindex("OPT_SIZE_Water_Hale_A2",f,c/800e-9,c/350e-9);
+matlabsave("F0_D3_raw_Yee_and_flux.mat",f,f_all,z,delta_z,Ex,Ey,Ez,index_f,index_z_coordinates,index_x,index_y,index_z,idx,Ex_w1,Ey_w1,Ez_w1,Ex_w2,Ey_w2,Ez_w2,Pin,Rraw,Traw,Pbottom,Ptop,zR,zT,zbottom,ztop,source_z,area,nk_PDMS,nk_ITO,nk_Fe,nk_water);
+matlabsave("F0_D3_raw_coordinates.mat",x,y,delta_x,delta_y,index_x_coordinates,index_y_coordinates,index_z_coordinates,index_x_offset,index_y_offset,index_z_offset,x_w1,y_w1,z_w1,delta_x_w1,delta_y_w1,delta_z_w1,x_w2,y_w2,z_w2,delta_x_w2,delta_y_w2,delta_z_w2);
+write("export_status.txt","F0_D3_FRESH_RAW_EXPORT_COMPLETE_NO_SOLVE_NO_SAVE","overwrite");
+exit(2);
