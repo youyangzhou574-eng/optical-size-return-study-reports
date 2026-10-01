@@ -1,0 +1,39 @@
+{
+  "report_id": "OPT-SIZE-A2-PROGRESS-20260930-01",
+  "version": "v27",
+  "scope": "PUBLIC_EXPLICIT_PROJECT_WHITELIST",
+  "secret_pattern_hits": 0,
+  "review_of_credentials_and_other_projects": "EXCLUDED_BY_WHITELIST",
+  "files": [
+    {
+      "name": "REPORT.md",
+      "bytes": 11071,
+      "sha256": "C671844B77EB0F3B11FCF87DA23B5EB978B8EA133D0EF5F23DD62B4C49E9B483"
+    },
+    {
+      "name": "INDEX.md",
+      "bytes": 1111,
+      "sha256": "0843E1E2806C972EEE09B37AF8F9ED9AA4C0BF6D73915C8EA2C0368A009AA116"
+    },
+    {
+      "name": "LEGACY_MONITORS.md",
+      "bytes": 3984,
+      "sha256": "AAE7E3786BF7638B45A15EAD064FB2890E94D480DCDC7A5E345D6FB1FDB7BA11"
+    },
+    {
+      "name": "LEGACY_INVENTORY.csv",
+      "bytes": 8489,
+      "sha256": "0FCA0F9F8E2BE83703DFBDA2AD911645ABAC673FE94370258A34976357315C70"
+    },
+    {
+      "name": "RESOURCE_CANDIDATES.csv",
+      "bytes": 2009,
+      "sha256": "91FB31A92D326DC8DD62C2B144AFB95E5BA9AD1AD14DB92A5071B622B6717047"
+    },
+    {
+      "name": "PREPARATION_EVIDENCE.json",
+      "bytes": 22412,
+      "sha256": "D01F3527C826221F05843F32CE007DEC934E6D6A801AD1D80C059B712DF68360"
+    }
+  ]
+}
