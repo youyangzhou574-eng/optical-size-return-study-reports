@@ -1,0 +1,23 @@
+{
+  "report_id": "OPT-SIZE-A2-PROGRESS-20260930-01",
+  "version": "v28",
+  "scope": "PUBLIC_PROJECT_CORRECTION_REQUEST_WHITELIST",
+  "secret_pattern_hits": 0,
+  "files": [
+    {
+      "name": "REPORT.md",
+      "bytes": 7230,
+      "sha256": "CFC5A97CCD0F5E1EC490D2AB2080F39FCA9FBE91AE49433C178639D21B1051E7"
+    },
+    {
+      "name": "INDEX.md",
+      "bytes": 633,
+      "sha256": "A6780DFF093A324720734A4DA1135ACE80D3FD4E144AFA58A43AFEF4809A55B1"
+    },
+    {
+      "name": "NATIVE_CAPABILITY_REVIEW.md",
+      "bytes": 4239,
+      "sha256": "E00F52FB0501B562CF805DD726ED07E442FAE0793994D3F13406863C2B03B1E8"
+    }
+  ]
+}
