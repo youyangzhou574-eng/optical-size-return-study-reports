@@ -1,0 +1,60 @@
+{
+  "operation": "D3_DISCRETE_PHASE_CONFIRM_OFFLINE_01",
+  "new_solver_starts": 0,
+  "remote_sessions": 0,
+  "cad_starts": 0,
+  "frequency_points": 91,
+  "window_nodes": 402,
+  "window_lower_m": -9.904156479217605e-06,
+  "window_upper_m": -2.958435207823875e-07,
+  "monitor_field_z_nodes": 475,
+  "full_saved_grid_z_nodes": 545,
+  "monitor_grid_mapping": "EXACT_NATIVE_SUBSET_NO_INTERPOLATION",
+  "window_dz_m": 2.3960880195599045e-08,
+  "actual_dt_s": 3.3973566775471255e-17,
+  "extraction": "Least-squares E[i-1]+E[i+1]=2*cos(k*dz)*E[i]; handles forward/backward superposition without phase unwrap or epsilon field fitting.",
+  "phase_diagnostic": "PDMS propagation phase only; integrate documented local discrete k over original ten-micron material thickness. Original fitted interface impedances and other layer phases unchanged.",
+  "original_R_metric": {
+    "weighted_absolute_difference": 0.01663165649526471,
+    "max_absolute_difference": 0.06893973035436188,
+    "max_wavelength_nm": 450.0
+  },
+  "original_T_metric": {
+    "weighted_absolute_difference": 0.011084749900039619,
+    "max_absolute_difference": 0.025323458413064714,
+    "max_wavelength_nm": 350.0
+  },
+  "diagnostic_R_metric": {
+    "weighted_absolute_difference": 0.0034339601768928435,
+    "max_absolute_difference": 0.017494400701086127,
+    "max_wavelength_nm": 439.99999999999994
+  },
+  "diagnostic_T_metric": {
+    "weighted_absolute_difference": 0.001811458894339454,
+    "max_absolute_difference": 0.02033441520665369,
+    "max_wavelength_nm": 355.0
+  },
+  "median_relative_k_field_minus_continuous": 0.004894375980179302,
+  "median_relative_k_field_minus_discrete": 1.208137523127707e-07,
+  "max_recurrence_relative_l2": 2.5319080348476995e-06,
+  "source_sha256": {
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D3_autoshutoff_20261001\\closeout_review06_01\\export_raw01\\F0_D3_raw_Yee_and_flux.mat": "F4662507422221C8AADBF8DA2DDA211D0DD7C85DC2B806E243DEF65D01648E14",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D3_autoshutoff_20261001\\closeout_review06_01\\export_raw01\\F0_D3_raw_coordinates.mat": "11CD9ED718C6FC2538B3900B35F2C0F1F373651408972853D725A982233CDA71",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D3_autoshutoff_20261001\\closeout_review06_01\\export_raw01\\F0_D3_saved_run_information.mat": "4CE0868788966FFB11666F2938B11F4BC336798E11F0C7C0DD36D3DB7CC03721",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_X_v2\\localization_decision15_01\\F0_actual_grid_dt_numerical_permittivity.mat": "5AEF7C345C276EC91D62745F6018472130E1C63A257D611C25EF54B9A86885C8",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D3_autoshutoff_20261001\\closeout_review06_01\\analysis01\\comparison_summary.json": "EE785A5CBE393EABE7A622A4C0660E45FCDCFF4A7BA4C1CEE731749C66D20DDF",
+    "E:\\open\\optical_size_return_20260928\\evidence\\a2_preflight_20260930\\F0_D3_autoshutoff_20261001\\closeout_review06_01\\analysis01\\D3_full_diagnostic_91.csv": "F57B96F146E307238BA0B616F4741E0FE0D574BD6AC9AF9B9E67DF8B99A90C91"
+  },
+  "qualification": "NOT_QUALIFIED",
+  "root": "NARROWED_BUT_NOT_UNIQUE",
+  "paired_convergence": "NOT_YET_TESTED",
+  "references": [
+    "https://optics.ansys.com/hc/en-us/articles/360034930093-getnumericalpermittivity-Script-command"
+  ],
+  "limitations": [
+    "Phase-only TMM is diagnostic, not an exact nonuniform-grid/interface engine transfer operator.",
+    "No independent time/grid/PML convergence; a tighter stop sensitivity result does not prove zero finite-time error.",
+    "Existing numerical epsilon reused only after matching actual dt, frequencies and all fitted-material values.",
+    "Original acceptance references, absorption integrals, curves and thresholds are not changed."
+  ]
+}

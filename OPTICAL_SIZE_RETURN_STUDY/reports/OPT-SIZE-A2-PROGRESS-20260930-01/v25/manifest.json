@@ -1,0 +1,77 @@
+{
+  "operation": "D3_DISCRETE_PHASE_CONFIRM_OFFLINE_01",
+  "files": [
+    {
+      "path": "d3_discrete_phase.py",
+      "bytes": 13641,
+      "sha256": "73844FA2362B18D7F3B065CAD7B7A4C530BD89A1B597844A05CDA62E4818EB31"
+    },
+    {
+      "path": "execution_evidence.json",
+      "bytes": 949,
+      "sha256": "E6A23B77F386873FB5B79016BD85EC25958441C50748A9B13AA9DB7C81D1331B"
+    },
+    {
+      "path": "INDEX.md",
+      "bytes": 834,
+      "sha256": "8D2F49E2A68DF411E9F94ED08C10452B821DE12E3B6BB839B37716A43EB0CFAB"
+    },
+    {
+      "path": "initial_mapping_guard_error01.txt",
+      "bytes": 1134,
+      "sha256": "3E4E8D3DF260E719E15264F57613459D64DBDC7343F8C2CD120E9F087A258BF5"
+    },
+    {
+      "path": "monitor_grid_mapping.csv",
+      "bytes": 15148,
+      "sha256": "016EBE63B4CFA61C3690331140266146EFB18CD8E5808AE25F26B6AA40D78433"
+    },
+    {
+      "path": "PDMS_phase_links.csv",
+      "bytes": 21619,
+      "sha256": "4D319A337A7E373CFF13304211E39D423B94E74203B6DA7E91F4FC56BD16DA1C"
+    },
+    {
+      "path": "phase_and_RT_91.csv",
+      "bytes": 63901,
+      "sha256": "61ED8DEFDF9949FFA5F3B8E26FF11B526C290657BDA00B640FCDE3EC44C8D978"
+    },
+    {
+      "path": "PLAN.md",
+      "bytes": 1613,
+      "sha256": "9C6D6B3D6785F006A70E38F81A1E94D247AD22FD41F61875341C99B298F7627C"
+    },
+    {
+      "path": "pro_review_receipt.json",
+      "bytes": 544,
+      "sha256": "DB8BBC7BC0A21119AB1777A294BDEAED83EFEC4F7967C02A2D23C06C767E7D3F"
+    },
+    {
+      "path": "PRO_V24_REVIEW.md",
+      "bytes": 6380,
+      "sha256": "535718A8671179E3FA3922B38AD2396AD657C086240A1692A8A3FA8D00142315"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 6258,
+      "sha256": "AEBE821D255B464AD528FEF5087F6CBDBB605435AE1796E346BD030C7894F4B0"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 3938,
+      "sha256": "712C7C56BEDE70C10578369EA7B99B3A90C641E85DB3735B69C983BC10ACBE67"
+    },
+    {
+      "path": "test_d3_discrete_phase.py",
+      "bytes": 3999,
+      "sha256": "77A56CA6B115A15C0D3388CC81EAF8750A1AF57A8568C15C209BE655DCEC6A90"
+    },
+    {
+      "path": "uniform_PDMS_window_coordinates.csv",
+      "bytes": 11257,
+      "sha256": "1B3A8AE62FC80D709F5B6C97398B303354B558F2AB7FB7606C079804F38E64AF"
+    }
+  ],
+  "secret_screen_matches": 0,
+  "old_raw_reuploaded": false
+}

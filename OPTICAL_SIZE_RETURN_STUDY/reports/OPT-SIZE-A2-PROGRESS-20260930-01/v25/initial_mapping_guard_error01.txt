@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys; sys.path.insert(0,r'E:\open\optical_size_return_20260928\_deps'); import d3_discrete_phase; d3_discrete_phase.main()
+                                                                                                            ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\open\optical_size_return_20260928\scripts\d3_discrete_phase.py", line 132, in main
+    if not np.allclose(z, data['z_grid'].reshape(-1), rtol=0, atol=1e-15):
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yang\AppData\Roaming\Python\Python313\site-packages\numpy\_core\numeric.py", line 2376, in allclose
+    res = all(isclose(a, b, rtol=rtol, atol=atol, equal_nan=equal_nan))
+              ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yang\AppData\Roaming\Python\Python313\site-packages\numpy\_core\numeric.py", line 2507, in isclose
+    result = (less_equal(abs(x - y), atol + rtol * abs(y))
+                             ~~^~~
+ValueError: operands could not be broadcast together with shapes (475,) (545,) 
+

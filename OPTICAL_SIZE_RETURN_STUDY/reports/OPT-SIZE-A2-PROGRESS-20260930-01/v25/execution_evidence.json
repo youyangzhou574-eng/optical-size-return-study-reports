@@ -1,0 +1,21 @@
+{
+  "operation": "D3_DISCRETE_PHASE_CONFIRM_OFFLINE_01",
+  "pro_agent_id": "f001159c-aeab-4b52-ab42-00e7c8896b0e",
+  "local_focused_tests_passed": 9,
+  "red_missing_implementation_verified": true,
+  "standing_wave_and_complex_TMM_library_roundtrip_passed": true,
+  "initial_precondition_attempt_exit": 1,
+  "initial_precondition_failure": "Monitor 475 z coordinates incorrectly required same shape as full 545 grid coordinates",
+  "initial_failure_result_directory_created": false,
+  "exact_native_subgrid_check_added_and_tested": true,
+  "actual_complete_phase_analysis_exit": 0,
+  "complete_phase_spectral_calculations": 1,
+  "original_sources_and_scientific_outputs_sha_unchanged": true,
+  "remote_sessions": 0,
+  "cad_starts": 0,
+  "new_solver_starts": 0,
+  "acceptance_reference_changed": false,
+  "budget": {"MAIN": 1, "DIAGNOSTIC": 4, "RECOVERY": 0, "TOTAL": 5},
+  "qualification": "NOT_QUALIFIED",
+  "paired_convergence": "NOT_YET_TESTED"
+}
