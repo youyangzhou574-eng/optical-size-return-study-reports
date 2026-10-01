@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "changes": [
+    {
+      "object": "FDTD",
+      "property": "auto shutoff min",
+      "before": 0.0001,
+      "after": 1e-08
+    }
+  ],
+  "saved_coordinate_roundoff": [],
+  "property_count": 873,
+  "object_count": 15,
+  "monitor_names": [
+    "R_below_source",
+    "T_above_coating",
+    "P_bottom_before_structure",
+    "P_top_after_structure",
+    "E_control_raw_Yee",
+    "index_control_raw_Yee",
+    "E_uniformity_witness_1",
+    "E_uniformity_witness_2"
+  ],
+  "grid_build": {
+    "status": "PASS",
+    "max_coordinate_differences_m": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "dt_difference_s": 0.0,
+    "dt_s": 3.3973566775471255e-17,
+    "grid_shape": [
+      451,
+      261,
+      545
+    ]
+  },
+  "grid_reopen": {
+    "status": "PASS",
+    "max_coordinate_differences_m": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "dt_difference_s": 0.0,
+    "dt_s": 3.3973566775471255e-17,
+    "grid_shape": [
+      451,
+      261,
+      545
+    ]
+  },
+  "frequency_build": {
+    "status": "PASS",
+    "count": 91,
+    "max_wavelength_error_m": 2.117582368135751e-22,
+    "max_frequency_difference_hz": 0.0
+  },
+  "frequency_reopen": {
+    "status": "PASS",
+    "count": 91,
+    "max_wavelength_error_m": 2.117582368135751e-22,
+    "max_frequency_difference_hz": 0.0
+  },
+  "numeric_keys_unchanged": [
+    "dt",
+    "f",
+    "fit1",
+    "fit2",
+    "fit3",
+    "fit4",
+    "ix",
+    "iy",
+    "iz",
+    "ox",
+    "oy",
+    "oz",
+    "sampled1",
+    "sampled2",
+    "sampled3",
+    "sampled4",
+    "x",
+    "y",
+    "z"
+  ],
+  "new_solver_starts": 0
+}
