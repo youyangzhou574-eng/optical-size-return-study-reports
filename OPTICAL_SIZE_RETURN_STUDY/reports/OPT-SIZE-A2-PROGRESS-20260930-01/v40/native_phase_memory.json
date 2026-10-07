@@ -1,0 +1,33 @@
+{
+  "case": "P30_X_SCREEN35_RT10",
+  "halo_nm": 30,
+  "native_snapshot_server_utc": "2026-10-07T11:31:05.4493806Z",
+  "not_live": true,
+  "initial_native_estimate_pass_only": true,
+  "running_GiB": 27.19851764862998,
+  "internal_fields_material_GiB": 26.59707876853645,
+  "four_flux_monitors_GiB": 0.5043989419937134,
+  "initialization_GiB": 0.15625,
+  "collection_report_item_GiB": 1.0087978839874268,
+  "free_snapshot_GiB": 54.16393280029297,
+  "cap_GiB": 37.91475296020508,
+  "admission_GiB": 34.12327766418457,
+  "axis": [
+    516,
+    410,
+    902
+  ],
+  "Yee_nodes_million": 194.851,
+  "dt_s": 3.0332022218718724e-17,
+  "conformal_warning_retained": true,
+  "four_MPI_overhead_unmeasured": true,
+  "full_phase_simultaneous_peak_unknown": true,
+  "resource_manager_readback_processes": 28,
+  "resource_manager_readback_threads": 1,
+  "intended_unstarted_MPI_threads": [
+    4,
+    1
+  ],
+  "halo35_native_not_rechecked": true
+}
+

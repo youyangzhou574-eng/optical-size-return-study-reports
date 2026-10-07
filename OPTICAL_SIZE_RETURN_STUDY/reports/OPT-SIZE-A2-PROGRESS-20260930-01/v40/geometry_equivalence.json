@@ -1,0 +1,28 @@
+{
+  "side_um": 3,
+  "period_x_um": 18,
+  "period_y_um": 10.392304845413264,
+  "halo_um": 0.035,
+  "continuous_layer_x_span_um": 18.07,
+  "continuous_layer_y_span_um": 10.462304845413264,
+  "normal_offsets_um": [
+    0,
+    0.1,
+    0.125
+  ],
+  "central_max_symdiff_um2": 0,
+  "periodic_edge_mask_mismatch_count": 0,
+  "central_volumes_um3": {
+    "PDMS": 2291.5032180323874,
+    "ITO": 121.51799329424563,
+    "Fe": 32.13319976622489
+  },
+  "piece_counts": [
+    14,
+    18,
+    14
+  ],
+  "native_Yee_verified": false,
+  "mathematical_geometry_only": true
+}
+

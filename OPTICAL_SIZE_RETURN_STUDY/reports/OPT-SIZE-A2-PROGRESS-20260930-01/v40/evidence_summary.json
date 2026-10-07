@@ -1,0 +1,83 @@
+{
+  "project": "OPTICAL_SIZE_RETURN_STUDY",
+  "report_version": "v40",
+  "not_new_scientific_execution": true,
+  "old_reference": {
+    "case_id": "P30_X_FINE_500NM_DIRECT_USER_20261002_01",
+    "snapshot_utc": "2026-10-07T10:47:13.6927484Z",
+    "not_live": true,
+    "simulation_time_fs": 1633.01,
+    "max_time_fs": 2900,
+    "auto_shutoff": 0.0000300586,
+    "target": 1e-8,
+    "actual_MPI_exit": null,
+    "engine_working_GiB": 55.72926712036133,
+    "new_status_request": 0,
+    "active_input_unchanged": true
+  },
+  "native_audit": {
+    "new_requests": 6,
+    "actual_CAD": 5,
+    "wall_seconds": 37.0431864,
+    "new_MPI": 0,
+    "complete_resource_audits": 1,
+    "script_errors_retained": true
+  },
+  "halo_correction": {
+    "scope": "SAME_P30_CASE_APPROVED_EXTERIOR_HALO_CORRECTION",
+    "source_composer_sha256": "3FE867C18E45DADF769269299B96FE98DDE97C642B6FD8BC6F2BAB79D7D556D0",
+    "source_geometry_generator_sha256": "DA6D4515A9D95C13D6FCAAAF4C1084E782FD0620C7AEDA6C65E1378B7FC40913",
+    "LSF_sha256": "0FED7EDF311010729421A01C40F3E7B3417CE2FE660F3EC68AE8233FC6930F5F",
+    "geometry_sha256": "5F01E6C81F73553FF461A1A4E9F5057E3B26C0E8A5E07D0F877F2CB8E42E13A1",
+    "old_halo_nm": 30,
+    "new_halo_nm": 35,
+    "central_material_volumes_exactly_equal": true,
+    "central_geometry_symmetric_difference_um2": 0,
+    "analytical_periodic_mask_mismatches": 0,
+    "native_periodic_gate": "NOT_YET_RECHECKED",
+    "all_other_listed_physical_settings_equal": true,
+    "existing_check_reverification_not_new_scientific_case": true,
+    "new_remote_actions": 0,
+    "new_CAD": 0,
+    "new_MPI": 0
+  },
+  "science_budget": {
+    "used": {
+      "MAIN": 2,
+      "DIAGNOSTIC": 4,
+      "RECOVERY": 0,
+      "TOTAL": 6
+    },
+    "limits": {
+      "MAIN": 6,
+      "DIAGNOSTIC": 4,
+      "RECOVERY": 2,
+      "TOTAL": 12
+    },
+    "extra_budget_not_approved": true
+  },
+  "non_solving_budget": {
+    "checks_used": 113,
+    "effective_checks_limit": 113,
+    "CAD_used": 9,
+    "CAD_limit": 12,
+    "CAD_wall_seconds": 85.9334572,
+    "CAD_wall_limit_seconds": 7200
+  },
+  "request": {
+    "explicit_user_requested": true,
+    "two_short_MAIN_plus_two_reserved_long_MAIN_only_proposal": true,
+    "new_local_hours": 12,
+    "new_focused_checks": 32,
+    "new_CAD_processes": 8,
+    "no_RAM_or_security_increase": true
+  },
+  "relative_sources": [
+    "evidence/pillar_p30_screen35_start_request_20261007_01/old_reference_status01/receipt.json",
+    "evidence/pillar_p30_screen35_parallel_user_20261007_01/completion_receipt.json",
+    "evidence/pillar_p30_screen35_parallel_user_20261007_01/probe_evaluation.json",
+    "evidence/pillar_p30_screen35_parallel_user_20261007_01/halo35_authorized01/prepared01/preparation_receipt.json",
+    "review_exchange/opening_proposal_20261007_01/non_solving_scope_ledger.json"
+  ]
+}
+

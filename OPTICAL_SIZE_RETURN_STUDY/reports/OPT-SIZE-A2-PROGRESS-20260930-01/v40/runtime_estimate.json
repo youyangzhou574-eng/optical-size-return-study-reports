@@ -1,0 +1,17 @@
+{
+  "reference_snapshot_UTC": "2026-10-07T10:47:13.6927484Z",
+  "reference_elapsed_hours": 131.65578694444446,
+  "reference_time_fs": 1633.01,
+  "work_ratio": 0.45602429251918175,
+  "new_single_rank_linear_hours": 106.61960893224754,
+  "ideal_fourfold_hours": 26.654902233061886,
+  "assumed_threefold_hours": 35.539869644082515,
+  "assumed_twofold_hours": 53.30980446612377,
+  "assumed_one_point_fivefold_hours": 71.07973928816503,
+  "new_run_started": false,
+  "estimated_range_not_measured": true,
+  "early_shutoff_time_unknown": true,
+  "old_run_kept_running": true,
+  "halo_correction_user_approved": true
+}
+
