@@ -1,0 +1,328 @@
+{
+  "project": "OPTICAL_SIZE_RETURN_STUDY",
+  "report_version": "v39",
+  "compilation_of_existing_evidence_not_new_scientific_execution": true,
+  "D3": {
+    "actual_MPI_exit": 0,
+    "original_runner_exit": -1,
+    "original_task_result": 1,
+    "iterations": 8265,
+    "termination_time_fs": 280.7915,
+    "final_auto_shutoff": 8.71817E-09,
+    "termination": "AUTO_SHUTOFF_THRESHOLD_1E8_REACHED_NOT_2900FS_LIMIT",
+    "results": {
+      "maxima": {
+        "witness1_Ex": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness1_Ey": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness1_Ez": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ex": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ey": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ez": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        }
+      },
+      "uniformity_pass": true,
+      "R_vs_TMM": {
+        "weighted_absolute_difference": 0.01663165649526471,
+        "max_absolute_difference": 0.06893973035436188,
+        "max_wavelength_nm": 450.0
+      },
+      "T_vs_TMM": {
+        "weighted_absolute_difference": 0.011084749900039619,
+        "max_absolute_difference": 0.025323458413064714,
+        "max_wavelength_nm": 350.0
+      },
+      "corrected_direct_vs_net": {
+        "weighted_absolute_difference": 0.0006601666068369895,
+        "max_absolute_difference": 0.002484872984292008,
+        "max_wavelength_nm": 359.99999999999994
+      },
+      "RT_TMM_pass": false,
+      "corrected_direct_net_pass": true
+    },
+    "four_material_integral": {
+      "actual_planes_m": {
+        "source_z": -1.085E-05,
+        "zR": -1.1137931034482752E-05,
+        "zT": 8.378205128205125E-07,
+        "zbottom": -1.0341527809806174E-05,
+        "ztop": 4.788461538461539E-07
+      },
+      "uniformity_max_relative_field_difference": 0.0,
+      "uniformity_max_relative_field_difference_per_witness": {
+        "1": 0.0,
+        "2": 0.0
+      },
+      "weighted_abs_component_closure": 0.00049825829269981,
+      "max_component_closure": 0.0025289785497225603,
+      "max_component_closure_wavelength_nm": 350.0,
+      "direct_vs_net_weighted_abs_difference": 0.0006601666068369895,
+      "direct_vs_net_max_difference": 0.002484872984292008,
+      "direct_vs_net_max_difference_wavelength_nm": 359.99999999999994,
+      "flat_TMM_weighted_abs_errors": {
+        "R": 0.01663165649526471,
+        "T": 0.011084749900039619,
+        "A_PDMS": 1.6336887227078351E-09,
+        "A_ITO": 0.0005344937290119546,
+        "A_Fe2O3": 0.006205787190381043,
+        "A_water": 5.3616694412382586E-11
+      },
+      "flat_TMM_max_errors": {
+        "R": 0.06893973035436188,
+        "T": 0.025323458413064714,
+        "A_PDMS": 9.635756017819624E-09,
+        "A_ITO": 0.0028322009450201663,
+        "A_Fe2O3": 0.04775396874086668,
+        "A_water": 1.8828415008980925E-10
+      },
+      "flat_TMM_max_error_wavelength_nm": {
+        "R": 450.0,
+        "T": 350.0,
+        "A_PDMS": 424.99999999999994,
+        "A_ITO": 355.0,
+        "A_Fe2O3": 424.99999999999994,
+        "A_water": 415.00000000000006
+      },
+      "COMPONENT_PASS": true,
+      "FLAT_CALIBRATION_PASS": false,
+      "FLUX_REFERENCE_PASS": true,
+      "paired_numerical_convergence": "NOT_YET_TESTED",
+      "qualification": "RAW_RESULT_REQUIRES_REVIEW"
+    },
+    "mapping": "PASS_NO_INTERPOLATION",
+    "overall_qualification": "NOT_QUALIFIED_PENDING_ALL_GATES_AND_REVIEW",
+    "root": "NARROWED_BUT_NOT_UNIQUE",
+    "paired_numerical_convergence": "NOT_YET_TESTED",
+    "data_scope": "AUDITED_FLAT_DIAGNOSTIC_NOT_3D_PILLAR_COMPONENT_QUALIFICATION"
+  },
+  "D2": {
+    "actual_MPI_exit": 0,
+    "original_runner_exit": -1,
+    "original_task_result": 1,
+    "CAD_exit": null,
+    "CAD_exit_state": "UNKNOWN",
+    "termination_time_fs": 170.989,
+    "results": {
+      "maxima": {
+        "witness1_Ex": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness1_Ey": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness1_Ez": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ex": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ey": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        },
+        "witness2_Ez": {
+          "max_relative_difference": 0.0,
+          "wavelength_nm": 350.0,
+          "z_m": -1.0441912672538744E-05,
+          "absolute_complex_difference": 0.0
+        }
+      },
+      "uniformity_pass": true,
+      "R_vs_TMM": {
+        "weighted_absolute_difference": 0.017801553381861117,
+        "max_absolute_difference": 0.07482454347573314,
+        "max_wavelength_nm": 450.0
+      },
+      "T_vs_TMM": {
+        "weighted_absolute_difference": 0.01120488878777557,
+        "max_absolute_difference": 0.02883346288798211,
+        "max_wavelength_nm": 350.0
+      },
+      "corrected_direct_vs_net": {
+        "weighted_absolute_difference": 0.0022904161290306538,
+        "max_absolute_difference": 0.005879774134613935,
+        "max_wavelength_nm": 375.0
+      },
+      "RT_TMM_pass": false,
+      "corrected_direct_net_pass": false
+    }
+  },
+  "v25": {
+    "closed": true,
+    "no_additional_Flat_work": true,
+    "k_relative_median_continuous": 0.004894375980179302,
+    "k_relative_median_discrete": 1.208137523127707E-07,
+    "diagnostic_reference_does_not_replace_original_TMM_gate": true
+  },
+  "current_native_resource_estimate": {
+    "runtime_GiB": 61.99234244693071,
+    "internal_fields_material_grid_GiB": 54.44219215679914,
+    "listed_monitors_GiB": 6.888887390494347,
+    "collection_GiB": 14.880361706018448,
+    "conformal_warning": true,
+    "E_regions": 16,
+    "listed_E_items": 15,
+    "not_measured_collection_peak": true
+  },
+  "current_native_mesh": {
+    "bbox_nm": [
+      25,
+      25,
+      15
+    ],
+    "flat_z_nm": 12.5,
+    "axis_nodes": [
+      721,
+      494,
+      1143
+    ],
+    "dt_s": 2.937907103927773E-17,
+    "proposed_35_35_25_not_approved_or_generated": true
+  },
+  "lightweight_screening": {
+    "scope_queue_receipt": "01a10c4d-8359-75e0-92ce-de19d8671e34",
+    "user_scope_confirmed": true,
+    "outputs": [
+      "R",
+      "T",
+      "total_flux_absorption"
+    ],
+    "individual_Fe2O3_not_claimed": true,
+    "new_native_screening_input": false,
+    "new_CAD": 0,
+    "new_solver_starts": 0,
+    "original_cell_only": true,
+    "physical_layers_not_silently_changed": true
+  },
+  "science_budget": {
+    "limits": {
+      "MAIN": 6,
+      "DIAGNOSTIC": 4,
+      "RECOVERY": 2,
+      "TOTAL": 12
+    },
+    "used": {
+      "MAIN": 2,
+      "DIAGNOSTIC": 4,
+      "RECOVERY": 0,
+      "TOTAL": 6
+    },
+    "remaining": {
+      "MAIN": 4,
+      "DIAGNOSTIC": 0,
+      "RECOVERY": 2,
+      "TOTAL": 6
+    },
+    "no_category_transfer": true,
+    "not_reset_by_50_Pro_questions": true
+  },
+  "old_non_solving_budget": {
+    "CAD_used": 4,
+    "CAD_limit": 10,
+    "local_check_records": [
+      "80/80",
+      "89/90"
+    ],
+    "reconciliation_required": true,
+    "not_reset": true
+  },
+  "proposed_next_package_not_approved": {
+    "local_hours": 8,
+    "new_focused_checks": 24,
+    "new_CAD_processes": 4,
+    "cumulative_new_CAD_hours": 2,
+    "new_MAIN_screen_starts": 2,
+    "target_hours_per_case": 48,
+    "estimated_admission_ceiling_hours": 96,
+    "not_a_kill_timer": true
+  },
+  "communication": {
+    "user_manual_forward": true,
+    "execution_web_submissions_this_round": 0,
+    "old_opening_report_web_visibility": "NOT_VERIFIED",
+    "Pro_planning_cap": 50,
+    "confirmed_used": 0,
+    "unreported_manual_submissions": "PENDING_RECONCILIATION",
+    "is_platform_quota": false,
+    "science_or_safety_release": false
+  },
+  "source_provenance": [
+    {
+      "relative_path": "evidence/a2_preflight_20260930/F0_D3_autoshutoff_20261001/closeout_review06_01/analysis01/comparison_summary.json",
+      "bytes": 16806,
+      "sha256": "EE785A5CBE393EABE7A622A4C0660E45FCDCFF4A7BA4C1CEE731749C66D20DDF"
+    },
+    {
+      "relative_path": "review_exchange/OPT-SIZE-A2-PROGRESS-20260930-01/v25/pro_final_closeout_receipt.json",
+      "bytes": 924,
+      "sha256": "91311A8C263A4BC5D7D55860584EC2F0A626360D9AE8CA827D521B6DC73B9C57"
+    },
+    {
+      "relative_path": "evidence/pillar_direct_progress_read_20261007_01/completion_receipt.json",
+      "bytes": 1570,
+      "sha256": "4189C2CD877CA287AD5A9AD71EF091E22ADCFFCA5CA611E307D5AE8B8E29F065"
+    },
+    {
+      "relative_path": "evidence/pillar_direct_progress_read_20261007_01/remaining_estimate.json",
+      "bytes": 668,
+      "sha256": "A48BB39485A3637427EBF1694390DFA40D83EA442962D8C6167D9F9BBF31CDBA"
+    },
+    {
+      "relative_path": "evidence/pillar_v36_memory_only_20261002_01/build01/cpu_memory_report.json",
+      "bytes": 31039,
+      "sha256": "3F417D6DB2A6B0C173C1904C85EEA616F88ACA6C4CC9351433FF2D1567B6DFEE"
+    },
+    {
+      "relative_path": "evidence/pillar_v36_memory_only_20261002_01/build01/native_mesh_readback.json",
+      "bytes": 2465,
+      "sha256": "618582F58933102FD94E7B716786CA234EF71B91B6019B65FCB01EE30754631E"
+    },
+    {
+      "relative_path": "evidence/pillar_light_screening_scope_20261007_01/scope_acceptance.json",
+      "bytes": 778,
+      "sha256": "874BB2C5FD46387EB7417BF479E36AA9F58B44AD06B6A578C104C6A8DE47DF2D"
+    }
+  ]
+}
