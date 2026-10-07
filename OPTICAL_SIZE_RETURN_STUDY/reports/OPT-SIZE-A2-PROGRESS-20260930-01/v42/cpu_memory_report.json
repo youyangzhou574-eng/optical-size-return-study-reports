@@ -1,0 +1,1061 @@
+{
+  "report" : 
+  {
+    "Approximate_Memory_Requirements" : 
+    {
+      "Alert" : "You are using conformal mesh technology and the memory report is less reliable in this case. Please do some testing if the memory report indicates you are close to the memory limits of your computer.",
+      "Data_Collection_Bytes" : 6357858928.0,
+      "FSP_Saved_Monitor_Data_Bytes" : 2395467784.0,
+      "Initialization_and_Mesh_Bytes" : 167772160.0,
+      "Running_Simulation_Bytes" : 31893623561.0
+    },
+    "Frequency_WaveLength_Settings" : 
+    {
+      "Bandwidth_Source" : "(detected from source settings)",
+      "Simulation_Bandwidth" : 
+      {
+        "Alert" : "",
+        "Maximum_Frequency_THz" : 856.54988000000003,
+        "Maximum_Wavelength_Micrometer" : 0.80000000000000004,
+        "Minimum_Frequency_THz" : 374.74057249999998,
+        "Minimum_Wavelength_Micrometer" : 0.34999999999999998,
+        "Simulation_Frequency_THz" : 615.64522624999995,
+        "Simulation_Wavelength_Micrometer" : 0.48695652173913051
+      }
+    },
+    "Geometry" : null,
+    "Materials" : 
+    {
+      "OPT_SIZE_Fe2O3_Query_nkavg_A2" : 
+      {
+        "Material_Name" : "OPT_SIZE_Fe2O3_Querry_nkavg_A2",
+        "RMS_Error" : 0.019350971038928428
+      },
+      "OPT_SIZE_ITO_Minenkov10_A2" : 
+      {
+        "Material_Name" : "OPT_SIZE_ITO_Minenkov110_A2",
+        "RMS_Error" : 0.00053699455073273085
+      },
+      "OPT_SIZE_PDMS_M0_A2" : 
+      {
+        "Material_Name" : "OPT_SIZE_PDMS_M0_A2",
+        "RMS_Error" : 7.122591993430048e-10
+      },
+      "OPT_SIZE_Water_Hale_A2" : 
+      {
+        "Material_Name" : "OPT_SIZE_Water_Hale_A2",
+        "RMS_Error" : 0.0010718132515692702
+      }
+    },
+    "Memory_Details" : 
+    {
+      "Electromagnetic_Fields_and_Refractive_Index" : 28610498257.0,
+      "Electromagnetic_Fields_and_Refractive_Index_Percent" : 89.700000000000003,
+      "Field_Type" : "Electromagnetic Fields and Refractive Index",
+      "Miscellaneous_Memory" : 83886080.0,
+      "Miscellaneous_Memory_Percent" : 0.29999999999999999,
+      "Monitors" : 
+      {
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_BOTOM" : 
+        {
+          "FSP_File" : 91394000.0,
+          "Memory" : 91393920.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_BOTTOM: ",
+          "Percent" : 0.29999999999999999
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_FLAT" : 
+        {
+          "FSP_File" : 223407440.0,
+          "Memory" : 223407360.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_FLAT: ",
+          "Percent" : 0.69999999999999996
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_01" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_001: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_010" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_010: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_012" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_012: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_013" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_013: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_014" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_014: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_02" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_002: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_03" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_003: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_04" : 
+        {
+          "FSP_File" : 86119568.0,
+          "Memory" : 86119488.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_004: ",
+          "Percent" : 0.29999999999999999
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_05" : 
+        {
+          "FSP_File" : 86119568.0,
+          "Memory" : 86119488.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_005: ",
+          "Percent" : 0.29999999999999999
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_06" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_006: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_07" : 
+        {
+          "FSP_File" : 172239056.0,
+          "Memory" : 172238976.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_007: ",
+          "Percent" : 0.5
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_08" : 
+        {
+          "FSP_File" : 86119568.0,
+          "Memory" : 86119488.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_008: ",
+          "Percent" : 0.29999999999999999
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_E_PILAR_09" : 
+        {
+          "FSP_File" : 86119568.0,
+          "Memory" : 86119488.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_E_PILLAR_009: ",
+          "Percent" : 0.29999999999999999
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_01" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 10784656.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_001: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_010" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 341136.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_010: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_012" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_012: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_013" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_013: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_014" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_014: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_015" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_015: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_016" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_016: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_017" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_017: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_018" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_018: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_019" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_019: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_02" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 236176.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_002: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_020" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_020: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_021" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_021: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_023" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_023: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_024" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_024: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_025" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_025: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_026" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_026: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_027" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_027: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_028" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_028: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_029" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_029: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_03" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 577296.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_003: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_030" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_030: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_031" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_031: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_032" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_032: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_034" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 557584.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_034: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_035" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 10784656.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_035: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_036" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 236176.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_036: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_037" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 577296.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_037: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_038" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2160592.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_038: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_039" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2160592.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_039: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_04" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2160592.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_004: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_040" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 288656.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_040: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_041" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1603024.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_041: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_042" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2090896.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_042: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_043" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1603024.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_043: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_045" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 13572880.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_045: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_046" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 297232.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_046: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_047" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 726544.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_047: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_048" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 363280.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_048: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_049" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 12384016.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_049: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_05" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2160592.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_005: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_050" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2416144.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_050: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_051" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2416144.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_051: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_052" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2416144.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_052: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_053" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 813136.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_053: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_054" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 813136.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_054: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_056" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_056: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_057" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_057: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_058" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_058: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_059" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_059: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_06" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 288656.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_006: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_060" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1208080.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_060: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_061" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2416144.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_061: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_062" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2416144.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_062: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_063" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1208080.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_063: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_064" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1208080.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_064: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_065" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2416144.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_065: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_067" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1208080.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_067: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_068" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_068: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_069" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_069: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_07" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1603024.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_007: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_070" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_070: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_071" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_071: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_072" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1626256.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_072: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_073" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 813136.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_073: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_074" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 813136.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_074: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_075" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2416144.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_075: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_076" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2416144.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_076: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_078" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 13572880.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_078: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_079" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 297232.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_079: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_08" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2090896.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_008: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_080" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 726544.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_080: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_081" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 363280.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_081: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_082" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 12384016.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_082: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_083" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 13539856.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_083: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_084" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 13539856.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_084: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_085" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 13539856.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_085: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_086" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 13539856.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_086: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_087" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1519120.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_087: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_089" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_089: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_09" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1603024.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_009: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_090" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_090: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_091" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 53776.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_091: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_092" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_092: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_093" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_093: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_094" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_094: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_095" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2972176.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_095: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_096" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_096: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_097" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_097: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_098" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_098: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_1" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 17680.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_111: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_10" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 107536.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_100: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_101" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 53776.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_101: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_102" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 53776.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_102: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_103" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 1519120.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_103: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_104" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_104: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_105" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_105: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_106" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_106: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_107" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 8848.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_107: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_108" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 8848.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_108: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_109" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2311696.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_109: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_12" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 79888.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_112: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_120" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 2311696.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_120: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_121" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 8848.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_121: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_123" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 8848.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_123: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_124" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_124: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_125" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_125: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_126" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 13539856.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_126: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_13" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_113: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_14" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_114: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_15" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 79888.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_115: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_16" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_116: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_17" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 159760.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_117: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_18" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 79888.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_118: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_COMBO_FACE_19" : 
+        {
+          "FSP_File" : 96.0,
+          "Memory" : 17680.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::COMBO_FACE_119: ",
+          "Percent" : 0.0
+        },
+        "Frequency_Domain_Power_Monitor_model_P_botom_before_structure" : 
+        {
+          "FSP_File" : 240.0,
+          "Memory" : 135398560.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::P_bottom_before_structure: ",
+          "Percent" : 0.40000000000000002
+        },
+        "Frequency_Domain_Power_Monitor_model_P_top_after_structure" : 
+        {
+          "FSP_File" : 240.0,
+          "Memory" : 135398560.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::P_top_after_structure: ",
+          "Percent" : 0.40000000000000002
+        },
+        "Frequency_Domain_Power_Monitor_model_R_below_source" : 
+        {
+          "FSP_File" : 240.0,
+          "Memory" : 135398560.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::R_below_source: ",
+          "Percent" : 0.40000000000000002
+        },
+        "Frequency_Domain_Power_Monitor_model_T_above_coating" : 
+        {
+          "FSP_File" : 240.0,
+          "Memory" : 135398560.0,
+          "Monitor_Name" : "Frequency Domain Power Monitor, ::model::T_above_coating: ",
+          "Percent" : 0.40000000000000002
+        },
+        "Index_Monitor_model_COMBO_INDEX_FLAT_WITNES_can_be_swaped_without_slowdown" : 
+        {
+          "FSP_File" : 16208.0,
+          "Memory" : 16128.0,
+          "Monitor_Name" : "Index Monitor, ::model::COMBO_INDEX_FLAT_WITNESS: (can be swapped without slowdown) ",
+          "Percent" : 0.0
+        },
+        "Time_Monitor_model_TIME_FIXED_INTERNAL_PILAR_MIDLE_CORE" : 
+        {
+          "FSP_File" : 2294708.0,
+          "Memory" : 2294628.0,
+          "Monitor_Name" : "Time Monitor, ::model::TIME_FIXED_INTERNAL_PILLAR_MIDDLE_CORE: ",
+          "Percent" : 0.0
+        },
+        "Time_Monitor_model_TIME_FIXED_INTERNAL_PILAR_NEAR_TOP_CORE" : 
+        {
+          "FSP_File" : 2294708.0,
+          "Memory" : 2294628.0,
+          "Monitor_Name" : "Time Monitor, ::model::TIME_FIXED_INTERNAL_PILLAR_NEAR_TOP_CORE: ",
+          "Percent" : 0.0
+        },
+        "Time_Monitor_model_TIME_FIXED_INTERNAL_PILAR_SIDE_WATER" : 
+        {
+          "FSP_File" : 2294708.0,
+          "Memory" : 2294628.0,
+          "Monitor_Name" : "Time Monitor, ::model::TIME_FIXED_INTERNAL_PILLAR_SIDE_WATER: ",
+          "Percent" : 0.0
+        },
+        "Time_Monitor_model_TIME_PDMS_BASE_MIDLE" : 
+        {
+          "FSP_File" : 2294708.0,
+          "Memory" : 2294628.0,
+          "Monitor_Name" : "Time Monitor, ::model::TIME_PDMS_BASE_MIDDLE: ",
+          "Percent" : 0.0
+        },
+        "Time_Monitor_model_TIME_R_WATER" : 
+        {
+          "FSP_File" : 2294708.0,
+          "Memory" : 2294628.0,
+          "Monitor_Name" : "Time Monitor, ::model::TIME_R_WATER: ",
+          "Percent" : 0.0
+        },
+        "Time_Monitor_model_TIME_T_WATER" : 
+        {
+          "FSP_File" : 2294708.0,
+          "Memory" : 2294628.0,
+          "Monitor_Name" : "Time Monitor, ::model::TIME_T_WATER: ",
+          "Percent" : 0.0
+        }
+      },
+      "Sources" : 
+      {
+        "Planewave_Source_model_source_from_botom_water_side" : 
+        {
+          "Bytes" : 20309760.0,
+          "Percent" : 0.10000000000000001,
+          "Source_Name" : "Planewave Source, ::model::source_from_bottom_water_side: "
+        }
+      }
+    },
+    "Memory_Recommended" : 31893623561.085793,
+    "Mesh_Override" : "",
+    "Total_FDTD_Yee_Nodes" : "194.851"
+  }
+}

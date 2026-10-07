@@ -1,0 +1,7 @@
+phase,bytes,GiB
+Data_Collection_Bytes,6357858928.0,5.921217545866966
+FSP_Saved_Monitor_Data_Bytes,2395467784.0,2.230953224003315
+Initialization_and_Mesh_Bytes,167772160.0,0.15625
+Running_Simulation_Bytes,31893623561.0,29.703251608647406
+Memory_Recommended_Bytes,31893623561.085793,29.703251608727307
+Electromagnetic_Fields_and_Refractive_Index,28610498257.0,26.6456028977409

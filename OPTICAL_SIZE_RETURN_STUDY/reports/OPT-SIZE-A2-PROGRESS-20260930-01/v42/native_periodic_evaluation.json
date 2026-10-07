@@ -1,0 +1,195 @@
+{
+    "NOT_MESH_CONVERGED":  true,
+    "final_reopen_settings_pending":  true,
+    "probes":  [
+                   {
+                       "values_per_component":  336,
+                       "sha256":  "EB2F92D4B14967CB6C8F03E74592CE078E6F2CADB14D9C1A5472FF74E68CC370",
+                       "name":  "FLAT_FE",
+                       "Fe_fit_matching_counts":  {
+                                                      "index_x":  336,
+                                                      "index_z":  336,
+                                                      "index_y":  336
+                                                  }
+                   },
+                   {
+                       "values_per_component":  135,
+                       "sha256":  "AB026D83E866C46B227E96AD3573999ECE5BE99794918F600361DBDA84BBA8B5",
+                       "name":  "SIDE_FE",
+                       "Fe_fit_matching_counts":  {
+                                                      "index_x":  10,
+                                                      "index_z":  7,
+                                                      "index_y":  8
+                                                  }
+                   },
+                   {
+                       "values_per_component":  169,
+                       "sha256":  "45F4AFD6535A15D2B27A00F186FFF6D138A7600D10C7459E498183338C66C4CA",
+                       "name":  "TOP_FE",
+                       "Fe_fit_matching_counts":  {
+                                                      "index_x":  0,
+                                                      "index_z":  0,
+                                                      "index_y":  0
+                                                  }
+                   },
+                   {
+                       "values_per_component":  70,
+                       "sha256":  "BE528944A862ACBD09ACEDD048C2D47A5EDA40C354EA329C526E9C73D62684C9",
+                       "name":  "X_LO",
+                       "Fe_fit_matching_counts":  {
+                                                      "index_x":  0,
+                                                      "index_z":  0,
+                                                      "index_y":  0
+                                                  }
+                   },
+                   {
+                       "values_per_component":  70,
+                       "sha256":  "ED2131212DD86A46FC461692ADBBC32005FB9E0E5723BB3224DDA5C279F3FB89",
+                       "name":  "X_HI",
+                       "Fe_fit_matching_counts":  {
+                                                      "index_x":  0,
+                                                      "index_z":  0,
+                                                      "index_y":  0
+                                                  }
+                   },
+                   {
+                       "values_per_component":  150,
+                       "sha256":  "4AA6EF4462194609DD6CF621A488531B5BB3442D48D23711B86B4B5E6C23E75E",
+                       "name":  "Y_LO",
+                       "Fe_fit_matching_counts":  {
+                                                      "index_x":  150,
+                                                      "index_z":  150,
+                                                      "index_y":  150
+                                                  }
+                   },
+                   {
+                       "values_per_component":  150,
+                       "sha256":  "BCAF4F9433286AA420CD2B35D118EFEA764EA75622C9EEE0ACEF6CC93AD57455",
+                       "name":  "Y_HI",
+                       "Fe_fit_matching_counts":  {
+                                                      "index_x":  150,
+                                                      "index_z":  150,
+                                                      "index_y":  150
+                                                  }
+                   }
+               ],
+    "native_periodic_pairs_passed":  true,
+    "client_utc":  "2026-10-07T15:21:00.7437637Z",
+    "periodic_pairs":  [
+                           {
+                               "mismatch_witnesses":  [
+
+                                                      ],
+                               "interpolation":  false,
+                               "passed":  true,
+                               "low_z":  [
+                                             4.500000000000006E-06
+                                         ],
+                               "max_relative":  0,
+                               "axis":  "X",
+                               "component":  "index_x",
+                               "z_matches":  true,
+                               "matched_native_Yee_pairs":  10,
+                               "high_z":  [
+                                              4.500000000000006E-06
+                                          ]
+                           },
+                           {
+                               "mismatch_witnesses":  [
+
+                                                      ],
+                               "interpolation":  false,
+                               "passed":  true,
+                               "low_z":  [
+                                             4.500000000000006E-06
+                                         ],
+                               "max_relative":  0,
+                               "axis":  "X",
+                               "component":  "index_y",
+                               "z_matches":  true,
+                               "matched_native_Yee_pairs":  10,
+                               "high_z":  [
+                                              4.500000000000006E-06
+                                          ]
+                           },
+                           {
+                               "mismatch_witnesses":  [
+
+                                                      ],
+                               "interpolation":  false,
+                               "passed":  true,
+                               "low_z":  [
+                                             4.5125000000000063E-06
+                                         ],
+                               "max_relative":  0,
+                               "axis":  "X",
+                               "component":  "index_z",
+                               "z_matches":  true,
+                               "matched_native_Yee_pairs":  10,
+                               "high_z":  [
+                                              4.5125000000000063E-06
+                                          ]
+                           },
+                           {
+                               "mismatch_witnesses":  [
+
+                                                      ],
+                               "interpolation":  false,
+                               "passed":  true,
+                               "low_z":  [
+                                             1.125E-07
+                                         ],
+                               "max_relative":  0,
+                               "axis":  "Y",
+                               "component":  "index_x",
+                               "z_matches":  true,
+                               "matched_native_Yee_pairs":  10,
+                               "high_z":  [
+                                              1.125E-07
+                                          ]
+                           },
+                           {
+                               "mismatch_witnesses":  [
+
+                                                      ],
+                               "interpolation":  false,
+                               "passed":  true,
+                               "low_z":  [
+                                             1.125E-07
+                                         ],
+                               "max_relative":  0,
+                               "axis":  "Y",
+                               "component":  "index_y",
+                               "z_matches":  true,
+                               "matched_native_Yee_pairs":  10,
+                               "high_z":  [
+                                              1.125E-07
+                                          ]
+                           },
+                           {
+                               "mismatch_witnesses":  [
+
+                                                      ],
+                               "interpolation":  false,
+                               "passed":  true,
+                               "low_z":  [
+                                             1.1875E-07
+                                         ],
+                               "max_relative":  0,
+                               "axis":  "Y",
+                               "component":  "index_z",
+                               "z_matches":  true,
+                               "matched_native_Yee_pairs":  10,
+                               "high_z":  [
+                                              1.1875E-07
+                                          ]
+                           }
+                       ],
+    "top_Fe_representation":  "NOT_ESTABLISHED_BY_PURE_FIT_MATCH_COUNTS_ALONE",
+    "new_solver_starts":  0,
+    "solver_ready":  false,
+    "no_component_absorption_claim":  true,
+    "operation":  "V41_COMBO35_SAME_GATE_NATIVE_REPRESENTATION_AUDIT",
+    "no_claim_top_Fe_disappeared":  true,
+    "pure_Fe_fit_matches_in_all_three_selected_regions":  false
+}

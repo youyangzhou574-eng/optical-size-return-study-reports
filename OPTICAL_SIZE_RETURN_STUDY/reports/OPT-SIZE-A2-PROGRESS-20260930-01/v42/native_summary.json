@@ -1,0 +1,196 @@
+{
+  "operation": "V41_NATIVE_COMBO_INTERPRETATION01",
+  "client_utc": "2026-10-07T15:31:04.633397+00:00",
+  "state": "OLD_CANCELLED_COMBO_NATIVE_PERIODIC_PASS_RESOURCE_AND_MIXED_FE_OWNERSHIP_NOT_RELEASED",
+  "old_case_cancelled_not_success": true,
+  "new_solver_starts": 0,
+  "actual_new_CAD": 3,
+  "CAD_results": [
+    {
+      "operation": "build01",
+      "exit": 0,
+      "XML_errors": 1,
+      "interface_error_preserved": true
+    },
+    {
+      "operation": "sampling_compatibility02",
+      "exit": 0,
+      "XML_present": false
+    },
+    {
+      "operation": "thin_top_reopen03",
+      "exit": 0,
+      "XML_present": false
+    }
+  ],
+  "native_runtime_GiB": 29.703251608647406,
+  "native_collection_GiB": 5.921217545866966,
+  "native_saved_monitor_GiB": 2.230953224003315,
+  "native_report_not_measured_peak": true,
+  "native_warnings": "You are using conformal mesh technology and the memory report is less reliable in this case. Please do some testing if the memory report indicates you are close to the memory limits of your computer.",
+  "last_audit_free_GiB_snapshot": 110.12482452392578,
+  "hard_resource_cap_GiB": 64,
+  "admission_GiB_at_that_snapshot": 57.6,
+  "native_resource_configuration": {
+    "four_MPI_extra_memory_verified": 0.0,
+    "native_processes": "28",
+    "native_threads": "1",
+    "requested_MPI_processes": 4.0,
+    "requested_threads": 1.0
+  },
+  "four_MPI_all_phase_upper_bound_verified": false,
+  "native_periodic_small_witness_pairs": [
+    {
+      "mismatch_witnesses": [],
+      "interpolation": false,
+      "passed": true,
+      "low_z": [
+        4.500000000000006e-06
+      ],
+      "max_relative": 0,
+      "axis": "X",
+      "component": "index_x",
+      "z_matches": true,
+      "matched_native_Yee_pairs": 10,
+      "high_z": [
+        4.500000000000006e-06
+      ]
+    },
+    {
+      "mismatch_witnesses": [],
+      "interpolation": false,
+      "passed": true,
+      "low_z": [
+        4.500000000000006e-06
+      ],
+      "max_relative": 0,
+      "axis": "X",
+      "component": "index_y",
+      "z_matches": true,
+      "matched_native_Yee_pairs": 10,
+      "high_z": [
+        4.500000000000006e-06
+      ]
+    },
+    {
+      "mismatch_witnesses": [],
+      "interpolation": false,
+      "passed": true,
+      "low_z": [
+        4.512500000000006e-06
+      ],
+      "max_relative": 0,
+      "axis": "X",
+      "component": "index_z",
+      "z_matches": true,
+      "matched_native_Yee_pairs": 10,
+      "high_z": [
+        4.512500000000006e-06
+      ]
+    },
+    {
+      "mismatch_witnesses": [],
+      "interpolation": false,
+      "passed": true,
+      "low_z": [
+        1.125e-07
+      ],
+      "max_relative": 0,
+      "axis": "Y",
+      "component": "index_x",
+      "z_matches": true,
+      "matched_native_Yee_pairs": 10,
+      "high_z": [
+        1.125e-07
+      ]
+    },
+    {
+      "mismatch_witnesses": [],
+      "interpolation": false,
+      "passed": true,
+      "low_z": [
+        1.125e-07
+      ],
+      "max_relative": 0,
+      "axis": "Y",
+      "component": "index_y",
+      "z_matches": true,
+      "matched_native_Yee_pairs": 10,
+      "high_z": [
+        1.125e-07
+      ]
+    },
+    {
+      "mismatch_witnesses": [],
+      "interpolation": false,
+      "passed": true,
+      "low_z": [
+        1.1875e-07
+      ],
+      "max_relative": 0,
+      "axis": "Y",
+      "component": "index_z",
+      "z_matches": true,
+      "matched_native_Yee_pairs": 10,
+      "high_z": [
+        1.1875e-07
+      ]
+    }
+  ],
+  "native_periodic_small_witness_passed": true,
+  "all_16_E_objects_enabled_and_unique": true,
+  "native_E_only_settings": true,
+  "native_time_downsamples": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "reopen_grid_unchanged": 1.0,
+  "reopen_dt_unchanged": 1.0,
+  "missing_named_native_memory_entries": [
+    "COMBO_E_PILLAR_011"
+  ],
+  "top_Fe_index_z_pure_nodes": 169,
+  "top_tangential_UNASSIGNED_nodes": 676,
+  "no_claim_Fe_disappeared": true,
+  "mixed_top_rule_not_validated": true,
+  "small_probe_not_full_sidewall_ownership_proof": true,
+  "native_control_face_snapping_and_full_CAD_index_block_binding": "PENDING",
+  "full_volume_closure": "FULL_VOLUME_CLOSURE_NOT_MEASURED",
+  "science_qualification": "NOT_QUALIFIED",
+  "solver_ready": false,
+  "science_used_unchanged": {
+    "MAIN": 2,
+    "DIAGNOSTIC": 4,
+    "RECOVERY": 0,
+    "TOTAL": 6
+  },
+  "files_verified_on_native_transfer": [
+    {
+      "new_solver_starts": 0,
+      "files_verified": 18,
+      "client_utc": "2026-10-07T15:19:07.0448306Z",
+      "source_unchanged": true
+    },
+    {
+      "new_solver_starts": 0,
+      "files_verified": 6,
+      "client_utc": "2026-10-07T15:26:54.9530395Z",
+      "source_unchanged": true
+    }
+  ],
+  "latest_remote_host": {
+    "pid": 39916,
+    "birth": "2026-10-07T15:30:31.7353874Z",
+    "local_closed": true,
+    "remote_gone_independently_verified": false
+  },
+  "source_SHA256": {
+    "evidence\\pillar_v41_native_combo_prepare_20261007_01\\native_probe_evaluation01.json": "F11A5BDF8FFF03C128C3F787C918E608AD36DDBEA72961E7D66AA89DB364D629",
+    "evidence\\pillar_v41_native_combo_prepare_20261007_01\\sampling_compatibility02\\P30_X_COMBO35_A10_M500_cpu_memory_report.json": "8006A7EE97FD97DB398EEBC1BBF17EBDA941D3BE24BDA0A8C89CA66D600CDE03",
+    "evidence\\pillar_v41_native_combo_prepare_20261007_01\\thin_top_reopen03\\probe_TOP_SMALL_3D.json": "B4EB2839E9D2C6E517EC2A6D0478BE0791DCB94BCA0DF732F2402C4BA5ED4218"
+  }
+}

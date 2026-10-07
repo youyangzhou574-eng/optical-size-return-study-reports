@@ -1,0 +1,37 @@
+# Same closed COMBO35 candidate, bounded 3D CAD index detail only; no solve or save.
+load("mother_input.fsp");
+if(!layoutmode) { error("CANDIDATE_NOT_LAYOUT"); }
+x0=getresult("FDTD","x");y0=getresult("FDTD","y");z0=getresult("FDTD","z");dt0=getnamed("FDTD","dt");
+addindex;set("name","TEMP_V41_TOP_SMALL_3D");set("monitor type","3D");
+set("x min",5.8e-6);set("x max",6.2e-6);set("y min",2.8e-6);set("y max",3.2e-6);
+set("z min",9.075e-6);set("z max",9.175e-6);
+set("spatial interpolation","none");set("down sample X",1);set("down sample Y",1);set("down sample Z",1);
+set("record conformal mesh when possible",1);set("override global monitor settings",1);
+set("sample spacing","custom");set("custom frequency samples",c/500e-9);
+detail=getresult("TEMP_V41_TOP_SMALL_3D","index_detail");
+if(length(detail.x)*length(detail.y)*length(detail.z)*length(detail.f)>4096) { error("SMALL_3D_PROBE_NODE_LIMIT"); }
+probe=struct;
+probe.x=detail.x;probe.y=detail.y;probe.z=detail.z;probe.f=detail.f;
+probe.x_offset=detail.x_offset;probe.y_offset=detail.y_offset;probe.z_offset=detail.z_offset;
+probe.index_x=detail.index_x;probe.index_y=detail.index_y;probe.index_z=detail.index_z;
+jsonsave("probe_TOP_SMALL_3D.json",probe);detail=0;probe=0;
+select("TEMP_V41_TOP_SMALL_3D");delete;
+readback=struct;
+E_names={"COMBO_E_PILLAR_001","COMBO_E_PILLAR_002","COMBO_E_PILLAR_003","COMBO_E_PILLAR_004","COMBO_E_PILLAR_005","COMBO_E_PILLAR_006","COMBO_E_PILLAR_007","COMBO_E_PILLAR_008","COMBO_E_PILLAR_009","COMBO_E_PILLAR_010","COMBO_E_PILLAR_011","COMBO_E_PILLAR_012","COMBO_E_PILLAR_013","COMBO_E_PILLAR_014","COMBO_E_FLAT","COMBO_E_BOTTOM"};
+readback.E_settings=matrix(16,14);
+for(j=1:16) {
+    readback.E_settings(j,:)=[getnamed(E_names{j},"enabled"),getnamed(E_names{j},"x min"),getnamed(E_names{j},"x max"),getnamed(E_names{j},"y min"),getnamed(E_names{j},"y max"),getnamed(E_names{j},"z min"),getnamed(E_names{j},"z max"),getnamed(E_names{j},"output Ex"),getnamed(E_names{j},"output Ey"),getnamed(E_names{j},"output Ez"),getnamed(E_names{j},"output Hx"),getnamed(E_names{j},"output Hy"),getnamed(E_names{j},"output Hz"),getnamednumber(E_names{j})];
+}
+roles={"R_WATER","T_WATER","PDMS_BASE_MIDDLE","FIXED_INTERNAL_PILLAR_MIDDLE_CORE","FIXED_INTERNAL_PILLAR_NEAR_TOP_CORE","FIXED_INTERNAL_PILLAR_SIDE_WATER"};
+readback.time_downsample=matrix(6,1);
+for(j=1:6) { readback.time_downsample(j)=getnamed("TIME_"+roles{j},"down sample time"); }
+if(max(abs(readback.time_downsample-1))!=0) { error("TIME_NOT_EVERY_DT"); }
+x1=getresult("FDTD","x");y1=getresult("FDTD","y");z1=getresult("FDTD","z");
+readback.grid_unchanged=(length(x0)==length(x1)) & (length(y0)==length(y1)) & (length(z0)==length(z1));
+if(readback.grid_unchanged) { readback.grid_unchanged=(max(abs(x0-x1))==0) & (max(abs(y0-y1))==0) & (max(abs(z0-z1))==0); }
+readback.dt_unchanged=(dt0==getnamed("FDTD","dt"));readback.source_and_model_not_edited=1;readback.solver_ready=0;
+jsonsave("reopen_monitor_settings.json",readback);
+completion=struct;completion.layout_mode=layoutmode;completion.frequency_samples=length(getglobalmonitor("custom frequency samples"));completion.new_solver_starts=0;completion.solver_ready=0;
+jsonsave("layout_complete.json",completion);
+?"V41_SMALL_3D_TOP_AND_MONITOR_REOPEN_COMPLETE_NO_SOLVE";
+exit;
