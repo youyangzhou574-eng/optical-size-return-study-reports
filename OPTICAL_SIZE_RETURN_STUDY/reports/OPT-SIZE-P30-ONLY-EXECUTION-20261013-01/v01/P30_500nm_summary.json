@@ -1,0 +1,16 @@
+{
+  "wavelength_nm": "500.0",
+  "frequency_Hz": "599584916000000.0",
+  "sourcepower_W": "3.237391168509271e-13",
+  "R_raw": "0.09968521745049595",
+  "T_raw": "0.2585731539998362",
+  "Q_control": "0.641979267626007",
+  "actual_max_time_fs": 2900,
+  "scope": "PREVIOUS_COMPLETED_P30_S35_DATA_REUSED_NO_RAW_REREAD",
+  "finite_time": "UNCONFIRMED",
+  "grid": "GRID_PAIR_NOT_TESTED",
+  "components": "HOLD",
+  "Q_includes_background": true,
+  "Fe_absorption_proven": false,
+  "source_csv_sha256": "B471B2FBB0461987A7996B9D6F64FA19974B1A3E404EC9D5791823FD8FC808DA"
+}

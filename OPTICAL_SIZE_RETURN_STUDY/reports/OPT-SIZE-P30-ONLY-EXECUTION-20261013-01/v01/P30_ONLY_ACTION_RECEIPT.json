@@ -1,0 +1,84 @@
+{
+  "GRID": "HOLD",
+  "new_solver_starts_this_scope_change": 0,
+  "existing_P30_T2900_reused_without_raw_reread": true,
+  "automation": {
+    "s35": "PAUSED",
+    "ordinary_polling_resumed": false,
+    "pro_github": "PAUSED"
+  },
+  "recorded_client_utc": "2026-10-13T10:45:10.9368039+00:00",
+  "native_energy_closure": "HOLD",
+  "stop_receipt_SHA256": "CBB2C887821F03C41EF9DE687EEEE197B05C0AD80D1DB4E1E4E07D6888C8321F",
+  "human_adoption": "direct ok in this conversation",
+  "task_id": "OPT-SIZE-P30-ONLY-EXECUTION-20261013-01",
+  "field500": {
+    "fields": 3,
+    "run_id": "P30_FIELD500_S35_T1000_20261013_01",
+    "native_grid_axis_node_counts": [
+      516.0,
+      410.0,
+      902.0
+    ],
+    "original_verifier_failure_preserved": true,
+    "independent_verifier_actual_exit": 0,
+    "solver_start": "NOT_STARTED",
+    "local_worker_actual_exit": 0,
+    "index": 3,
+    "memory_estimate_warning": "conformal reliability warning; not actual peak or 4MPI capacity PASS",
+    "native_CAD_actual_exit": 0,
+    "native_memory_estimate_bytes": 28781810761,
+    "prepared_input_SHA256": "1FD942A0CF821161C593C107F491E8B6549281CA0DF7D06AD97D9FE9947888AC",
+    "source_property_count": 78,
+    "independent_checks": 83,
+    "max_time_fs": 1000,
+    "actual_capacity_admission": "NOT_EXECUTED",
+    "original_native_preparation_failure_preserved": true,
+    "actual_dt_s": 3.0332022218718724E-17,
+    "prepared_input_bytes": 619230,
+    "native_CAD_attempts": 2
+  },
+  "TIME": "HOLD",
+  "COMPONENT": "HOLD",
+  "new_field_values_available": false,
+  "full3D_Yee": "HOLD",
+  "public_sanitization": "no process IDs, host/birth identities, credentials, server paths or execution commands",
+  "actions": [
+    {
+      "run_id": "TREND30_S35_T5800_20261011_03",
+      "runner_actual_exit": null,
+      "MPI_actual_exit": null,
+      "action": "KEPT_RUNNING",
+      "task_state": "Running",
+      "complete_new_result_proven": false,
+      "cancelled_not_convergence": false
+    },
+    {
+      "run_id": "REF15_S35_T5800_20261011_02",
+      "runner_actual_exit": 1,
+      "MPI_actual_exit": -1,
+      "action": "STOPPED",
+      "task_state": "Ready",
+      "complete_new_result_proven": false,
+      "cancelled_not_convergence": true
+    },
+    {
+      "run_id": "REF15_S30_T5800_20261011_01",
+      "runner_actual_exit": 1,
+      "MPI_actual_exit": -1,
+      "action": "STOPPED",
+      "task_state": "Ready",
+      "complete_new_result_proven": false,
+      "cancelled_not_convergence": true
+    },
+    {
+      "run_id": "TREND30_S30_T5800_20261011_01",
+      "runner_actual_exit": 1,
+      "MPI_actual_exit": -1,
+      "action": "STOPPED",
+      "task_state": "Ready",
+      "complete_new_result_proven": false,
+      "cancelled_not_convergence": true
+    }
+  ]
+}
