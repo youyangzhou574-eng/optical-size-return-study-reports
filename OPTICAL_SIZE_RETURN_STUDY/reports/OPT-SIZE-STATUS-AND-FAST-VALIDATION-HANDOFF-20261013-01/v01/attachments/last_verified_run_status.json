@@ -1,0 +1,113 @@
+{
+  "schema": "PUBLIC_LAST_VERIFIED_RUN_STATUS_1",
+  "source_project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/four_status_reads/20261013T081207661_525153/receipt.json",
+  "source_identity": {
+    "bytes": 6336,
+    "sha256": "2EA6D33B9747FF7D3B2C1DB9101CA611704B40423413898D16052194A560C0C6"
+  },
+  "status_is_live": false,
+  "client_request_utc": "2026-10-13T08:12:07.6615212+00:00",
+  "client_request_Asia_Shanghai": "2026-10-13T16:12:07.6615212+08:00",
+  "server_snapshot_utc": "2026-10-13T08:16:59.6917849Z",
+  "server_record_end_utc": "2026-10-13T08:17:16.0938901Z",
+  "client_server_clocks_are_not_interchanged": true,
+  "query_ok": true,
+  "cases": [
+    {
+      "run_id": "REF15_S35_T5800_20261011_02",
+      "case": "REF15_S35",
+      "state": "MPI_RUNNING",
+      "read_ok": true,
+      "task_state": "Running",
+      "MPI_identity_state": "EXACT_MPI_LIVE_CIM_MICROSECOND_ROUNDING_BOUND",
+      "MPI_actual_exit": null,
+      "runner_actual_exit": null,
+      "time_stepping_confirmed": true,
+      "independent_exit_observer_state": "WAITING_EXACT_MPI_AND_RUNNER_HANDLES",
+      "original_wrapper_failure": null,
+      "solver_max_remaining_last_archived_line": "Max time remaining: 9 hrs, 14 mins, 49 secs.",
+      "remaining_time_is_current_ETA": false
+    },
+    {
+      "run_id": "TREND30_S35_T5800_20261011_03",
+      "case": "TREND30_S35",
+      "state": "MPI_RUNNING",
+      "read_ok": true,
+      "task_state": "Running",
+      "MPI_identity_state": "EXACT_MPI_LIVE_CIM_MICROSECOND_ROUNDING_BOUND",
+      "MPI_actual_exit": null,
+      "runner_actual_exit": null,
+      "time_stepping_confirmed": true,
+      "independent_exit_observer_state": null,
+      "original_wrapper_failure": null,
+      "solver_max_remaining_last_archived_line": "Max time remaining: 131 hrs, 7 mins, 27 secs.",
+      "remaining_time_is_current_ETA": false
+    },
+    {
+      "run_id": "REF15_S30_T5800_20261011_01",
+      "case": "REF15_S30",
+      "state": "MPI_RUNNING",
+      "read_ok": true,
+      "task_state": "Running",
+      "MPI_identity_state": "EXACT_MPI_LIVE_CIM_MICROSECOND_ROUNDING_BOUND",
+      "MPI_actual_exit": null,
+      "runner_actual_exit": null,
+      "time_stepping_confirmed": true,
+      "independent_exit_observer_state": null,
+      "original_wrapper_failure": null,
+      "solver_max_remaining_last_archived_line": "Max time remaining: 55 hrs, 32 mins, 53 secs.",
+      "remaining_time_is_current_ETA": false
+    },
+    {
+      "run_id": "TREND30_S30_T5800_20261011_01",
+      "case": "TREND30_S30",
+      "state": "MPI_RUNNING",
+      "read_ok": true,
+      "task_state": "Running",
+      "MPI_identity_state": "EXACT_MPI_LIVE_CIM_MICROSECOND_ROUNDING_BOUND",
+      "MPI_actual_exit": null,
+      "runner_actual_exit": null,
+      "time_stepping_confirmed": true,
+      "independent_exit_observer_state": null,
+      "original_wrapper_failure": null,
+      "solver_max_remaining_last_archived_line": "Max time remaining: 242 hrs, 21 mins, 47 secs.",
+      "remaining_time_is_current_ETA": false
+    },
+    {
+      "run_id": "REF15_S35_BOUNDARY120_T2900_20261011_01",
+      "case": "REF15_S35_BOUNDARY120",
+      "state": "FAILED_NO_AUTOMATIC_RETRY",
+      "read_ok": true,
+      "task_state": "Ready",
+      "MPI_identity_state": "CONFIRMED_ABSENT",
+      "MPI_actual_exit": 0,
+      "runner_actual_exit": 1,
+      "time_stepping_confirmed": false,
+      "independent_exit_observer_state": null,
+      "original_wrapper_failure": "READ_LIMIT_INVALID",
+      "solver_max_remaining_last_archived_line": null,
+      "remaining_time_is_current_ETA": false
+    }
+  ],
+  "human_override": {
+    "automatic_polling": "PAUSED_BY_EXPLICIT_HUMAN_REQUEST",
+    "new_remote_poll_for_this_report": false,
+    "existing_jobs_interrupted": false,
+    "new_solver_starts_for_this_report": 0,
+    "fast_pilot_started": false,
+    "Pro_contacted_by_assistant": false,
+    "auto_resume": false
+  },
+  "ref120_followup": {
+    "run_id": "REF15_S35_BOUNDARY120_T2900_20261011_01",
+    "original_MPI_exit": 0,
+    "original_runner_exit": 1,
+    "original_wrapper_error": "READ_LIMIT_INVALID",
+    "readonly_snapshot_and_export_verified": true,
+    "selected_decode_complete": true,
+    "dynamic_aperture_analysis_verified": true,
+    "native_grid_identity_analysis_verified": true,
+    "scientific_pass": false
+  },
+  "transformation": "ALLOWLIST_SUMMARY_ONLY; PIDs, births, host identities, routes, full logs and private paths omitted. Last archived remaining-time text is not a refreshed forecast."
+}

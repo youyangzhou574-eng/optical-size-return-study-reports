@@ -1,0 +1,118 @@
+{
+  "schema": "PUBLIC_COMPLETED_EVIDENCE_SUMMARY_1",
+  "is_new_scientific_analysis": false,
+  "fast_model_started": false,
+  "current_goal": "Fast 500nm R/T and background-inclusive control-flux trend screening; full material/field/closure qualification deferred",
+  "source_power_gate": "PASS_ACTUAL_SOURCE_AND_TOTAL_FLUX_NORMALIZATION_BINDING",
+  "original_two_size_S35": {
+    "finite_time_fs_approx": 2900,
+    "wavelength_nm": 500,
+    "REF15": {
+      "R": 0.08138147267917167,
+      "T": 0.025518068581846205,
+      "Q_control": 0.8934037480193622
+    },
+    "TREND30": {
+      "R": 0.09968521745049595,
+      "T": 0.2585731539998362,
+      "Q_control": 0.641979267626007
+    },
+    "delta_Q_TREND30_minus_REF15": -0.2514244803933552,
+    "definition": "Source-normalized control-domain net loss INCLUDING BACKGROUND WATER, NOT constituent absorption",
+    "ten_points_are_finite_time_screening_only": true
+  },
+  "selected_decode": {
+    "producer_actual_exit": 0,
+    "independent_verifier_actual_exit": 0,
+    "independent_checks": 63,
+    "power_records": 4,
+    "frequencies": 10,
+    "time_points": 6,
+    "samples_per_point": 96783,
+    "actual_dt_s": 2.9964086982610274E-17,
+    "last_sample_fs": 2899.9842663509876,
+    "largest_local_tail_ratio": 2.1086804067604227E-05,
+    "tail_is_global_time_PASS": false
+  },
+  "dynamic_apertures": {
+    "producer_actual_exit": 0,
+    "original_controller_actual_exit": 1,
+    "original_identity_query_error": "WinError31",
+    "original_independently_absent": null,
+    "original_error_cause": "NOT_PROVEN",
+    "new_saved_verifier_actual_exit": 0,
+    "independent_checks": 2580,
+    "producer_replayed": false,
+    "available": 120,
+    "missing": 0,
+    "shifted_normals": 87,
+    "old_four_missing_powers_backfilled": false,
+    "power_budgets_are_formal_diagnostics_only": true
+  },
+  "native_grid_identity": {
+    "producer_actual_exit": 0,
+    "independent_verifier_actual_exit": 0,
+    "independent_checks": 8642,
+    "global_nodes_xyz": [
+      259,
+      196,
+      902
+    ],
+    "unique_coordinate_identities": 1281,
+    "exact": 1279,
+    "unique_serialization_compatible": 2,
+    "unknown": 0,
+    "shared_cuts": 31,
+    "nonzero_cut_ranges_m": [
+      1.0587911840678754E-22,
+      2.117582368135751E-22
+    ],
+    "nonzero_differences_preserved": true,
+    "coordinate_envelopes": {
+      "complete_coordinate_envelope_only": 175,
+      "partial": 107,
+      "none": 78,
+      "total": 360
+    },
+    "node_edge_cancellation": "TOPOLOGICAL_ONLY",
+    "full3D_Yee_coverage_proven": false
+  },
+  "qualification": {
+    "TIME": "HOLD",
+    "GRID_PAIR": "HOLD",
+    "MATERIAL": "HOLD",
+    "FULL3D_YEE": "HOLD",
+    "ENDPOINT": "HOLD",
+    "NATIVE_ENERGY": "HOLD",
+    "CLOSURE": "HOLD",
+    "HISTORICAL_FULL_FIELD_CW": "HOLD",
+    "scientific_pass": false
+  },
+  "original_output_identities": [
+    {
+      "kind": "selected_power_time_decode",
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/fresh_snapshot_power_time_consumer_20261011_01/decoded01/REF15_S35_BOUNDARY120_T2900_20261011_01/time_point_shape_fix04/decoded_power_time.json",
+      "bytes": 72923,
+      "sha256": "E0EB5345303AF6626EFC962796847918059D2BBB8F1AEE26203F056F8EF77C8D",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; identity only, derived findings summarized"
+    },
+    {
+      "kind": "actual_dynamic_apertures",
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_dynamic_aperture_review_20261013_01/actual01/dynamic_apertures.json",
+      "bytes": 2671822,
+      "sha256": "5821C214B236376671BE7692EDE11FD8F38C34D2F663911CEC8F0EB029529F1D",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; identity only, derived findings summarized"
+    },
+    {
+      "kind": "native_grid_identity",
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_native_grid_identity_20261013_01/actual01/native_grid_identity.json",
+      "bytes": 1565465,
+      "sha256": "A733AE84CFCB07568F342F9DFF06AB3261BF575EF04340E0B12E209E378D9AB5",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; identity only, derived findings summarized"
+    }
+  ],
+  "transformation": "Manually curated public findings from completed receipts/reports; no scientific producer, verifier, old E integral or native operation rerun"
+}

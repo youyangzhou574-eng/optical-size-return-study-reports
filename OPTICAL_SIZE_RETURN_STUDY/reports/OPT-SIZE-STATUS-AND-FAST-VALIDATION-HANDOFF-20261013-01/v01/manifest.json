@@ -1,0 +1,209 @@
+{
+  "report_id": "OPT-SIZE-STATUS-AND-FAST-VALIDATION-HANDOFF-20261013-01",
+  "version": "v01",
+  "assembled_client_utc": "2026-10-13T08:53:31.8571397Z",
+  "approved_repository": "youyangzhou574-eng/optical-size-return-study-reports",
+  "repository_path": "OPTICAL_SIZE_RETURN_STUDY/reports/OPT-SIZE-STATUS-AND-FAST-VALIDATION-HANDOFF-20261013-01/v01",
+  "published_files": [
+    {
+      "path": "INDEX.md",
+      "bytes": 1851,
+      "sha256": "1C8F486D58F3B6AC7B3DA5E3583F35973F1D4AD1D19FD7285B6C89EDA08CE250",
+      "transformation": "NEW_PUBLIC_REPORT_OR_ALLOWLIST_SUMMARY"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 12678,
+      "sha256": "7B3A4C981DFB4D30F931A92F3C336777460A390C135D5BBB48F9DE1E33C630B1",
+      "transformation": "NEW_PUBLIC_REPORT_OR_ALLOWLIST_SUMMARY"
+    },
+    {
+      "path": "PRO_DISCUSSION_QUESTIONS.md",
+      "bytes": 2904,
+      "sha256": "15122955410AE35EF7B41F6C7D3CF4740F4215363A5F95CC276CBC51386D41B8",
+      "transformation": "NEW_PUBLIC_REPORT_OR_ALLOWLIST_SUMMARY"
+    },
+    {
+      "path": "attachments/S35_two_size_raw_comparison_10.csv",
+      "bytes": 2288,
+      "sha256": "B471B2FBB0461987A7996B9D6F64FA19974B1A3E404EC9D5791823FD8FC808DA",
+      "transformation": "EXACT_BYTE_COPY"
+    },
+    {
+      "path": "attachments/S35_two_size_finite_time_raw_comparison.png",
+      "bytes": 107573,
+      "sha256": "4A0CE15A3D4948DFD01BF63EC7B570099A36CC27AEDFFDD05DD790B490EEA35E",
+      "transformation": "EXACT_BYTE_COPY"
+    },
+    {
+      "path": "attachments/last_verified_run_status.json",
+      "bytes": 4670,
+      "sha256": "AC680378C786F9F228171A08468DE7199BCEACB42E7FCECA092D788B262CB2CE",
+      "transformation": "NEW_PUBLIC_REPORT_OR_ALLOWLIST_SUMMARY"
+    },
+    {
+      "path": "attachments/evidence_summary.json",
+      "bytes": 4587,
+      "sha256": "1C75E38C3C83FD435AB5A26884C0F3261FAD37BA10AC5BD2A0D8BD994BE99371",
+      "transformation": "NEW_PUBLIC_REPORT_OR_ALLOWLIST_SUMMARY"
+    }
+  ],
+  "manifest_self_hash": "Recorded separately in upload receipt to avoid self-reference",
+  "source_identities": [
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/trend30_closeout_20261010_01/analysis01/S35_two_size_raw_comparison_10.csv",
+      "bytes": 2288,
+      "sha256": "B471B2FBB0461987A7996B9D6F64FA19974B1A3E404EC9D5791823FD8FC808DA",
+      "public_copy": "attachments/S35_two_size_raw_comparison_10.csv",
+      "transformation": "EXACT_BYTE_COPY"
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/trend30_closeout_20261010_01/analysis01/S35_two_size_finite_time_raw_comparison.png",
+      "bytes": 107573,
+      "sha256": "4A0CE15A3D4948DFD01BF63EC7B570099A36CC27AEDFFDD05DD790B490EEA35E",
+      "public_copy": "attachments/S35_two_size_finite_time_raw_comparison.png",
+      "transformation": "EXACT_BYTE_COPY"
+    },
+    {
+      "kind": "selected_power_time_decode",
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/fresh_snapshot_power_time_consumer_20261011_01/decoded01/REF15_S35_BOUNDARY120_T2900_20261011_01/time_point_shape_fix04/decoded_power_time.json",
+      "bytes": 72923,
+      "sha256": "E0EB5345303AF6626EFC962796847918059D2BBB8F1AEE26203F056F8EF77C8D",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; identity only, derived findings summarized"
+    },
+    {
+      "kind": "actual_dynamic_apertures",
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_dynamic_aperture_review_20261013_01/actual01/dynamic_apertures.json",
+      "bytes": 2671822,
+      "sha256": "5821C214B236376671BE7692EDE11FD8F38C34D2F663911CEC8F0EB029529F1D",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; identity only, derived findings summarized"
+    },
+    {
+      "kind": "native_grid_identity",
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_native_grid_identity_20261013_01/actual01/native_grid_identity.json",
+      "bytes": 1565465,
+      "sha256": "A733AE84CFCB07568F342F9DFF06AB3261BF575EF04340E0B12E209E378D9AB5",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; identity only, derived findings summarized"
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/four_status_reads/20261013T081207661_525153/receipt.json",
+      "bytes": 6336,
+      "sha256": "2EA6D33B9747FF7D3B2C1DB9101CA611704B40423413898D16052194A560C0C6",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/current_status_followup.json",
+      "bytes": 48330,
+      "sha256": "2AF95BF38F78FAD83A4E730982C8294BF13A86AD72F88CDF16D68CB978D7E8EA",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/stage_hierarchical.json",
+      "bytes": 56921,
+      "sha256": "FCE1C2E563C8B9CE801D2EAAB58667DFCA93451695AE31F5C2A46B273AB9629C",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/source_review_receipt.json",
+      "bytes": 1432,
+      "sha256": "D06FC6C3832533381D4064CA0B817B238165027F28E989BAA4801B7A0D0D98BF",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_time_point_shape_fix04_20261013_01/completion_review_receipt.json",
+      "bytes": 1937,
+      "sha256": "1A7CC417F5097312BDA88EAFBBA83C9B494B0D2730EC786CC76E8DF57738A92B",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_time_point_shape_fix04_20261013_01/verification_receipt.json",
+      "bytes": 106628,
+      "sha256": "4AA0E4C42A049F601C73E277A8A90B686EB2CBE480249D16D3231ABF024F9965",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_dynamic_aperture_review_20261013_01/completion_review_receipt.json",
+      "bytes": 1091,
+      "sha256": "B98E0652E1462A7ED5452A6C55B475FA837A3C6A08F0D9C560B6C94EB67F5929",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_dynamic_aperture_review_20261013_01/verification_receipt.json",
+      "bytes": 87039,
+      "sha256": "6CF8F30D2081EEC2CDF3A98D7C3D0610AB733379110EEA823ED8349606DC9CE4",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_native_grid_identity_20261013_01/completion_review_receipt.json",
+      "bytes": 2424,
+      "sha256": "1DBAFFF6BD8F9DDFC3018E5F77AC8422E6EDE5CF95B85B895A75B61764D8A963",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_native_grid_identity_20261013_01/verification_receipt.json",
+      "bytes": 13141,
+      "sha256": "3E3C85AA4D069FF65B89CD1D9E840145A90495EFB1E0B6BE60CAC3C9E1FFF4D3",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/material_ownership_20261011_01/completion_review_receipt.json",
+      "bytes": 2149,
+      "sha256": "260F2DDBE69A44F24F4220BDE441EF861FDB06A043D53286B26A4FB779A7A9A2",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/material_domains_20261011_01/completion_review_receipt.json",
+      "bytes": 3286,
+      "sha256": "B326B7E61CBB34ACD75B65F2F851DF30D3473B0AA5AF7F6B8F31FC696C3EFE2B",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/effective_loss_20261011_01/DEVELOPMENT_REPORT.md",
+      "bytes": 6351,
+      "sha256": "D35AF380C3F0EC812CA0A70087A3F62C3DEB6872233DD3B371235408AA9E83E4",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/prepared01/MONITOR_DIFF.md",
+      "bytes": 513,
+      "sha256": "67D7C9B188FB1F5C7A22C8C0620B6534D8878D078454A4CEBDA5990509DC4C9C",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "evidence/pillar_light_screening_scope_20261007_01/SCREENING_BRIEF.md",
+      "bytes": 1944,
+      "sha256": "A5DEDBE59FEF99C448830DB784EC9E75DF2E7333088232D049A3B7EA2B618F4A",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    },
+    {
+      "project_relative_path": "review_exchange/opening_proposal_20261007_01/manual_pro_discussion_followup05/PRO_HIERARCHICAL_EVIDENCE_PLAN_20261008_01.md",
+      "bytes": 20042,
+      "sha256": "B7546CBAD57AD5A1558AB069409A94DBBA8A22AD98E4C481196B8D15CB3DD7AD",
+      "public_copy": null,
+      "transformation": "NOT_UPLOADED; SHA provenance only. Historical next-operation and quota statements are superseded by latest human instruction."
+    }
+  ],
+  "no_native_operation_for_report": true,
+  "no_remote_status_refresh": true,
+  "no_local_Git_write": true,
+  "no_Pro_message": true,
+  "excluded": "Credentials, host/server/license routes, PIDs and birth identities, execution scripts, raw native binaries, full logs and unrelated projects"
+}
