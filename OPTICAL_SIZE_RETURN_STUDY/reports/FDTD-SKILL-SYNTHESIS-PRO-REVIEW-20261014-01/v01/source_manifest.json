@@ -1,0 +1,161 @@
+[
+  {
+    "source_id": "S01",
+    "repository": "username421421/nanophotonics-codex-skills",
+    "fetched_branch": "main",
+    "commit": "394261d9616a409cbda7880d6bd778f52ef8b1f9",
+    "commit_identity_method": "GitHub codeload ZIP comment; branch used only for discovery",
+    "commit_date": null,
+    "fetched_utc": "2026-10-14T07:01:32.242972+00:00",
+    "archive_url": "https://codeload.github.com/username421421/nanophotonics-codex-skills/zip/refs/heads/main",
+    "archive_sha256": "461812B272AB407E20EAA7B908CD96991AD045A9B856E0FDCF7BD0938BE7CB3A",
+    "archive_bytes": 34469204,
+    "fixed_archive_url": "https://codeload.github.com/username421421/nanophotonics-codex-skills/zip/394261d9616a409cbda7880d6bd778f52ef8b1f9",
+    "extracted_files": 1118,
+    "extracted_bytes": 62307571,
+    "fixed_tree_url": "https://github.com/username421421/nanophotonics-codex-skills/tree/394261d9616a409cbda7880d6bd778f52ef8b1f9",
+    "github_license_metadata": null,
+    "license_paths": [
+      "NOTICE.md",
+      "skills/fdtdx/doc/LICENSE",
+      "skills/fdtdx/doc/notebooks/source/LICENSE",
+      "skills/meep/doc/docs/License_and_Copyright.md"
+    ],
+    "skill_paths": [
+      "skills/fdtdx/SKILL.md",
+      "skills/lumerical-fdtd/SKILL.md",
+      "skills/meep/SKILL.md",
+      "skills/scientific-plotting/SKILL.md"
+    ],
+    "upstream_executed": false,
+    "installed": false
+  },
+  {
+    "source_id": "S02",
+    "repository": "ansys/pylumerical-mcp",
+    "fetched_branch": "main",
+    "commit": "7ae8d862c30f51dfeb2357ee62ca76e4e0c1035f",
+    "commit_identity_method": "GitHub codeload ZIP comment; branch used only for discovery",
+    "commit_date": null,
+    "fetched_utc": "2026-10-14T07:01:34.025780+00:00",
+    "archive_url": "https://codeload.github.com/ansys/pylumerical-mcp/zip/refs/heads/main",
+    "archive_sha256": "6924B809E09FDEEB7D6134E56BDC6E7336FB22CF26204E4CC59D0AB747472E7D",
+    "archive_bytes": 192475,
+    "fixed_archive_url": "https://codeload.github.com/ansys/pylumerical-mcp/zip/7ae8d862c30f51dfeb2357ee62ca76e4e0c1035f",
+    "extracted_files": 92,
+    "extracted_bytes": 480627,
+    "fixed_tree_url": "https://github.com/ansys/pylumerical-mcp/tree/7ae8d862c30f51dfeb2357ee62ca76e4e0c1035f",
+    "github_license_metadata": null,
+    "license_paths": [
+      "LICENSE"
+    ],
+    "skill_paths": [],
+    "upstream_executed": false,
+    "installed": false
+  },
+  {
+    "source_id": "S03",
+    "repository": "Lex669/LumericalFDTD-skill",
+    "fetched_branch": "main",
+    "commit": "f26674b2990c1847445f1da061185b58ecd5012c",
+    "commit_identity_method": "GitHub codeload ZIP comment; branch used only for discovery",
+    "commit_date": null,
+    "fetched_utc": "2026-10-14T07:01:35.146872+00:00",
+    "archive_url": "https://codeload.github.com/Lex669/LumericalFDTD-skill/zip/refs/heads/main",
+    "archive_sha256": "DBAA7C3E489DB1224723F02D477DEEFB23A651F05C4B1A3DBF364EBE71DD6F6D",
+    "archive_bytes": 54681,
+    "fixed_archive_url": "https://codeload.github.com/Lex669/LumericalFDTD-skill/zip/f26674b2990c1847445f1da061185b58ecd5012c",
+    "extracted_files": 22,
+    "extracted_bytes": 99722,
+    "fixed_tree_url": "https://github.com/Lex669/LumericalFDTD-skill/tree/f26674b2990c1847445f1da061185b58ecd5012c",
+    "github_license_metadata": null,
+    "license_paths": [
+      "LICENSE.txt"
+    ],
+    "skill_paths": [
+      "skills/LumericalFDTD-analysis/SKILL.md",
+      "skills/LumericalFDTD-modeling/SKILL.md",
+      "skills/LumericalFDTD-simulation/SKILL.md",
+      "skills/LumericalFDTD/SKILL.md",
+      "skills/paper-summarizer/SKILL.md"
+    ],
+    "upstream_executed": false,
+    "installed": false
+  },
+  {
+    "source_id": "S04",
+    "repository": "wfy-op/codex-for-comsol-lumerical",
+    "fetched_branch": "main",
+    "commit": "375c4dafa24d8f75f45ac5ace92d80eafb7ec596",
+    "commit_identity_method": "GitHub codeload ZIP comment; branch used only for discovery",
+    "commit_date": null,
+    "fetched_utc": "2026-10-14T07:02:53.793144+00:00",
+    "archive_url": "https://codeload.github.com/wfy-op/codex-for-comsol-lumerical/zip/refs/heads/main",
+    "archive_sha256": "465DCBD2C1A4656A515C6A94C634D0A670D62B9FE659216D646BCE05E30F6CFB",
+    "archive_bytes": 442376687,
+    "fixed_archive_url": "https://codeload.github.com/wfy-op/codex-for-comsol-lumerical/zip/375c4dafa24d8f75f45ac5ace92d80eafb7ec596",
+    "extracted_files": 156,
+    "extracted_bytes": 561672662,
+    "fixed_tree_url": "https://github.com/wfy-op/codex-for-comsol-lumerical/tree/375c4dafa24d8f75f45ac5ace92d80eafb7ec596",
+    "github_license_metadata": null,
+    "license_paths": [
+      "comsol-multiphysics/scripts/comsol_mcp_runtime/LICENSE"
+    ],
+    "skill_paths": [
+      "comsol-multiphysics/SKILL.md",
+      "lumerical-fdtd/SKILL.md"
+    ],
+    "upstream_executed": false,
+    "installed": false
+  },
+  {
+    "source_id": "S05",
+    "repository": "davydov-nikita/lumerical-mcp",
+    "fetched_branch": "main",
+    "commit": "fc88cc95ad04ca46ae23bea290e0fde1361257e7",
+    "commit_identity_method": "GitHub codeload ZIP comment; branch used only for discovery",
+    "commit_date": null,
+    "fetched_utc": "2026-10-14T07:02:56.228805+00:00",
+    "archive_url": "https://codeload.github.com/davydov-nikita/lumerical-mcp/zip/refs/heads/main",
+    "archive_sha256": "CB8C390408F359766D8E0E6875CE51698AA7FCCE6656076D4FFFCDB5BB70A2EC",
+    "archive_bytes": 401182,
+    "fixed_archive_url": "https://codeload.github.com/davydov-nikita/lumerical-mcp/zip/fc88cc95ad04ca46ae23bea290e0fde1361257e7",
+    "extracted_files": 180,
+    "extracted_bytes": 951393,
+    "fixed_tree_url": "https://github.com/davydov-nikita/lumerical-mcp/tree/fc88cc95ad04ca46ae23bea290e0fde1361257e7",
+    "github_license_metadata": null,
+    "license_paths": [
+      "LICENSE",
+      "benchmarks/tasks/diffraction_grating/reference/license.txt",
+      "benchmarks/tasks/grating_coupler/reference/license.txt",
+      "benchmarks/tasks/metalens_unit_cell/reference/license.txt",
+      "benchmarks/tasks/mie_scattering/reference/license.txt",
+      "benchmarks/tasks/pc_bandstructure/reference/license.txt",
+      "benchmarks/tasks/planar_solar_cell/reference/license.txt"
+    ],
+    "skill_paths": [],
+    "upstream_executed": false,
+    "installed": false
+  },
+  {
+    "source_id": "S06",
+    "repository": "zxqcreations/Lumerical_MCP_Skill",
+    "fetched_branch": "master",
+    "commit": "40ccd5eefe2b065448d150140044610fe46727f7",
+    "commit_identity_method": "GitHub codeload ZIP comment; branch used only for discovery",
+    "commit_date": null,
+    "fetched_utc": "2026-10-14T07:02:57.495032+00:00",
+    "archive_url": "https://codeload.github.com/zxqcreations/Lumerical_MCP_Skill/zip/refs/heads/master",
+    "archive_sha256": "70A3982F59C900B42E8B77A9306351893FFB22F6D9547D546D201E7217945555",
+    "archive_bytes": 98693,
+    "fixed_archive_url": "https://codeload.github.com/zxqcreations/Lumerical_MCP_Skill/zip/40ccd5eefe2b065448d150140044610fe46727f7",
+    "extracted_files": 38,
+    "extracted_bytes": 300877,
+    "fixed_tree_url": "https://github.com/zxqcreations/Lumerical_MCP_Skill/tree/40ccd5eefe2b065448d150140044610fe46727f7",
+    "github_license_metadata": null,
+    "license_paths": [],
+    "skill_paths": [],
+    "upstream_executed": false,
+    "installed": false
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "checked_utc": "2026-10-14T07:24:38.478931+00:00",
+  "status": "STRUCTURAL_CHECKS_PASSED_ONLY",
+  "source_archives_sha_bytes_commit_crc_checked": 6,
+  "extracted_files_sha_bytes_set_checked": 1606,
+  "source_evidence_anchors_checked": 28,
+  "local_report_identity_records": 8,
+  "pending_decisions": 30,
+  "unexecuted_behavioral_scenarios": 15,
+  "relative_links_checked": 34,
+  "frontmatter_validator_exit": 0,
+  "frontmatter_validator_output": "Skill is valid!",
+  "upstream_code_executed": false,
+  "behavioral_tests": "NOT_EXECUTED",
+  "installed": false,
+  "scientific_adjudication": false,
+  "simulation_access": false,
+  "github_writes": false,
+  "scope_note": "Static package integrity only; not code safety, API compatibility or scientific validation."
+}

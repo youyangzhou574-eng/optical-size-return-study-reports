@@ -1,0 +1,100 @@
+{
+  "excludes_self": true,
+  "files": [
+    {
+      "path": "candidate/lumerical-fdtd-integrated/references/decision-register.md",
+      "bytes": 11651,
+      "sha256": "E2C03CFE6495A252DC2FC9F2851A1CD1600ABA661FC0FC3A39422CB7740697FF"
+    },
+    {
+      "path": "candidate/lumerical-fdtd-integrated/references/execution.md",
+      "bytes": 2990,
+      "sha256": "C7864F6D85F69E46493EF1AEC341991851FABD5A35D6F4B7C9A12051F3E3B03D"
+    },
+    {
+      "path": "candidate/lumerical-fdtd-integrated/references/experience.md",
+      "bytes": 3687,
+      "sha256": "0514A1BDA45BA7F5BEC8D59A71F53843E7B903C69E36AF3C823FAB8C98930BCF"
+    },
+    {
+      "path": "candidate/lumerical-fdtd-integrated/references/modeling.md",
+      "bytes": 3995,
+      "sha256": "65CCE36DB5E98234CE21A3D509723A4AD0992521941C458CC1B4F49E1D3796D2"
+    },
+    {
+      "path": "candidate/lumerical-fdtd-integrated/references/results.md",
+      "bytes": 3008,
+      "sha256": "38C39A70EFDF90137A263D32613965FEF7D5A7995A61A87BB91038CB47E26337"
+    },
+    {
+      "path": "candidate/lumerical-fdtd-integrated/references/source-map.md",
+      "bytes": 2222,
+      "sha256": "643309933CD2F170ADA958CB222545757A55965EB0E158DCBB7DE6EBB2FC37A8"
+    },
+    {
+      "path": "candidate/lumerical-fdtd-integrated/references/templates.md",
+      "bytes": 1773,
+      "sha256": "F34BDFFA83E86CD016B0DAB9871063934618AE6669B3DAF6FFD6EAC60CE1F732"
+    },
+    {
+      "path": "candidate/lumerical-fdtd-integrated/references/validation-scenarios.md",
+      "bytes": 2285,
+      "sha256": "EAAD589449D001C5B3CC84BB141B5D08077A4215E7F92F2A274FA1F503DBC117"
+    },
+    {
+      "path": "candidate/lumerical-fdtd-integrated/SKILL.md",
+      "bytes": 3612,
+      "sha256": "9427CB701F3386A3FDB5C0D935D2D5F4FC10168CD7CF3A417C99A1FC1EBDFD4D"
+    },
+    {
+      "path": "decisions.json",
+      "bytes": 15364,
+      "sha256": "97D2520FE70B591D95EA711C3E5BF8C60CCC0145DC30968B8F78009DF077AEAF"
+    },
+    {
+      "path": "evidence_index.json",
+      "bytes": 15357,
+      "sha256": "D8FC878768E4E97B6E954814BC3A77E44724E63F227DB687BE4E55C0A754C6CD"
+    },
+    {
+      "path": "local_experience_index.json",
+      "bytes": 4320,
+      "sha256": "72D3D4AF1FD6D7F296C2F6AB086B1C9F5EBB454706CCBC799B39990898B0C7D6"
+    },
+    {
+      "path": "PRO_DECISION_TEMPLATE.md",
+      "bytes": 3363,
+      "sha256": "B844D22AC05DA5337656172E4BF3341BBB05947C5D0E4F8D34B99ACAE01C55F8"
+    },
+    {
+      "path": "PRO_REVIEW_ALL_IN_ONE.md",
+      "bytes": 58305,
+      "sha256": "713D54E175D7A2EEAABFF6EBADA8D81DDD7BEA2561EFC258DF79E65C191E9EAA"
+    },
+    {
+      "path": "PRO_REVIEW_REQUEST.md",
+      "bytes": 4054,
+      "sha256": "49DA7A095C68113D42F5A946E2DDD3C732F026416CC78B317FAF90777B99D7B2"
+    },
+    {
+      "path": "SOURCE_CATALOG.md",
+      "bytes": 2747,
+      "sha256": "1293706BF4B4339DFA4A4CDF15A49D0E0251B2C1C7E7B711C124BDB0ED80543E"
+    },
+    {
+      "path": "SOURCE_EVIDENCE.md",
+      "bytes": 11389,
+      "sha256": "F6EC416D84DC568B264EB462A289A7FE09A6D31EAD8C991591D7A2BF75358FAC"
+    },
+    {
+      "path": "source_manifest.json",
+      "bytes": 7270,
+      "sha256": "47E5562B9745C481E403934954734C6AA31AD125DB1861E19918B339D53B972A"
+    },
+    {
+      "path": "structural_validation.json",
+      "bytes": 768,
+      "sha256": "FDC014ABFDDEE5A669105A9C421ED2D3D2F1506617056550EEE1E5CEFA6B18F7"
+    }
+  ]
+}

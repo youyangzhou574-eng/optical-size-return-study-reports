@@ -1,0 +1,593 @@
+[
+  {
+    "id": "D01",
+    "title": "2D、quasi-2D与3D",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E02",
+      "E03"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D02",
+    "title": "newproject与求解器对象生命周期",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E17",
+      "E18",
+      "E23"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D03",
+    "title": "mesh order与对象属性",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E11",
+      "E12"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D04",
+    "title": "属性查询与默认值",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E01",
+      "E07",
+      "E13"
+    ],
+    "local_evidence": [
+      "L07"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D05",
+    "title": "API、CLI还是MCP",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E01",
+      "E06",
+      "E18",
+      "E20"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D06",
+    "title": "Periodic、Bloch、PML与跨边界几何",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E10"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D07",
+    "title": "对称边界与缩小计算域",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E10",
+      "E19"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D08",
+    "title": "材料库、拟合与薄层表达",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E11",
+      "E13",
+      "E14"
+    ],
+    "local_evidence": [
+      "L04"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D09",
+    "title": "源类型、带宽、偏振与频点",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E14",
+      "E15"
+    ],
+    "local_evidence": [
+      "L01"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D10",
+    "title": "真正快速验证的目标和保真边界",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E13",
+      "E15"
+    ],
+    "local_evidence": [
+      "L01"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D11",
+    "title": "时间窗口与auto-shutoff",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E13",
+      "E19",
+      "E26"
+    ],
+    "local_evidence": [
+      "L01",
+      "L02"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D12",
+    "title": "S30/S35等网格配对",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E19",
+      "E27"
+    ],
+    "local_evidence": [
+      "L01"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D13",
+    "title": "容差、near-zero和certified标签",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E09",
+      "E27"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D14",
+    "title": "自动加密、延时与停止条件",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E05",
+      "E26",
+      "E27"
+    ],
+    "local_evidence": [
+      "L01"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D15",
+    "title": "监视器插值、共点图与native Yee数据",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E15"
+    ],
+    "local_evidence": [
+      "L04",
+      "L05",
+      "L06"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D16",
+    "title": "getresult/getdata及dataset成员",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E08",
+      "E22"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D17",
+    "title": "维度、shape与序列化",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E18"
+    ],
+    "local_evidence": [
+      "L02"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D18",
+    "title": "CW、sourcepower与原始功率",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E14",
+      "E15"
+    ],
+    "local_evidence": [
+      "L04",
+      "L05"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D19",
+    "title": "Apodization与频域结果用途",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E13",
+      "E15"
+    ],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D20",
+    "title": "缺失功率、复功率与控制域口径",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E16"
+    ],
+    "local_evidence": [
+      "L03",
+      "L04"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D21",
+    "title": "材料分解、conformal与混合单元",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E08",
+      "E11"
+    ],
+    "local_evidence": [
+      "L04",
+      "L05"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D22",
+    "title": "节点身份、记录支持与闭合",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [],
+    "local_evidence": [
+      "L03",
+      "L04",
+      "L06"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D23",
+    "title": "出错后的重试策略",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E04",
+      "E05",
+      "E06"
+    ],
+    "local_evidence": [
+      "L03",
+      "L08"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D24",
+    "title": "会话、进程所有权与停止接口",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E18",
+      "E20"
+    ],
+    "local_evidence": [
+      "L01",
+      "L03",
+      "L05"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D25",
+    "title": "超时、退出和健康状态",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E17",
+      "E25"
+    ],
+    "local_evidence": [
+      "L01",
+      "L03",
+      "L05"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D26",
+    "title": "环境、许可与MPI/GPU资源设置",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E06",
+      "E07",
+      "E20"
+    ],
+    "local_evidence": [
+      "L01"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D27",
+    "title": "资源估算与实测",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E20"
+    ],
+    "local_evidence": [
+      "L01",
+      "L07"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D28",
+    "title": "工程证据强度与流程负担",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [
+      "E01",
+      "E18"
+    ],
+    "local_evidence": [
+      "L03",
+      "L08"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D29",
+    "title": "许可、依赖与实现代码合并",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [],
+    "local_evidence": [],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  },
+  {
+    "id": "D30",
+    "title": "Skill边界、测试与发布",
+    "status": "PENDING_PRO_REVIEW",
+    "source_evidence": [],
+    "local_evidence": [
+      "L01",
+      "L08"
+    ],
+    "selected_option": null,
+    "pro_verdict": null,
+    "proposed_wording": null,
+    "applicable_versions_objects_and_physics": null,
+    "exceptions": null,
+    "required_evidence_or_tests": null,
+    "remaining_uncertainty": null,
+    "execution_authorization": "NOT_GRANTED_BY_TECHNICAL_REVIEW"
+  }
+]

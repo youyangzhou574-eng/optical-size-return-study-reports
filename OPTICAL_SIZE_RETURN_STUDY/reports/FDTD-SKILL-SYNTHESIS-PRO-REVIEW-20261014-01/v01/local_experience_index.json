@@ -1,0 +1,74 @@
+[
+  {
+    "id": "L01",
+    "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/p30_field500_s30_20261013_01/REPORT.md",
+    "bytes": 4331,
+    "sha256": "FB58C3CCD9A80EC1D1800E347A1BF23A2DECD42373FB0B1A0CF3A2EB1CEF6C6A",
+    "historical_summary": "该次S30短例保留几何/源/记录面，只改变网格；报告记录的启动确认仍是初始化，不是时间步进或收敛。",
+    "evidence_level": "LOCAL_SAVED_REPORT_RE_READ_NOT_NATIVE_REVALIDATION",
+    "universal_rule": false
+  },
+  {
+    "id": "L02",
+    "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_time_point_shape_fix04_20261013_01/REPORT.md",
+    "bytes": 7598,
+    "sha256": "6B48E23EED7EC2FCDA0C1BED04B6CC1D911A3920746A5E34B2C80007ECB131D8",
+    "historical_summary": "该次原生点时序实际shape为(96783,1,1,1)；专用适配核单点xyz、时间数与dt，不把任意多轴矩阵flatten。",
+    "evidence_level": "LOCAL_SAVED_REPORT_RE_READ_NOT_NATIVE_REVALIDATION",
+    "universal_rule": false
+  },
+  {
+    "id": "L03",
+    "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_dynamic_aperture_review_20261013_01/REPORT.md",
+    "bytes": 7149,
+    "sha256": "C2A829CC5A62049EF9D3D5C0185C8C76831F2ADAA14E17892831E7B114B52F44",
+    "historical_summary": "该次worker成功但controller身份查询失败；保留不同退出事实，另行核验已保存结果，未重跑producer。",
+    "evidence_level": "LOCAL_SAVED_REPORT_RE_READ_NOT_NATIVE_REVALIDATION",
+    "universal_rule": false
+  },
+  {
+    "id": "L04",
+    "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/effective_loss_20261011_01/DEVELOPMENT_REPORT.md",
+    "bytes": 6351,
+    "sha256": "D35AF380C3F0EC812CA0A70087A3F62C3DEB6872233DD3B371235408AA9E83E4",
+    "historical_summary": "历史四面power unavailable而导出值为placeholder0；报告以null保留缺失。effective-loss为未分材料开发量，CW/coverage等资格分开。",
+    "evidence_level": "LOCAL_SAVED_REPORT_RE_READ_NOT_NATIVE_REVALIDATION",
+    "universal_rule": false
+  },
+  {
+    "id": "L05",
+    "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/field_norm_native_20261011_01/REPORT.md",
+    "bytes": 5437,
+    "sha256": "755694A99CA7AF1F4E40E8333B07F2F661EEA2FC103112439FC1487E6675800B",
+    "historical_summary": "243个复场样本与明确CW响应一致，仅证明样本，不证明历史UI或全场。原engine实际父进程为smpd。",
+    "evidence_level": "LOCAL_SAVED_REPORT_RE_READ_NOT_NATIVE_REVALIDATION",
+    "universal_rule": false
+  },
+  {
+    "id": "L06",
+    "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_native_grid_identity_20261013_01/REPORT.md",
+    "bytes": 7015,
+    "sha256": "34BC9875258B16A4B9323AC1C5CA1FB6257462C2501791989A519562E4668802",
+    "historical_summary": "该次节点身份相容和边链抵消与物理坐标闭合/完整三维记录支持分别标记。",
+    "evidence_level": "LOCAL_SAVED_REPORT_RE_READ_NOT_NATIVE_REVALIDATION",
+    "universal_rule": false
+  },
+  {
+    "id": "L07",
+    "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/p30_field500_20261013_01/REPORT.md",
+    "bytes": 3365,
+    "sha256": "713909C9DADE361168C4AE675AA29FE3A4A22DB0E95C498CD04A7C68CA6BABF2",
+    "historical_summary": "P30输入准备包含原生属性名及metadata解码修正；准备耗时、启动与求解结果不是同一状态。",
+    "evidence_level": "LOCAL_SAVED_REPORT_RE_READ_NOT_NATIVE_REVALIDATION",
+    "universal_rule": false
+  },
+  {
+    "id": "L08",
+    "project_relative_path": "evidence/pillar_hierarchical_plan_20261008_01/opening_progress_20261011_01/ref120_archive_path_fix03_20261013_01/REPORT.md",
+    "bytes": 7237,
+    "sha256": "0F9C471D759B620E187F19C82D7181D79987DDC4AC823B8807BFF851223E6BC0",
+    "historical_summary": "实际Windows长路径/管道与原生shape失败属于不同阶段；旧失败和已发布代码身份保留。",
+    "evidence_level": "LOCAL_SAVED_REPORT_RE_READ_NOT_NATIVE_REVALIDATION",
+    "universal_rule": false
+  }
+]
