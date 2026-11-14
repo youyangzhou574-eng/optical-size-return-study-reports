@@ -1,0 +1,339 @@
+{
+  "package": "HOLE-ONLY-PRO-RESTART-20261114-01",
+  "date": "2026-11-14",
+  "historical_consultations": 18,
+  "files": [
+    {
+      "path": "EVIDENCE_STATUS.md",
+      "bytes": 4660,
+      "sha256": "44A0E4F8133A7F6AEE31ABDA67FA2330FDC8F0A66DA5D6FAB4F9713F434CD4F4",
+      "git_blob_sha1": "6233c269d5f00252aa8edda081ceb68ff6afeac8"
+    },
+    {
+      "path": "PPT_OPTICAL_CONTENT.md",
+      "bytes": 9478,
+      "sha256": "B4E6DB43EE4FFF998DCE8FAB625FB819C9C0836665C9401BF5E4D5BA33A05969",
+      "git_blob_sha1": "5b8cfd39a1e5f6f4d1beab281fb0949168f1a9f2"
+    },
+    {
+      "path": "pro_01_OPT-SIZE-PRO-PRODUCTION-DECISION-20261017-01.md",
+      "bytes": 19341,
+      "sha256": "6717D60DF8E64686E359021F621E23657152720E1DE514F7E309C40240ACDFB8",
+      "git_blob_sha1": "ee5186ef2180559df26a187e643ebd6c0610f434"
+    },
+    {
+      "path": "pro_02_OPT-SIZE-PRO-F1-F2-CONCLUSIONS-20261018-01.md",
+      "bytes": 23140,
+      "sha256": "2C7022D739A9DFE0BCE9FBF30787ADE0C15BA43DF3EBA1135B34AC0C62894728",
+      "git_blob_sha1": "2d448a81c88d0ea4fec5cfdfecb2d5df1dbde952"
+    },
+    {
+      "path": "pro_03_OPT-SIZE-PRO-NEXT-RESEARCH-AFTER-F1-F4-20261021-01.md",
+      "bytes": 21042,
+      "sha256": "B692454243579D810323182944B5290ED459929AFE03D43FDA6B1EF13492CD86",
+      "git_blob_sha1": "d6fdea8e781619207805b8d426ba8fe263ef1229"
+    },
+    {
+      "path": "pro_04_OPT-SIZE-PRO-P30-ABSORPTION-DESIGN-MARGIN-20261022-01.md",
+      "bytes": 37933,
+      "sha256": "E75D7129A32704945FF7BAE3EB0FA9A507E5A221926B57C77B9CC0F2876B3597",
+      "git_blob_sha1": "ff80e826a8375f109c6db4beaa594e00646d9cf3"
+    },
+    {
+      "path": "pro_05_OPT-SIZE-PRO-TWO-CLAIMS-LEGACY-SYNTHESIS-20261022-01.md",
+      "bytes": 55807,
+      "sha256": "5715A3DAF36A92EB1B7B95EF8BED59323E86B813981D91BC53B657BF970633A8",
+      "git_blob_sha1": "e17951dc1e611cab0152df98af7c927d273d2ac7"
+    },
+    {
+      "path": "pro_06_OPT-SIZE-PRO-TRIANGLE-THEORY-LITERATURE-20261022-01.md",
+      "bytes": 31907,
+      "sha256": "6CFAB1F4C10B5128F3DA87A7151B23FA227D3E53D24D5EE4ABCA53E2BC499762",
+      "git_blob_sha1": "28599d456fb78944a0ecef0af34d979b086ebde0"
+    },
+    {
+      "path": "pro_07_OPT-SIZE-PRO-DESIGN-CRITERION-CORNER-NEXT-20261022-01.md",
+      "bytes": 50358,
+      "sha256": "47BA37E795F5F6638E6C9E05CC4A31A0995842A75B19124ABF2735F683459869",
+      "git_blob_sha1": "bdb877d3ffa87eeb92c40ef03fd6f4ae908df400"
+    },
+    {
+      "path": "pro_08_OPT-SIZE-PRO-THEORY-ROI-CLIPPING-CONCLUSIONS-20261025-01.md",
+      "bytes": 70215,
+      "sha256": "912E8173132C43D594E27A2CD5B90E6A3D5BFEBD3582D5672EBE15CDF480273E",
+      "git_blob_sha1": "95f2cb3ebbd0c73052075e363ba2468cf3c8ccbf"
+    },
+    {
+      "path": "pro_09_OPT-SIZE-PRO-CUTCELL-TWO-CLAIMS-20261025-01.md",
+      "bytes": 36968,
+      "sha256": "5DBD4EF76E37940D4189C96E1B0273817E942155D35A7697ED979613A661D54E",
+      "git_blob_sha1": "6b7d751f2cf06534deb15ac27a4d32dce9c6ad07"
+    },
+    {
+      "path": "pro_10_OPT-SIZE-PRO-CURRENT-PILLAR-MFG-20261025-01.md",
+      "bytes": 60041,
+      "sha256": "602E2930A9327A7EB50CF33116EA5726CFAC7811A779CB2366B52B600B88998D",
+      "git_blob_sha1": "64dc13d8aeabe307f7f85cd08f29dddbfe15cdf4"
+    },
+    {
+      "path": "pro_11_OPT-SIZE-PRO-OPTICAL-PPT-V1-FIGURE-PLAN-20261025-01.md",
+      "bytes": 30000,
+      "sha256": "3E3C3EE0EA479A024C1C72ECFC329FCB5C26F6C664A8AC89FDD0718CA47380E7",
+      "git_blob_sha1": "c175550cbee49c6af2e0a25d5e37c49c74769df3"
+    },
+    {
+      "path": "pro_12_OPT-SIZE-PRO-PILLAR-5X5-SETTINGS-20261028-01.md",
+      "bytes": 24035,
+      "sha256": "8B700A168E2D9815AFC081B2450537CBD0381B7C4ECA5904189A58D6373ED13A",
+      "git_blob_sha1": "3426eb6d849197146955925a62c2c7ed86dedad3"
+    },
+    {
+      "path": "pro_13_recovered_20261026_chapter_structure.md",
+      "bytes": 4556,
+      "sha256": "CA3C43F377B92A568A6F33791CE33D22C9CADB4BDFB62777FB316ACAB91AC3E5",
+      "git_blob_sha1": "f3aadfa6f4825fd7b889dadc767b5ffee34370b3"
+    },
+    {
+      "path": "pro_14_recovered_20261026_all_optical_assets.md",
+      "bytes": 11172,
+      "sha256": "ECD3C0AF98E146261AB5FA1FDBFB3F79F4347C77B7138D6B88C03662D9DB2AD3",
+      "git_blob_sha1": "63b8551215fdc1225d0778bebfcb72a74b823e7b"
+    },
+    {
+      "path": "pro_15_OPT-SIZE-PRO-MECHANISM-ROADMAP-20261102-01.md",
+      "bytes": 32996,
+      "sha256": "5C7AF495CA334479F00A5C155DB3B28791585D9635643C49CC33E9D0D602B019",
+      "git_blob_sha1": "f92a7fb98f89aa37867d040e5fa9ce3990cc8e4d"
+    },
+    {
+      "path": "pro_16_OPT-SIZE-PRO-FE-PILLAR-HOLE-20261103-01.md",
+      "bytes": 22566,
+      "sha256": "EBC32D4078CED817EC23414773E6F9BC924D6013B97B3188FA02181C5BB7B058",
+      "git_blob_sha1": "bf62588d12c1e67c7858e8f9acc667cd911a685f"
+    },
+    {
+      "path": "pro_17_OPT-SIZE-PRO-FE-MINIMUM-COST-20261103-01.md",
+      "bytes": 22206,
+      "sha256": "692B2C41745BFCAE7319EA3D1D749CB65A660838F26A38A67606A34BEE3CF600",
+      "git_blob_sha1": "67efd18ebea00e90da399a28b08507aac9eb114e"
+    },
+    {
+      "path": "pro_18_OPT-SIZE-PRO-FE-CONSTITUTIVE-20261103-01.md",
+      "bytes": 22176,
+      "sha256": "C8CC66FCE193E0AE572FB7F14D89F8A643DE20EA80EDED5FB7DB364ED1396DC9",
+      "git_blob_sha1": "0bd473940c93942afb996059b0009760ff336e28"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3707,
+      "sha256": "0D3C84237ABF3835FF0B1A87C7E052127FFBB0F791863903EE22688B31E4D945",
+      "git_blob_sha1": "b07bca61c5f45b8888409d1eedae6bebe5fd9989"
+    },
+    {
+      "path": "RESEARCH_BRIEF.md",
+      "bytes": 9049,
+      "sha256": "FCCD593EF8FB405E42AA4D50F22FE965EC5C9EE4EBD19DBF0BD137991619C0B7",
+      "git_blob_sha1": "975150a4310457e5cf0706381a14453e8e97a32c"
+    }
+  ],
+  "sources": [
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-PRODUCTION-DECISION-20261017-01/request.md",
+      "sha256": "C68A9E86014E3AF25925C7CEC45C94A424D3ABE979291D85F6837BAF4E2396B5",
+      "bytes": 6279
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-PRODUCTION-DECISION-20261017-01/pro_ruling.md",
+      "sha256": "FE3FD94C25874A996A892E72D6D22BE59A64ADA427C135B1381287EDF3E67D49",
+      "bytes": 12796
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-F1-F2-CONCLUSIONS-20261018-01/request.md",
+      "sha256": "70306A1B591137883E1FFE54FA72C4D4E0DEF1FBAED4AF3929BFCE67321CE5AA",
+      "bytes": 11235
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-F1-F2-CONCLUSIONS-20261018-01/pro_analysis.md",
+      "sha256": "BDB83AE45862853D9406D8719DB5C8EEBAD051178110A7A803825C7EA9B3DB35",
+      "bytes": 11720
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-NEXT-RESEARCH-AFTER-F1-F4-20261021-01/request.md",
+      "sha256": "60072AD09157D6F56AD24D3424258AD261894962607E26C86F18CCD13DB4C760",
+      "bytes": 7719
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-NEXT-RESEARCH-AFTER-F1-F4-20261021-01/pro_ruling.md",
+      "sha256": "D167F5FAB8F0FC0755D1C6318436234C2B18C6A3CB16A03AFE9388DFAF67DF77",
+      "bytes": 12984
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-P30-ABSORPTION-DESIGN-MARGIN-20261022-01/request.md",
+      "sha256": "516F9A5D55A506EC4F43FF59720E26BAEBF10456180B4C6E71819A83642FE1A5",
+      "bytes": 11875
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-P30-ABSORPTION-DESIGN-MARGIN-20261022-01/pro_ruling.md",
+      "sha256": "AA94E0FCCF2562D180BD05D76F5DA8017E521AB728623F1F64F168BB1786B161",
+      "bytes": 25721
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-TWO-CLAIMS-LEGACY-SYNTHESIS-20261022-01/request.md",
+      "sha256": "28375E9FABFA7FEAD472C8D62D0E52A51C77194308B93FEDEA5B9F52578A2016",
+      "bytes": 25824
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-TWO-CLAIMS-LEGACY-SYNTHESIS-20261022-01/pro_ruling.md",
+      "sha256": "AFDDE1A1AC1F858A60DA5029487AA3BC5855C556E78A36BA5BD098C107088E9A",
+      "bytes": 30084
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-TRIANGLE-THEORY-LITERATURE-20261022-01/request.md",
+      "sha256": "FB439E9631E50C16AF9C6B53A8862B146259A2CEAE1D3416CB0A1226AD756D4A",
+      "bytes": 10280
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-TRIANGLE-THEORY-LITERATURE-20261022-01/pro_ruling.md",
+      "sha256": "9E7AE83A3CE4B2097CBC692351CAEFC9CD2E37DC0BBD6B511EB3E4B53826AAE2",
+      "bytes": 21270
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-DESIGN-CRITERION-CORNER-NEXT-20261022-01/request.md",
+      "sha256": "25358D672FF6F6DA3B9F69FBADD57B74793DF376222CE8627705981727216EA4",
+      "bytes": 25113
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-DESIGN-CRITERION-CORNER-NEXT-20261022-01/pro_ruling.md",
+      "sha256": "7FCEE66D9E0EEE949E7841ACDB555D6D034AA67DCD2E9124E0760806C1C7A5DD",
+      "bytes": 25740
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-THEORY-ROI-CLIPPING-CONCLUSIONS-20261025-01/request.md",
+      "sha256": "E5262C8750D7B4062B58DA663DCFC70CB9A0C525A06C584C45996DE6092A9245",
+      "bytes": 51933
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-THEORY-ROI-CLIPPING-CONCLUSIONS-20261025-01/pro_ruling.md",
+      "sha256": "62FA3A8FC942EDB6048EFE3DB50B856FA630AB23AD5EDA376B523EB429958D3E",
+      "bytes": 17967
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-CUTCELL-TWO-CLAIMS-20261025-01/request.md",
+      "sha256": "4F50AAC193DD30F7D672FAB4628F4793B2AF68FB7CEB6ED018AC7B32700FF452",
+      "bytes": 19797
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-CUTCELL-TWO-CLAIMS-20261025-01/pro_ruling.md",
+      "sha256": "06F6875CF8E4C2D65AC27965CF3E89EF3F628AB043A68C57B04C80D0D41C4339",
+      "bytes": 16933
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-CURRENT-PILLAR-MFG-20261025-01/request.md",
+      "sha256": "524E6B25CDF4C971CC948302789F4B075FC939A8A79A1927132CCDAD706D5710",
+      "bytes": 44248
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-CURRENT-PILLAR-MFG-20261025-01/pro_ruling.md",
+      "sha256": "4C9C9D1FCEB7369EAE539F0EDB3F1F9593D02D989745AA1C4FEEA6B9110DDCE2",
+      "bytes": 18205
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-OPTICAL-PPT-V1-FIGURE-PLAN-20261025-01/request.md",
+      "sha256": "64766DDFFE4A919002E285A176EA3CA39FA48C997B0CE55305FE6361E28A99ED",
+      "bytes": 8157
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-OPTICAL-PPT-V1-FIGURE-PLAN-20261025-01/pro_ruling.md",
+      "sha256": "CC6CBB3B4A0E6EA959E939B4F44C79F9AE7D405EEC967D5F1F351DCA0A46E419",
+      "bytes": 21492
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-PILLAR-5X5-SETTINGS-20261028-01/request.md",
+      "sha256": "35E4347C0E09BF8FA4A0E58B2F4FE1ED4FB5A6EA47220F076FAD0A9EABC76B90",
+      "bytes": 7518
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-PILLAR-5X5-SETTINGS-20261028-01/pro_ruling.md",
+      "sha256": "43857023AADEB32102BCB3B20D72C6CA0A6B49858BFD559288793EF88EFE42E7",
+      "bytes": 16161
+    },
+    {
+      "source": "evidence/pro_account_handoff_20261029_01/package/10_pro_dialogues/recovered_20261026_chapter_structure/request.md",
+      "sha256": "7ED21DF3C96B914797EB7BEB10474DC819E5ED193DDB8C10448E4157F14BB763",
+      "bytes": 293
+    },
+    {
+      "source": "evidence/pro_account_handoff_20261029_01/package/10_pro_dialogues/recovered_20261026_chapter_structure/pro_ruling.md",
+      "sha256": "233FA0EB73B6204198BDE4B11DCCCB0807BC7F2E2FB7E538C8804904DFE84625",
+      "bytes": 3890
+    },
+    {
+      "source": "evidence/pro_account_handoff_20261029_01/package/10_pro_dialogues/recovered_20261026_all_optical_assets/request.md",
+      "sha256": "CC4626109132BF3A8835E91C94022F0159F91C816E9F839E2A31EDF7561ED62C",
+      "bytes": 326
+    },
+    {
+      "source": "evidence/pro_account_handoff_20261029_01/package/10_pro_dialogues/recovered_20261026_all_optical_assets/pro_ruling.md",
+      "sha256": "5D9B8A88A4B4455DD70D2881A9B753BDAE35CB09D3ABF3B9F2AC26940E100EA9",
+      "bytes": 10481
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-MECHANISM-ROADMAP-20261102-01/request.md",
+      "sha256": "E1DEFCE0CB3C664A8C03124D302D8DE12B2433143F8BBCDA06F3CE94F5050B06",
+      "bytes": 10844
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-MECHANISM-ROADMAP-20261102-01/pro_ruling.md",
+      "sha256": "9662DDE3112F95E8A369B3162AB25209596E060ABF08AEE09E7B09F8B500DBDB",
+      "bytes": 21897
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-FE-PILLAR-HOLE-20261103-01/request.md",
+      "sha256": "9D44B8C7209213CE7CEACB846A22AEE89697B63881EB4CF0C67A4B25C74DAEEF",
+      "bytes": 6052
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-FE-PILLAR-HOLE-20261103-01/pro_ruling.md",
+      "sha256": "E7A936502707F3FEB42FE59749F7A58D45C8CFED18452C6F98B578CA1A1A2B77",
+      "bytes": 16165
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-FE-MINIMUM-COST-20261103-01/request.md",
+      "sha256": "061301F6294E73ADF9115C95576421E3E75819C2CE0CF1615039BD44C5117D1F",
+      "bytes": 6274
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-FE-MINIMUM-COST-20261103-01/pro_ruling.md",
+      "sha256": "0717D2743A936C4F62F2F2D481133F6C0852E279D8FEB0A0B581532689F5B167",
+      "bytes": 15577
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-FE-CONSTITUTIVE-20261103-01/request.md",
+      "sha256": "FB548D611E1C4895E2D9B38DCF6ABCCBF3F8BD19B1FB1894886034FB583F1684",
+      "bytes": 6828
+    },
+    {
+      "source": "review_exchange/OPT-SIZE-PRO-FE-CONSTITUTIVE-20261103-01/pro_ruling.md",
+      "sha256": "F32DF183E4F0F17D3E3076AB7FF0E9654E2A0F7A4204C2F3856F962410549BA9",
+      "bytes": 14984
+    }
+  ],
+  "ppt": {
+    "filename": "开题报告_最终版_20261111.pptx",
+    "bytes": 282544801,
+    "sha256": "1ED68BCB154F6FA8237535142BC5A5E3593989BBB1BC1D642A0A107227044E07",
+    "extraction": "native-text-only-selected-optical-slides"
+  },
+  "redaction_counts": {
+    "private_key": 0,
+    "token": 0,
+    "email": 0,
+    "local_path": 66,
+    "chat_link": 1,
+    "remote_route": 0
+  },
+  "not_a_complete_account_export": true,
+  "historical_instructions_not_current_authority": true,
+  "new_solver_starts": 0,
+  "privacy_review": "Whitelisted optical question/reply texts; no account export, tools, credentials or server routes; residual matches and URL domains reviewed."
+}
